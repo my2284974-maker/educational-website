@@ -7,9 +7,13 @@
     <title>Class 11 Biology | Ibrar Science Hub</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
+            font-family: Arial, sans-serif;
             background: #f5f7fb;
             color: #1f2937;
         }
@@ -18,46 +22,82 @@
             background: #123c69;
             color: white;
             text-align: center;
-            padding: 30px 20px;
+            padding: 45px 20px;
         }
 
         header h1 {
-            margin: 0 0 8px;
+            margin: 0 0 10px;
+            font-size: 38px;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 17px;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: auto;
-            padding: 30px 20px;
+            padding: 40px 20px;
+        }
+
+        .chapter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
         }
 
         .chapter {
             background: white;
-            margin-bottom: 15px;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
         .chapter h2 {
-            margin: 0 0 8px;
+            margin-top: 0;
+            font-size: 21px;
         }
 
         .chapter p {
             color: #6b7280;
+            line-height: 1.5;
         }
 
         .btn {
             display: inline-block;
-            padding: 10px 16px;
+            margin-top: 10px;
+            padding: 11px 18px;
             background: #123c69;
             color: white;
             text-decoration: none;
             border-radius: 7px;
         }
 
+        .btn:hover {
+            background: #0d2f52;
+        }
+
+        .coming {
+            opacity: 0.75;
+        }
+
         .back {
-            margin-top: 15px;
+            margin-top: 35px;
+        }
+
+        footer {
+            background: #123c69;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 30px;
+            }
         }
     </style>
 </head>
@@ -66,93 +106,107 @@
 
 <header>
     <h1>Class 11 Biology</h1>
-    <p>Ibrar Science Hub — KPK Board</p>
+    <p>Ibrar Science Hub</p>
 </header>
 
 <div class="container">
 
-    <div class="chapter">
-        <h2>Chapter 1 — Cell Structure and Function</h2>
-        <p>Lectures • Notes • MCQs</p>
-        <a href="chapter1.html" class="btn">Open Chapter</a>
+    <div class="chapter-grid">
+
+        <!-- Chapter 1 is connected to its page -->
+        <div class="chapter">
+            <h2>Chapter 1 — Cell Structure and Function</h2>
+            <p>Lectures • Notes • MCQs</p>
+
+            <a href="cell-structure-and-function.html" class="btn">
+                Open Chapter
+            </a>
+        </div>
+
+        <div class="chapter coming">
+            <h2>Chapter 2 — The Biological Molecules</h2>
+            <p>Lectures • Notes • MCQs</p>
+            <span>Coming Soon</span>
+        </div>
+
+        <div class="chapter coming">
+            <h2>Chapter 3 — Enzymes</h2>
+            <p>Lectures • Notes • MCQs</p>
+            <span>Coming Soon</span>
+        </div>
+
+        <div class="chapter coming">
+            <h2>Chapter 4 — Bioenergetics</h2>
+            <p>Lectures • Notes • MCQs</p>
+            <span>Coming Soon</span>
+        </div>
+
+        <div class="chapter coming">
+            <h2>Chapter 5 — A Cellular Life</h2>
+            <p>Lectures • Notes • MCQs</p>
+            <span>Coming Soon</span>
+        </div>
+
+        <div class="chapter coming">
+            <h2>Chapter 6 — Prokaryotes</h2>
+            <p>Lectures • Notes • MCQs</p>
+            <span>Coming Soon</span>
+        </div>
+
+        <div class="chapter coming">
+            <h2>Chapter 7 — Protists and Fungi</h2>
+            <p>Lectures • Notes • MCQs</p>
+            <span>Coming Soon</span>
+        </div>
+
+        <div class="chapter coming">
+            <h2>Chapter 8 — Diversity Among Plants</h2>
+            <p>Lectures • Notes • MCQs</p>
+            <span>Coming Soon</span>
+        </div>
+
+        <div class="chapter coming">
+            <h2>Chapter 9 — Diversity Among Animals</h2>
+            <p>Lectures • Notes • MCQs</p>
+            <span>Coming Soon</span>
+        </div>
+
+        <div class="chapter coming">
+            <h2>Chapter 10 — Form and Functions in Plants</h2>
+            <p>Lectures • Notes • MCQs</p>
+            <span>Coming Soon</span>
+        </div>
+
+        <div class="chapter coming">
+            <h2>Chapter 11 — Digestion</h2>
+            <p>Lectures • Notes • MCQs</p>
+            <span>Coming Soon</span>
+        </div>
+
+        <div class="chapter coming">
+            <h2>Chapter 12 — Circulation</h2>
+            <p>Lectures • Notes • MCQs</p>
+            <span>Coming Soon</span>
+        </div>
+
+        <div class="chapter coming">
+            <h2>Chapter 13 — Immunity</h2>
+            <p>Lectures • Notes • MCQs</p>
+            <span>Coming Soon</span>
+        </div>
+
     </div>
 
-    <div class="chapter">
-        <h2>Chapter 2 — The Biological Molecules</h2>
-        <p>Lectures • Notes • MCQs</p>
-        <a href="#" class="btn">Open Chapter</a>
-    </div>
-
-    <div class="chapter">
-        <h2>Chapter 3 — Enzymes</h2>
-        <p>Lectures • Notes • MCQs</p>
-        <a href="#" class="btn">Open Chapter</a>
-    </div>
-
-    <div class="chapter">
-        <h2>Chapter 4 — Bioenergetics</h2>
-        <p>Lectures • Notes • MCQs</p>
-        <a href="#" class="btn">Open Chapter</a>
-    </div>
-
-    <div class="chapter">
-        <h2>Chapter 5 — A Cellular Life</h2>
-        <p>Lectures • Notes • MCQs</p>
-        <a href="#" class="btn">Open Chapter</a>
-    </div>
-
-    <div class="chapter">
-        <h2>Chapter 6 — Prokaryotes</h2>
-        <p>Lectures • Notes • MCQs</p>
-        <a href="#" class="btn">Open Chapter</a>
-    </div>
-
-    <div class="chapter">
-        <h2>Chapter 7 — Protists and Fungi</h2>
-        <p>Lectures • Notes • MCQs</p>
-        <a href="#" class="btn">Open Chapter</a>
-    </div>
-
-    <div class="chapter">
-        <h2>Chapter 8 — Diversity Among Plants</h2>
-        <p>Lectures • Notes • MCQs</p>
-        <a href="#" class="btn">Open Chapter</a>
-    </div>
-
-    <div class="chapter">
-        <h2>Chapter 9 — Diversity Among Animals</h2>
-        <p>Lectures • Notes • MCQs</p>
-        <a href="#" class="btn">Open Chapter</a>
-    </div>
-
-    <div class="chapter">
-        <h2>Chapter 10 — Form and Functions in Plants</h2>
-        <p>Lectures • Notes • MCQs</p>
-        <a href="#" class="btn">Open Chapter</a>
-    </div>
-
-    <div class="chapter">
-        <h2>Chapter 11 — Digestion</h2>
-        <p>Lectures • Notes • MCQs</p>
-        <a href="#" class="btn">Open Chapter</a>
-    </div>
-
-    <div class="chapter">
-        <h2>Chapter 12 — Circulation</h2>
-        <p>Lectures • Notes • MCQs</p>
-        <a href="#" class="btn">Open Chapter</a>
-    </div>
-
-    <div class="chapter">
-        <h2>Chapter 13 — Immunity</h2>
-        <p>Lectures • Notes • MCQs</p>
-        <a href="#" class="btn">Open Chapter</a>
-    </div>
-
-    <a href="index.html" class="btn back">← Back to Home</a>
+    <!-- Connected back to Home Page -->
+    <a href="index.html" class="btn back">
+        ← Back to Home
+    </a>
 
 </div>
 
+<footer>
+    <p>© 2026 Ibrar Science Hub</p>
+</footer>
+
 </body>
 </html>
-<!-- Ibrar Science Hub -->
