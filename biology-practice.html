@@ -359,6 +359,20 @@
     <footer>
         <p>© 2026 Ibrar Science Hub. All Rights Reserved.</p>
     </footer>
+<script>
+async function startTest() {
+    try {
+        const response = await fetch("mcqs/biology-unit-1-mcqs.json");
+        const data = await response.json();
 
+        console.log("Unit 1 MCQs loaded:", data.questions.length);
+
+        alert("Unit 1 کے " + data.questions.length + " MCQs لوڈ ہو گئے ہیں!");
+    } catch (error) {
+        console.error(error);
+        alert("MCQs فائل لوڈ نہیں ہو سکی۔");
+    }
+}
+</script>
 </body>
 </html>
