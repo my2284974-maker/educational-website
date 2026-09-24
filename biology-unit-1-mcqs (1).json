@@ -1,0 +1,1831 @@
+{
+  "title": "Biology Unit 1: Acellular Life — MCQ Question Bank",
+  "unit": "Unit 1: Acellular Life",
+  "source_scope": "User-provided Batch 1 and Batch 2 files",
+  "totalMCQs": 140,
+  "instructions": {
+    "answersHiddenDuringTest": true
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which feature best distinguishes viruses from typical cellular organisms?",
+      "options": {
+        "A": "They contain genetic material",
+        "B": "They can mutate",
+        "C": "They lack independent cellular organization",
+        "D": "They can infect living organisms"
+      },
+      "correctAnswer": "C",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 2,
+      "question": "The genetic material of a virus may consist of:",
+      "options": {
+        "A": "DNA only",
+        "B": "RNA only",
+        "C": "Either DNA or RNA",
+        "D": "Both DNA and RNA in every virus"
+      },
+      "correctAnswer": "C",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 3,
+      "question": "A virus that specifically infects bacteria is called a:",
+      "options": {
+        "A": "Viroid",
+        "B": "Bacteriophage",
+        "C": "Retrovirus",
+        "D": "Protozoan"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 4,
+      "question": "The protein coat surrounding viral genetic material is called the:",
+      "options": {
+        "A": "Capsule",
+        "B": "Capsid",
+        "C": "Cell wall",
+        "D": "Cytoplasm"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 5,
+      "question": "HIV primarily targets cells involved in:",
+      "options": {
+        "A": "Oxygen transport",
+        "B": "Immune defense",
+        "C": "Blood clotting",
+        "D": "Digestion"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 6,
+      "question": "AIDS is caused by infection with:",
+      "options": {
+        "A": "HBV",
+        "B": "HIV",
+        "C": "Influenza virus",
+        "D": "A bacterium"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 7,
+      "question": "Which is a recognized route of HIV transmission?",
+      "options": {
+        "A": "Sharing classroom air",
+        "B": "Mosquito bite",
+        "C": "Exposure to infected blood",
+        "D": "Casual handshake"
+      },
+      "correctAnswer": "C",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 8,
+      "question": "A virus containing RNA as its genetic material is classified, at the basic level, as:",
+      "options": {
+        "A": "A DNA virus",
+        "B": "An RNA virus",
+        "C": "A bacterial cell",
+        "D": "A protozoan"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 9,
+      "question": "Viruses are generally described as acellular because they:",
+      "options": {
+        "A": "Have no nucleic acid",
+        "B": "Lack typical cellular organization",
+        "C": "Cannot contain proteins",
+        "D": "Are always smaller than bacteria"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 10,
+      "question": "Which pairing is correctly matched?",
+      "options": {
+        "A": "HIV — AIDS",
+        "B": "Bacteriophage — malaria",
+        "C": "Influenza virus — tuberculosis",
+        "D": "HIV — hepatitis B"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 11,
+      "question": "A virus with a lipid layer surrounding its capsid is described as:",
+      "options": {
+        "A": "Naked",
+        "B": "Enveloped",
+        "C": "Cellular",
+        "D": "Bacterial"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 12,
+      "question": "Why does a virus depend on a host cell for multiplication?",
+      "options": {
+        "A": "It has no genetic material",
+        "B": "It depends on host-cell machinery",
+        "C": "It has no proteins",
+        "D": "It cannot enter cells"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 13,
+      "question": "Which information is especially useful when classifying a virus?",
+      "options": {
+        "A": "Patient's favorite food",
+        "B": "Genetic material and structural features",
+        "C": "Weather on the day of infection",
+        "D": "Patient's height"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 14,
+      "question": "Which statement about HIV and AIDS is correct?",
+      "options": {
+        "A": "HIV and AIDS are exactly the same term",
+        "B": "HIV infection can progress to AIDS",
+        "C": "AIDS is caused by bacteria",
+        "D": "AIDS is transmitted by casual contact"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 15,
+      "question": "Which statement about viral genomes is correct?",
+      "options": {
+        "A": "Every virus has both DNA and RNA",
+        "B": "Every virus has DNA",
+        "C": "Every virus has RNA",
+        "D": "A viral genome may be DNA or RNA"
+      },
+      "correctAnswer": "D",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 16,
+      "question": "Virus A has RNA and Virus B has DNA. What can be concluded directly?",
+      "options": {
+        "A": "Virus A must be larger",
+        "B": "They differ in type of genetic material",
+        "C": "Virus B cannot cause disease",
+        "D": "Virus A must infect bacteria"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 17,
+      "question": "A person exposed to HIV has no immediate obvious symptoms. What is the safest conclusion?",
+      "options": {
+        "A": "HIV infection is impossible",
+        "B": "Lack of immediate symptoms alone does not rule out infection",
+        "C": "HIV always causes immediate severe illness",
+        "D": "The person definitely has AIDS"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 18,
+      "question": "Two viruses have similar capsids but different nucleic acids. Which feature most clearly separates them genetically?",
+      "options": {
+        "A": "Capsid color",
+        "B": "Host age",
+        "C": "Type of nucleic acid",
+        "D": "Sample temperature"
+      },
+      "correctAnswer": "C",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 19,
+      "question": "A newly discovered virus is being classified. Which combination is most informative?",
+      "options": {
+        "A": "Host, genome type, structure and associated disease",
+        "B": "Patient height and eye color",
+        "C": "Sample smell and room temperature",
+        "D": "Collection date only"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 20,
+      "question": "Why is it incorrect to say that viruses have no genetic information?",
+      "options": {
+        "A": "They are made only of lipids",
+        "B": "Their nucleic acid carries genetic information",
+        "C": "Host cells destroy all viral genes",
+        "D": "Viruses contain only water"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 21,
+      "question": "Which structure directly encloses the viral genome in a typical non-enveloped virus?",
+      "options": {
+        "A": "Capsid",
+        "B": "Cell wall",
+        "C": "Plasma membrane",
+        "D": "Nucleus"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 22,
+      "question": "A bacteriophage is best defined as a virus that:",
+      "options": {
+        "A": "Infects plants only",
+        "B": "Infects bacteria",
+        "C": "Causes AIDS",
+        "D": "Infects fungi only"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 23,
+      "question": "Which statement best describes a virus outside a suitable host cell?",
+      "options": {
+        "A": "It performs complete cellular metabolism",
+        "B": "It exists as a non-cellular infectious particle",
+        "C": "It divides by binary fission",
+        "D": "It produces ATP independently"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 24,
+      "question": "Which characteristic can be used to distinguish viruses from one another?",
+      "options": {
+        "A": "Genome type",
+        "B": "Their ability to contain water",
+        "C": "Their need for sunlight",
+        "D": "Their ability to form tissues"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 25,
+      "question": "If a virus has RNA rather than DNA, which conclusion is justified?",
+      "options": {
+        "A": "It is an RNA virus",
+        "B": "It must infect humans",
+        "C": "It must be enveloped",
+        "D": "It cannot cause disease"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 26,
+      "question": "Which statement about viral replication is most accurate?",
+      "options": {
+        "A": "Viruses normally reproduce independently in nutrient broth",
+        "B": "Viruses use host-cell systems to produce new viral components",
+        "C": "Viruses reproduce by mitosis",
+        "D": "Viruses always divide into two equal cells"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 27,
+      "question": "Which feature is NOT a typical basis for viral classification in the stated learning outcome?",
+      "options": {
+        "A": "Genetic material",
+        "B": "Structural features",
+        "C": "Host",
+        "D": "Patient's blood group"
+      },
+      "correctAnswer": "D",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 28,
+      "question": "Which is the best example of a host-specific viral relationship?",
+      "options": {
+        "A": "A bacteriophage infecting a bacterium",
+        "B": "A virus forming a plant root",
+        "C": "A virus becoming a red blood cell",
+        "D": "A virus producing a tissue"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 29,
+      "question": "A virus contains a protein capsid but no cellular cytoplasm. This supports the idea that it is:",
+      "options": {
+        "A": "A complete cell",
+        "B": "Acellular",
+        "C": "A bacterium",
+        "D": "A fungus"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 30,
+      "question": "Which statement about the viral capsid is correct?",
+      "options": {
+        "A": "It is a protein covering associated with the viral genome",
+        "B": "It is the host cell's nucleus",
+        "C": "It is always made of DNA",
+        "D": "It is a bacterial cell wall"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 31,
+      "question": "Which statement correctly compares a virus with a typical cell?",
+      "options": {
+        "A": "Both always carry out independent metabolism",
+        "B": "A virus lacks the complete cellular organization of a typical cell",
+        "C": "A virus always contains cytoplasm",
+        "D": "A virus always has a nucleus"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 32,
+      "question": "Which observation would support classification of a virus as an RNA virus?",
+      "options": {
+        "A": "Detection of RNA as its genome",
+        "B": "Detection of glucose",
+        "C": "Presence of a host cell",
+        "D": "Ability to infect tissue"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 33,
+      "question": "Which statement is most appropriate regarding viral disease?",
+      "options": {
+        "A": "Every virus causes the same disease",
+        "B": "Different viruses can be associated with different diseases and hosts",
+        "C": "Viruses never cause disease",
+        "D": "Disease type determines whether a virus has DNA or RNA in every case"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 34,
+      "question": "HIV is relevant to the study of acellular life because HIV is:",
+      "options": {
+        "A": "A cellular bacterium",
+        "B": "A virus",
+        "C": "A fungus",
+        "D": "A protozoan"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 35,
+      "question": "Which event represents a recognized form of HIV transmission?",
+      "options": {
+        "A": "Sharing infected blood through contaminated equipment",
+        "B": "Sitting beside an infected person",
+        "C": "Shaking hands",
+        "D": "Sharing an ordinary classroom"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 36,
+      "question": "Which statement about AIDS is most accurate?",
+      "options": {
+        "A": "It refers to a condition associated with advanced HIV infection",
+        "B": "It is a type of bacterium",
+        "C": "It is a form of influenza",
+        "D": "It is transmitted by ordinary air"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 37,
+      "question": "A student says, “If a virus has a capsid, it must be a cellular organism.” What is the best correction?",
+      "options": {
+        "A": "Capsids are found only in bacteria",
+        "B": "A capsid is a viral structure and does not make the virus a cell",
+        "C": "A capsid is a nucleus",
+        "D": "Capsids contain cytoplasm"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 38,
+      "question": "Which combination can provide useful evidence for identifying a virus?",
+      "options": {
+        "A": "Genome type and host range",
+        "B": "Patient's favorite color and height",
+        "C": "Room lighting and weather",
+        "D": "Blood pressure only"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 39,
+      "question": "Why can two viruses with different genomes still belong to the same broad biological group?",
+      "options": {
+        "A": "Genome type is only one feature used to describe viruses",
+        "B": "All viruses have identical genomes",
+        "C": "Viruses are cellular organisms",
+        "D": "Genome type has no biological significance"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 40,
+      "question": "Which statement is correct about viral genetic material?",
+      "options": {
+        "A": "It is always DNA",
+        "B": "It is always RNA",
+        "C": "It can be DNA or RNA depending on the virus",
+        "D": "It is always both DNA and RNA"
+      },
+      "correctAnswer": "C",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 41,
+      "question": "Which feature most directly indicates that a virus is enveloped?",
+      "options": {
+        "A": "A lipid membrane-like outer layer",
+        "B": "Presence of a bacterial cell wall",
+        "C": "Presence of chloroplasts",
+        "D": "Presence of a nucleus"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 42,
+      "question": "A virus infects bacteria but contains RNA. Which two features can be used together in its description?",
+      "options": {
+        "A": "Host and genome type",
+        "B": "Patient age and blood group",
+        "C": "Tissue color and temperature",
+        "D": "Food source and height"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 43,
+      "question": "Which statement about viral host range is most reasonable?",
+      "options": {
+        "A": "Every virus can infect every organism",
+        "B": "Viruses may show specificity for particular hosts or cell types",
+        "C": "Viruses infect only bacteria",
+        "D": "Host has no relevance to viral classification"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 44,
+      "question": "Which statement best explains why viruses are not treated as ordinary cells?",
+      "options": {
+        "A": "They have no genetic material",
+        "B": "They do not possess the complete organization and independent machinery of cells",
+        "C": "They are always visible to the naked eye",
+        "D": "They contain only carbohydrates"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 45,
+      "question": "Which feature can be used to compare two viruses structurally?",
+      "options": {
+        "A": "Capsid and presence or absence of an envelope",
+        "B": "Patient's age",
+        "C": "Room humidity only",
+        "D": "Blood pressure"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 46,
+      "question": "A scientist detects viral RNA inside an infected host cell. What is the most direct classification statement?",
+      "options": {
+        "A": "The virus has an RNA genome",
+        "B": "The virus must be a bacterium",
+        "C": "The virus cannot replicate",
+        "D": "The virus must lack a capsid"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 47,
+      "question": "Which statement about HIV transmission is correct?",
+      "options": {
+        "A": "HIV spreads through ordinary handshakes",
+        "B": "HIV can be transmitted through infected blood",
+        "C": "HIV is routinely spread by sharing air",
+        "D": "HIV is spread by casual classroom contact"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 48,
+      "question": "Which statement correctly distinguishes HIV from AIDS?",
+      "options": {
+        "A": "HIV is the virus; AIDS is a syndrome/advanced condition associated with HIV infection",
+        "B": "HIV is a bacterium; AIDS is a virus",
+        "C": "HIV is a symptom; AIDS is a blood cell",
+        "D": "HIV and AIDS are unrelated"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 49,
+      "question": "A researcher wants to compare two viruses. Which data would be least useful for the biological classification described?",
+      "options": {
+        "A": "Genome type",
+        "B": "Structure",
+        "C": "Host",
+        "D": "Patient's shoe size"
+      },
+      "correctAnswer": "D",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 50,
+      "question": "A virus has a capsid and an envelope. Which conclusion is justified?",
+      "options": {
+        "A": "It has two complete cells",
+        "B": "It is an enveloped virus particle",
+        "C": "It must contain both DNA and RNA",
+        "D": "It must infect bacteria"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 51,
+      "question": "Which statement about viral multiplication is correct?",
+      "options": {
+        "A": "Host-cell machinery can be used to make viral components",
+        "B": "Viruses always make ATP independently",
+        "C": "Viruses divide by meiosis",
+        "D": "Viruses contain all organelles needed for independent life"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 52,
+      "question": "If two viruses infect different hosts, host information can help:",
+      "options": {
+        "A": "Classify or distinguish them",
+        "B": "Prove they have identical genomes",
+        "C": "Prove they are cellular",
+        "D": "Determine the patient's age"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 53,
+      "question": "Which of the following is a structural feature of many viruses?",
+      "options": {
+        "A": "Capsid",
+        "B": "Mitochondrion",
+        "C": "Chloroplast",
+        "D": "Ribosome as a complete cellular organelle"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 54,
+      "question": "Which statement is scientifically safest about symptoms following HIV exposure?",
+      "options": {
+        "A": "Symptoms alone can never be interpreted without testing and clinical context",
+        "B": "Immediate absence of symptoms proves no infection",
+        "C": "Every infected person develops AIDS immediately",
+        "D": "HIV always causes fever immediately"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 55,
+      "question": "A student classifies viruses only by the disease they cause. Why is this incomplete?",
+      "options": {
+        "A": "Viral classification can also consider genome and structural features and host",
+        "B": "Disease is never related to viruses",
+        "C": "Viruses have no genomes",
+        "D": "Viruses cannot infect hosts"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 56,
+      "question": "Which pair contains one virus-related term and its correct description?",
+      "options": {
+        "A": "Capsid — protein coat associated with a viral particle",
+        "B": "Nucleus — viral DNA storage organelle",
+        "C": "Mitochondrion — viral energy organelle",
+        "D": "Cell wall — universal viral structure"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 57,
+      "question": "Which conclusion follows from finding DNA as a viral genome?",
+      "options": {
+        "A": "The virus is a DNA virus",
+        "B": "The virus is definitely harmless",
+        "C": "The virus cannot infect humans",
+        "D": "The virus must be non-enveloped"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 58,
+      "question": "Which conclusion follows from finding RNA as a viral genome?",
+      "options": {
+        "A": "The virus is an RNA virus",
+        "B": "It must be HIV",
+        "C": "It must cause AIDS",
+        "D": "It must infect plants"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 59,
+      "question": "Which statement about an acellular infectious particle is most consistent with the concept of a virus?",
+      "options": {
+        "A": "It lacks the complete organization of a cell",
+        "B": "It contains all cellular organelles",
+        "C": "It performs independent cellular respiration",
+        "D": "It always has a nucleus"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 60,
+      "question": "Which combination gives the strongest basic description of an unknown virus?",
+      "options": {
+        "A": "Genome type, structural features, host and associated disease",
+        "B": "Patient's height, age and handwriting",
+        "C": "Sample color and collection room",
+        "D": "Weather, diet and sleep pattern"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 61,
+      "question": "A virus has no envelope but has a capsid. Which conclusion is most appropriate?",
+      "options": {
+        "A": "It is a non-enveloped virus particle",
+        "B": "It is a bacterium",
+        "C": "It has no genetic material",
+        "D": "It must have both DNA and RNA"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 62,
+      "question": "Why is host information useful in viral classification?",
+      "options": {
+        "A": "Viruses can have different host associations",
+        "B": "All viruses infect identical hosts",
+        "C": "Host information determines capsid color",
+        "D": "Host information replaces genome analysis"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 63,
+      "question": "Which statement best links viral structure and function?",
+      "options": {
+        "A": "The capsid is associated with protection and packaging of viral genetic material",
+        "B": "The capsid is a mitochondrion",
+        "C": "The capsid performs photosynthesis",
+        "D": "The capsid is the host's nucleus"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 64,
+      "question": "Which statement about HIV is correct?",
+      "options": {
+        "A": "HIV is a virus that can damage the immune system",
+        "B": "HIV is a bacterium that causes malaria",
+        "C": "HIV is a fungus",
+        "D": "HIV is a human cell"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 65,
+      "question": "Which is NOT a recognized casual route of HIV transmission?",
+      "options": {
+        "A": "Ordinary handshake",
+        "B": "Exposure to infected blood",
+        "C": "Certain forms of sexual transmission",
+        "D": "Transmission from an infected mother to child under relevant circumstances"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 66,
+      "question": "A virus contains genetic material but no cytoplasm. What does this observation support?",
+      "options": {
+        "A": "Viral particles do not have the complete organization of typical cells",
+        "B": "Viruses are always bacteria",
+        "C": "Viruses cannot carry genes",
+        "D": "Viruses are human cells"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 67,
+      "question": "Which evidence would be most useful for distinguishing a DNA virus from an RNA virus?",
+      "options": {
+        "A": "Type of nucleic acid in its genome",
+        "B": "Host's age",
+        "C": "Color of the culture medium",
+        "D": "Size of the laboratory"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 68,
+      "question": "A researcher knows only that a particle causes disease. Why is more information needed before classifying it as a virus?",
+      "options": {
+        "A": "Disease alone does not establish genome and structural identity",
+        "B": "Viruses never cause disease",
+        "C": "All diseases are bacterial",
+        "D": "Host information is never useful"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 69,
+      "question": "Which statement best describes the relationship between HIV and AIDS?",
+      "options": {
+        "A": "HIV infection can lead to AIDS, but the terms do not mean the same thing",
+        "B": "AIDS causes HIV infection",
+        "C": "HIV is a symptom of AIDS",
+        "D": "HIV and AIDS are two unrelated bacteria"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 70,
+      "question": "A new viral isolate has RNA, a capsid, an envelope, and a human host. Which set of observations is most useful for its classification?",
+      "options": {
+        "A": "Genome type, structure and host",
+        "B": "Patient's height and handwriting",
+        "C": "Room temperature only",
+        "D": "Blood group only"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 1"
+    },
+    {
+      "id": 71,
+      "question": "Which statement best explains why a virus is called acellular?",
+      "options": {
+        "A": "It has no genetic material",
+        "B": "It is not organized as a complete cell",
+        "C": "It cannot contain proteins",
+        "D": "It cannot interact with cells"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 72,
+      "question": "Which combination can be used to classify a virus according to the stated learning outcomes?",
+      "options": {
+        "A": "Genome type, structure, host and disease association",
+        "B": "Patient's height, weight and handwriting",
+        "C": "Weather, location and time of day",
+        "D": "Blood pressure and pulse only"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 73,
+      "question": "A virus contains DNA as its genetic material. Which statement follows directly?",
+      "options": {
+        "A": "It is a DNA virus",
+        "B": "It must be HIV",
+        "C": "It must have an envelope",
+        "D": "It cannot infect animals"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 74,
+      "question": "A virus contains RNA as its genetic material. Which statement does NOT necessarily follow?",
+      "options": {
+        "A": "It is an RNA virus",
+        "B": "It must infect bacteria",
+        "C": "Its genome is RNA",
+        "D": "It may have structural features that distinguish it from other RNA viruses"
+      },
+      "correctAnswer": "B",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 75,
+      "question": "Which structure is most directly associated with the protein component surrounding viral genetic material?",
+      "options": {
+        "A": "Capsid",
+        "B": "Nucleus",
+        "C": "Mitochondrion",
+        "D": "Cell wall"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 76,
+      "question": "What is a major difference between a virus and a typical cellular organism?",
+      "options": {
+        "A": "A virus lacks complete independent cellular machinery",
+        "B": "A virus never contains nucleic acid",
+        "C": "A virus cannot interact with living cells",
+        "D": "A virus is always made of carbohydrates"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 77,
+      "question": "Which statement about bacteriophages is correct?",
+      "options": {
+        "A": "They are viruses that infect bacteria",
+        "B": "They are bacteria that infect viruses",
+        "C": "They are human immune cells",
+        "D": "They are fungi"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 78,
+      "question": "If two viruses have different host organisms, host association can be:",
+      "options": {
+        "A": "Useful information for distinguishing them",
+        "B": "Ignored completely in all classification",
+        "C": "Proof that one is cellular",
+        "D": "Proof that both have RNA"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 79,
+      "question": "Which statement about viral replication is most appropriate?",
+      "options": {
+        "A": "Viruses rely on a suitable host cell to produce new viral particles",
+        "B": "Viruses always reproduce by binary fission",
+        "C": "Viruses always reproduce by mitosis",
+        "D": "Viruses produce all required cellular organelles independently"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 80,
+      "question": "Which observation most strongly supports the identification of a viral particle rather than a typical cell?",
+      "options": {
+        "A": "It has a viral genome and capsid but lacks complete cellular organization",
+        "B": "It has a nucleus and mitochondria",
+        "C": "It performs independent cellular respiration",
+        "D": "It forms tissues"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 81,
+      "question": "Which statement correctly describes a viral genome?",
+      "options": {
+        "A": "It is genetic material carried by the virus",
+        "B": "It is always located in a nucleus",
+        "C": "It is always double-stranded DNA",
+        "D": "It is never RNA"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 82,
+      "question": "Which feature can vary among viruses?",
+      "options": {
+        "A": "Type of genome",
+        "B": "Need for genetic information",
+        "C": "Ability to interact with hosts",
+        "D": "Existence as infectious particles"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 83,
+      "question": "A researcher finds a virus with a lipid envelope. Which conclusion is justified?",
+      "options": {
+        "A": "It is an enveloped virus",
+        "B": "It is a bacterium",
+        "C": "It has no capsid",
+        "D": "It must contain DNA"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 84,
+      "question": "Which statement about viral envelopes is most appropriate?",
+      "options": {
+        "A": "An envelope is an outer lipid-containing layer found in some viruses",
+        "B": "Every virus has an envelope",
+        "C": "An envelope is a bacterial chromosome",
+        "D": "An envelope is the same as a nucleus"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 85,
+      "question": "Which feature would be most useful in comparing the genetic classification of two viruses?",
+      "options": {
+        "A": "Their nucleic acid type",
+        "B": "Their sample container",
+        "C": "Patient's age",
+        "D": "Room temperature"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 86,
+      "question": "A virus infects humans and contains RNA. Which conclusion is justified?",
+      "options": {
+        "A": "It is an RNA virus associated with a human host",
+        "B": "It must be HIV",
+        "C": "It must cause AIDS",
+        "D": "It must be non-enveloped"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 87,
+      "question": "Which statement about disease association is correct?",
+      "options": {
+        "A": "Viruses can be associated with different diseases",
+        "B": "Every virus causes AIDS",
+        "C": "Every virus causes the same disease",
+        "D": "Viruses cannot cause disease"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 88,
+      "question": "A student says, “All RNA viruses cause the same disease.” What is the best response?",
+      "options": {
+        "A": "Incorrect; RNA viruses can differ in hosts, structures and disease associations",
+        "B": "Correct; RNA determines one disease",
+        "C": "Correct; all RNA viruses are HIV",
+        "D": "Incorrect because RNA viruses do not exist"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 89,
+      "question": "Which information would be least relevant to basic viral classification?",
+      "options": {
+        "A": "Patient's favorite subject",
+        "B": "Viral genome",
+        "C": "Viral structure",
+        "D": "Host"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 90,
+      "question": "A virus is found to infect bacteria. Which term should be considered?",
+      "options": {
+        "A": "Bacteriophage",
+        "B": "Human red blood cell",
+        "C": "Protozoan",
+        "D": "Antibody"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 91,
+      "question": "Which statement about viruses and cells is correct?",
+      "options": {
+        "A": "Viruses do not possess the full range of structures required for independent cellular life",
+        "B": "Viruses always contain a nucleus",
+        "C": "Viruses always contain mitochondria",
+        "D": "Viruses are simply small bacteria"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 92,
+      "question": "Why can a virus have genetic material even though it is acellular?",
+      "options": {
+        "A": "Genetic material does not by itself make a particle a complete cell",
+        "B": "Only cells can contain genetic information",
+        "C": "Viral genetic material is actually host DNA in every case",
+        "D": "Acellular means without nucleic acid"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 93,
+      "question": "Which statement best connects host dependence and viral replication?",
+      "options": {
+        "A": "A host cell provides machinery and conditions needed for viral multiplication",
+        "B": "Host cells prevent every virus from reproducing",
+        "C": "Viruses make all cellular machinery before entering a host",
+        "D": "Viruses reproduce only in air"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 94,
+      "question": "A researcher records genome type, capsid structure, envelope status and host. Why is this useful?",
+      "options": {
+        "A": "These observations provide multiple features for viral classification",
+        "B": "These observations determine the patient's personality",
+        "C": "These observations prove all viruses are identical",
+        "D": "These observations eliminate the need to study the genome"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 95,
+      "question": "Which statement about HIV is correct?",
+      "options": {
+        "A": "HIV is the virus associated with AIDS",
+        "B": "HIV is a type of red blood cell",
+        "C": "HIV is a bacterium",
+        "D": "HIV is a digestive enzyme"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 96,
+      "question": "Which route can transmit HIV?",
+      "options": {
+        "A": "Contact with infected blood",
+        "B": "Casual handshake",
+        "C": "Sharing ordinary air",
+        "D": "Sitting next to an infected person"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 97,
+      "question": "Which statement about casual contact with a person living with HIV is correct?",
+      "options": {
+        "A": "Ordinary handshaking is not a recognized route of HIV transmission",
+        "B": "Handshaking always transmits HIV",
+        "C": "Sharing a classroom always transmits HIV",
+        "D": "Breathing nearby always transmits HIV"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 98,
+      "question": "Which statement best describes AIDS in relation to HIV?",
+      "options": {
+        "A": "AIDS is an advanced syndrome associated with HIV infection",
+        "B": "AIDS is a separate bacterium",
+        "C": "AIDS is the capsid of HIV",
+        "D": "AIDS is a type of viral genome"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 99,
+      "question": "Which statement is scientifically appropriate about symptoms of HIV infection?",
+      "options": {
+        "A": "Symptoms can vary and absence of immediate symptoms does not by itself rule out infection",
+        "B": "Every person develops AIDS immediately",
+        "C": "No infected person ever has symptoms",
+        "D": "Symptoms always identify HIV with certainty"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 100,
+      "question": "Which factor is important when considering HIV transmission?",
+      "options": {
+        "A": "The type of exposure and whether it involves infected body fluids",
+        "B": "The color of the person's clothes",
+        "C": "The person's handwriting",
+        "D": "The weather alone"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 101,
+      "question": "A student claims HIV can be transmitted by a normal handshake. Which response is correct?",
+      "options": {
+        "A": "A normal handshake is not a recognized route of HIV transmission",
+        "B": "Handshake is the main route",
+        "C": "Handshake always causes AIDS",
+        "D": "Handshake changes HIV into bacteria"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 102,
+      "question": "Which statement about HIV and the immune system is correct?",
+      "options": {
+        "A": "HIV targets cells important to immune function",
+        "B": "HIV is a digestive enzyme",
+        "C": "HIV directly becomes a red blood cell",
+        "D": "HIV is a plant hormone"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 103,
+      "question": "Which observation would best support that an unknown infectious particle is a virus?",
+      "options": {
+        "A": "It contains viral genetic material and shows viral structural organization",
+        "B": "It contains a complete nucleus and mitochondria",
+        "C": "It forms a multicellular tissue",
+        "D": "It performs independent cellular respiration"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 104,
+      "question": "Which statement about viral classification is most complete?",
+      "options": {
+        "A": "Classification can consider genome type, structure, host and disease association",
+        "B": "Classification depends only on color",
+        "C": "Classification depends only on patient age",
+        "D": "Classification ignores genome type"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 105,
+      "question": "Two viruses have the same host but different genome types. What can be concluded?",
+      "options": {
+        "A": "Genome type can still distinguish them",
+        "B": "They must be identical",
+        "C": "They must cause the same disease",
+        "D": "They must have identical structures"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 106,
+      "question": "Two viruses have the same genome type but different hosts. Which statement is valid?",
+      "options": {
+        "A": "Host association can provide another distinguishing characteristic",
+        "B": "They must be the same virus",
+        "C": "Host is irrelevant",
+        "D": "Neither can cause disease"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 107,
+      "question": "Which statement about capsids is most appropriate?",
+      "options": {
+        "A": "Capsids are protein structures associated with viral particles",
+        "B": "Capsids are human immune cells",
+        "C": "Capsids are viral mitochondria",
+        "D": "Capsids are always made of RNA"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 108,
+      "question": "A viral particle has a capsid but no envelope. Which description is suitable?",
+      "options": {
+        "A": "Non-enveloped or naked virus particle",
+        "B": "Enveloped bacterium",
+        "C": "Complete cellular organism",
+        "D": "Human cell"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 109,
+      "question": "Which conclusion is NOT justified from knowing only that a virus is enveloped?",
+      "options": {
+        "A": "It contains DNA rather than RNA",
+        "B": "It has an outer envelope",
+        "C": "It has a viral structural feature",
+        "D": "It may also have a capsid"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 110,
+      "question": "A scientist wants to distinguish two viruses with identical hosts. Which additional information is especially useful?",
+      "options": {
+        "A": "Genome and structural features",
+        "B": "Patient's shoe size",
+        "C": "Room color",
+        "D": "Time of lunch"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 111,
+      "question": "Which statement about viral genomes is correct?",
+      "options": {
+        "A": "Viral genomes carry information needed for viral reproduction and functions",
+        "B": "Viral genomes have no biological role",
+        "C": "Viral genomes are always host chromosomes",
+        "D": "Viral genomes are always proteins"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 112,
+      "question": "A student says, “Because viruses need host cells, they have no genes.” What is wrong with this statement?",
+      "options": {
+        "A": "Host dependence does not mean absence of viral genetic information",
+        "B": "Viruses are made only of genes",
+        "C": "Host cells contain no genes",
+        "D": "Viral genes are always proteins"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 113,
+      "question": "Which feature is most directly related to the term “host” in virology?",
+      "options": {
+        "A": "The organism or cell that a virus infects",
+        "B": "The viral protein coat",
+        "C": "The viral genome itself",
+        "D": "The sample container"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 114,
+      "question": "Which statement about host specificity is reasonable?",
+      "options": {
+        "A": "Different viruses may have different host associations",
+        "B": "Every virus has exactly the same host",
+        "C": "Host information cannot be observed",
+        "D": "Only bacteria can be hosts"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 115,
+      "question": "Which combination best represents structural information about a virus?",
+      "options": {
+        "A": "Capsid and envelope status",
+        "B": "Patient's age and blood group",
+        "C": "Room temperature and date",
+        "D": "Height and weight"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 116,
+      "question": "Which statement best describes the relationship between a virus and its host cell?",
+      "options": {
+        "A": "The virus uses host-cell processes to produce viral components",
+        "B": "The virus permanently becomes the host cell",
+        "C": "The host cell becomes a bacterium",
+        "D": "The virus produces a complete independent organism before entering the cell"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 117,
+      "question": "Which statement about HIV transmission is correct?",
+      "options": {
+        "A": "Certain infected body-fluid exposures can transmit HIV",
+        "B": "Casual touching routinely transmits HIV",
+        "C": "Sharing air routinely transmits HIV",
+        "D": "Mosquito bites are the recognized routine route"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 118,
+      "question": "Which statement is correct about HIV and mosquitoes?",
+      "options": {
+        "A": "Mosquito bites are not a recognized route of HIV transmission",
+        "B": "Mosquitoes routinely transmit HIV",
+        "C": "HIV multiplies in mosquitoes and causes AIDS",
+        "D": "Mosquitoes convert HIV into bacteria"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 119,
+      "question": "Which statement best describes the cause of AIDS?",
+      "options": {
+        "A": "AIDS is associated with HIV infection",
+        "B": "AIDS is caused by ordinary bacteria",
+        "C": "AIDS is caused by lack of oxygen alone",
+        "D": "AIDS is caused by a capsid"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 120,
+      "question": "A person wants to know whether HIV infection is present. Which is the most appropriate general approach?",
+      "options": {
+        "A": "Appropriate medical testing and professional evaluation",
+        "B": "Judging only by appearance",
+        "C": "Judging only by immediate symptoms",
+        "D": "Asking whether the person shook hands"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 121,
+      "question": "Which statement about appearance and HIV is correct?",
+      "options": {
+        "A": "Appearance alone cannot reliably establish whether someone has HIV",
+        "B": "HIV can always be diagnosed by looking at a person",
+        "C": "AIDS always has a unique visible appearance",
+        "D": "Healthy-looking people cannot have HIV"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 122,
+      "question": "Which statement about symptoms is most scientifically appropriate?",
+      "options": {
+        "A": "Symptoms alone are not a reliable substitute for appropriate HIV testing",
+        "B": "Symptoms always prove HIV infection",
+        "C": "Absence of symptoms proves no infection",
+        "D": "Symptoms always appear immediately"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 123,
+      "question": "Which information would best help classify an unknown virus under the stated learning outcome?",
+      "options": {
+        "A": "Genome type, structural features, host and associated disease",
+        "B": "Patient's favorite sport",
+        "C": "Laboratory wall color",
+        "D": "Time of sample transport only"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 124,
+      "question": "A virus is found to contain RNA and a capsid but no envelope. Which description is best?",
+      "options": {
+        "A": "An RNA, non-enveloped virus particle",
+        "B": "A cellular bacterium",
+        "C": "A DNA virus with an envelope",
+        "D": "A human immune cell"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 125,
+      "question": "A virus contains DNA and an envelope. Which statement is justified?",
+      "options": {
+        "A": "It is a DNA virus with an envelope",
+        "B": "It must be HIV",
+        "C": "It must infect bacteria",
+        "D": "It cannot cause disease"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 126,
+      "question": "Which statement best illustrates why multiple characteristics are useful in viral classification?",
+      "options": {
+        "A": "One feature alone may not fully describe differences among viruses",
+        "B": "Viruses have no differences",
+        "C": "Only disease matters",
+        "D": "Only host matters"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 127,
+      "question": "Which pair is correctly matched?",
+      "options": {
+        "A": "Capsid — viral protein coat",
+        "B": "Bacteriophage — human immune cell",
+        "C": "HIV — bacterium",
+        "D": "AIDS — viral genome"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 128,
+      "question": "Which statement about an enveloped virus is correct?",
+      "options": {
+        "A": "The envelope is an outer layer associated with some viral particles",
+        "B": "Every virus has one",
+        "C": "The envelope is the same as the capsid",
+        "D": "The envelope is a host-cell nucleus"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 129,
+      "question": "Which statement about viral structure is correct?",
+      "options": {
+        "A": "Structural features can contribute to viral classification",
+        "B": "Structure has no relation to classification",
+        "C": "All viruses have identical structures",
+        "D": "Viruses always have the same envelope"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 130,
+      "question": "A virus is discovered in a bacterial culture. Which possibility should be considered first?",
+      "options": {
+        "A": "It may be a bacteriophage",
+        "B": "It must be a human cell",
+        "C": "It must be a fungus",
+        "D": "It must be an antibody"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 131,
+      "question": "Which statement is most consistent with the concept of acellular life?",
+      "options": {
+        "A": "Viral particles are not complete cells but can contain genetic information",
+        "B": "Every acellular particle is a bacterium",
+        "C": "Acellular means lacking all molecules",
+        "D": "Acellular organisms always have nuclei"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 132,
+      "question": "Which feature separates an RNA virus from a DNA virus most directly?",
+      "options": {
+        "A": "The chemical type of its genome",
+        "B": "The patient's age",
+        "C": "The host's height",
+        "D": "The color of the sample"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 133,
+      "question": "Which statement about viral diseases is correct?",
+      "options": {
+        "A": "Disease association can provide useful information when studying a virus",
+        "B": "Every virus causes the same disease",
+        "C": "Disease association is impossible to observe",
+        "D": "Viruses are never associated with disease"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 134,
+      "question": "A researcher knows a virus causes disease but does not know its genome. What additional information would be valuable?",
+      "options": {
+        "A": "Genome type and structural features",
+        "B": "Patient's handwriting",
+        "C": "Laboratory chair color",
+        "D": "Weather forecast only"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 135,
+      "question": "Which statement about HIV infection is correct?",
+      "options": {
+        "A": "HIV can affect the immune system",
+        "B": "HIV is a normal human chromosome",
+        "C": "HIV is a digestive bacterium",
+        "D": "HIV is a hormone"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 136,
+      "question": "Which statement is correct regarding transmission from mother to child?",
+      "options": {
+        "A": "HIV can be transmitted from an infected mother to child under relevant circumstances",
+        "B": "HIV can never pass from mother to child",
+        "C": "HIV transmission occurs only through handshakes",
+        "D": "Mother-to-child transmission is caused by mosquito bites"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 137,
+      "question": "Which statement best explains why “no immediate symptoms” is not enough to rule out HIV?",
+      "options": {
+        "A": "Infection status cannot be established from immediate symptoms alone",
+        "B": "HIV always causes symptoms immediately",
+        "C": "Symptoms have no relation to infection at all",
+        "D": "Every exposed person automatically has AIDS"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 138,
+      "question": "A student compares Virus A and Virus B:\nVirus A: RNA genome, human host.\nVirus B: DNA genome, bacterial host.\nWhich comparison uses two relevant classification features?",
+      "options": {
+        "A": "Genome type and host",
+        "B": "Patient age and height",
+        "C": "Room temperature and color",
+        "D": "Diet and blood pressure"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 139,
+      "question": "A virus has a capsid, an RNA genome and a human host. Which statement is most defensible?",
+      "options": {
+        "A": "It can be described using structural, genetic and host characteristics",
+        "B": "It must be HIV",
+        "C": "It must cause AIDS",
+        "D": "It must be non-infectious"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    },
+    {
+      "id": 140,
+      "question": "Which overall statement best summarizes Unit 1?",
+      "options": {
+        "A": "Viruses are acellular infectious particles whose classification can involve genome, structure, host and disease; HIV is associated with AIDS",
+        "B": "All viruses are bacteria and all diseases are caused by viruses",
+        "C": "Viruses have complete cellular machinery and reproduce independently",
+        "D": "HIV is transmitted through ordinary social contact"
+      },
+      "correctAnswer": "A",
+      "unit": "Unit 1: Acellular Life",
+      "batch": "Batch 2"
+    }
+  ]
+}
