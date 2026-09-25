@@ -365,9 +365,36 @@ async function startTest() {
         const response = await fetch("mcqs/biology-unit-1-mcqs.json");
         const data = await response.json();
 
-        console.log("Unit 1 MCQs loaded:", data.questions.length);
+        const numberOfMCQs = parseInt(
+            document.getElementById("mcq-number").value
+        );
 
-        alert("Unit 1 کے " + data.questions.length + " MCQs لوڈ ہو گئے ہیں!");
+        const difficulty = document.getElementById("difficulty").value;
+
+        let questions = [...data.questions];
+
+        if (difficulty !== "mixed") {
+            questions = questions.filter(
+                q => q.difficulty.toLowerCase() === difficulty
+            );
+        }
+
+        questions.sort(() => Math.random() - 0.5);
+
+        questions = questions.slice(0, numberOfMCQs);
+
+        if (questions.length === 0) {
+            alert("اس Difficulty کے سوالات دستیاب نہیں ہیں۔");
+            return;
+        }
+
+        localStorage.setItem(
+            "biologyTestQuestions",
+            JSON.stringify(questions)
+        );
+
+        window.location.href = "biology-test.html";
+
     } catch (error) {
         console.error(error);
         alert("MCQs فائل لوڈ نہیں ہو سکی۔");
