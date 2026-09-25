@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Score Predictor | Ibrar Science Hub</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #222;
+}
+
+header {
+    background: #12355b;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+}
+
+header h1 {
+    margin-bottom: 8px;
+}
+
+.container {
+    width: 92%;
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+}
+
+.card h2 {
+    color: #12355b;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 17px;
+}
+
+.predict-btn {
+    width: 100%;
+    padding: 14px;
+    background: #12355b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.predict-btn:hover {
+    background: #0d2946;
+}
+
+
+/* SPEEDOMETER */
+
+.gauge-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.gauge {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2 / 1;
+    overflow: hidden;
+}
+
+.arc {
+    position: absolute;
+    width: 90%;
+    height: 180%;
+    left: 5%;
+    top: 10%;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 270deg,
+        #d32f2f 0deg,
+        #ff7043 45deg,
+        #ffca28 90deg,
+        #66bb6a 135deg,
+        #26a69a 180deg
+    );
+}
+
+.arc::after {
+    content: "";
+    position: absolute;
+    width: 84%;
+    height: 84%;
+    left: 8%;
+    top: 8%;
+    background: white;
+    border-radius: 50%;
+}
+
+.needle {
+    position: absolute;
+    width: 5px;
+    height: 43%;
+    background: #222;
+    left: 50%;
+    bottom: 8%;
+    transform-origin: 50% 100%;
+    transform: translateX(-50%) rotate(-90deg);
+    border-radius: 5px;
+    transition: transform 1s ease;
+    z-index: 5;
+}
+
+.needle-center {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: #12355b;
+    border-radius: 50%;
+    left: 50%;
+    bottom: 6%;
+    transform: translateX(-50%);
+    z-index: 6;
+}
+
+.gauge-score {
+    position: absolute;
+    left: 50%;
+    bottom: 17%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 7;
+}
+
+.gauge-score .number {
+    font-size: 42px;
+    font-weight: bold;
+    color: #12355b;
+}
+
+.gauge-score .label {
+    font-size: 15px;
+    color: #555;
+}
+
+.scale {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 8%;
+    font-weight: bold;
+    color: #555;
+}
+
+.result-info {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.result-info h3 {
+    color: #12355b;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.result-info p {
+    font-size: 17px;
+    margin: 6px 0;
+}
+
+.back-btn {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #12355b;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+
+    .gauge-score .number {
+        font-size: 30px;
+    }
+
+    .gauge-score .label {
+        font-size: 12px;
+    }
+
+    .needle {
+        height: 40%;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Score Predictor</h1>
+    <p>Ibrar Science Hub | MDCAT Practice</p>
+</header>
+
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>Enter Your Score</h2>
+
+        <div class="input-group">
+
+            <label for="scoreInput">
+                Your Score
+            </label>
+
+            <input
+                type="number"
+                id="scoreInput"
+                min="0"
+                max="180"
+                placeholder="Enter score out of 180"
+            >
+
+        </div>
+
+
+        <button
+            class="predict-btn"
+            onclick="predictScore()">
+
+            Predict Score
+
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Your Performance</h2>
+
+        <div class="gauge-container">
+
+            <div class="gauge">
+
+                <div class="arc"></div>
+
+                <div
+                    class="needle"
+                    id="needle">
+                </div>
+
+                <div class="needle-center"></div>
+
+                <div class="gauge-score">
+
+                    <div
+                        class="number"
+                        id="gaugeScore">
+                        0
+                    </div>
+
+                    <div class="label">
+                        Score / 180
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="scale">
+
+                <span>0</span>
+                <span>45</span>
+                <span>90</span>
+                <span>135</span>
+                <span>180</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="result-info">
+
+            <h3 id="performance">
+                Enter your score
+            </h3>
+
+            <p id="percentage">
+                Percentage: 0%
+            </p>
+
+            <p id="scoreText">
+                Score: 0 / 180
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <a
+        href="mcqs-practice.html"
+        class="back-btn">
+
+        ← Back to MCQs Practice Zone
+
+    </a>
+
+</div>
+
+
+<script>
+
+function predictScore() {
+
+    const input =
+        document.getElementById("scoreInput");
+
+    let score =
+        Number(input.value);
+
+
+    if (
+        isNaN(score) ||
+        score < 0 ||
+        score > 180
+    ) {
+
+        alert(
+            "Please enter a score between 0 and 180."
+        );
+
+        return;
+    }
+
+
+    /*
+        Convert score into percentage
+    */
+
+    const percentage =
+        (score / 180) * 100;
+
+
+    /*
+        Move needle from -90° to +90°
+    */
+
+    const angle =
+        -90 + (score / 180) * 180;
+
+
+    document.getElementById("needle")
+        .style.transform =
+        "translateX(-50%) rotate(" +
+        angle +
+        "deg)";
+
+
+    document.getElementById("gaugeScore")
+        .textContent =
+        score;
+
+
+    document.getElementById("percentage")
+        .textContent =
+        "Percentage: " +
+        percentage.toFixed(1) +
+        "%";
+
+
+    document.getElementById("scoreText")
+        .textContent =
+        "Score: " +
+        score +
+        " / 180";
+
+
+    let performance =
+        document.getElementById("performance");
+
+
+    if (score < 72) {
+
+        performance.textContent =
+            "Keep Practicing";
+
+    } else if (score < 108) {
+
+        performance.textContent =
+            "Good Progress";
+
+    } else if (score < 144) {
+
+        performance.textContent =
+            "Strong Performance";
+
+    } else {
+
+        performance.textContent =
+            "Excellent Performance";
+    }
+
+}
+
+</script>
+
+</body>
+</html>
