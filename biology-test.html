@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Biology Test | Ibrar Science Hub</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        header {
+            background: #12355b;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        header h1 {
+            margin-bottom: 8px;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 900px;
+            margin: 30px auto;
+        }
+
+        .question-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .question-number {
+            color: #12355b;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .question {
+            font-size: 19px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .option {
+            display: block;
+            padding: 13px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            cursor: pointer;
+            background: #fafafa;
+        }
+
+        .option:hover {
+            background: #eef4fa;
+        }
+
+        .option input {
+            margin-right: 10px;
+        }
+
+        .next-btn,
+        .submit-btn {
+            width: 100%;
+            padding: 13px;
+            margin-top: 20px;
+            background: #12355b;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .result {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .result h2 {
+            color: #12355b;
+            margin-bottom: 15px;
+        }
+
+        .result p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 25px;
+            color: #12355b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Biology Test</h1>
+    <p>Ibrar Science Hub | MDCAT Biology Practice</p>
+</header>
+
+<div class="container">
+
+    <div id="test-area">
+        <div class="question-card">
+
+            <div class="question-number" id="question-number">
+                Loading...
+            </div>
+
+            <div class="question" id="question-text">
+                Loading question...
+            </div>
+
+            <div id="options"></div>
+
+            <button class="next-btn" id="next-btn" onclick="nextQuestion()">
+                Next
+            </button>
+
+        </div>
+    </div>
+
+    <div class="result" id="result-area">
+        <h2>Test Completed!</h2>
+
+        <p id="score"></p>
+        <p id="correct"></p>
+        <p id="wrong"></p>
+
+        <a href="biology-practice.html" class="back-btn">
+            ← Back to Biology Practice
+        </a>
+    </div>
+
+</div>
+
+<script>
+
+let questions = [];
+let currentQuestion = 0;
+let userAnswers = [];
+
+const savedQuestions =
+    localStorage.getItem("biologyTestQuestions");
+
+if (savedQuestions) {
+
+    questions = JSON.parse(savedQuestions);
+
+    showQuestion();
+
+} else {
+
+    document.getElementById("test-area").innerHTML =
+        "<h2>No test found. Please start the test again.</h2>";
+}
+
+
+function showQuestion() {
+
+    const question = questions[currentQuestion];
+
+    document.getElementById("question-number").textContent =
+        "Question " + (currentQuestion + 1) +
+        " of " + questions.length;
+
+    document.getElementById("question-text").textContent =
+        question.question;
+
+    const optionsDiv =
+        document.getElementById("options");
+
+    optionsDiv.innerHTML = "";
+
+    const options = question.options;
+
+    for (const letter of ["A", "B", "C", "D"]) {
+
+        const label = document.createElement("label");
+
+        label.className = "option";
+
+        label.innerHTML =
+            '<input type="radio" name="answer" value="' +
+            letter +
+            '">' +
+            "<strong>" +
+            letter +
+            ".</strong> " +
+            options[letter];
+
+        optionsDiv.appendChild(label);
+    }
+
+    const nextButton =
+        document.getElementById("next-btn");
+
+    if (currentQuestion === questions.length - 1) {
+
+        nextButton.textContent = "Submit Test";
+
+    } else {
+
+        nextButton.textContent = "Next";
+    }
+}
+
+
+function nextQuestion() {
+
+    const selected =
+        document.querySelector(
+            'input[name="answer"]:checked'
+        );
+
+    userAnswers[currentQuestion] =
+        selected ? selected.value : null;
+
+    if (currentQuestion <
+        questions.length - 1) {
+
+        currentQuestion++;
+
+        showQuestion();
+
+    } else {
+
+        showResult();
+    }
+}
+
+
+function showResult() {
+
+    let correct = 0;
+
+    for (let i = 0; i < questions.length; i++) {
+
+        if (
+            userAnswers[i] ===
+            questions[i].correctAnswer
+        ) {
+
+            correct++;
+        }
+    }
+
+    const wrong =
+        questions.length - correct;
+
+    document.getElementById("test-area")
+        .style.display = "none";
+
+    document.getElementById("result-area")
+        .style.display = "block";
+
+    document.getElementById("score").textContent =
+        "Score: " + correct +
+        " / " + questions.length;
+
+    document.getElementById("correct").textContent =
+        "Correct: " + correct;
+
+    document.getElementById("wrong").textContent =
+        "Wrong / Unanswered: " + wrong;
+}
+
+</script>
+
+</body>
+</html>
