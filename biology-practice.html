@@ -362,8 +362,8 @@
 <script>
 async function startTest() {
     try {
-        const response = await fetch("mcqs/biology-unit-1-mcqs.json");
-        const data = await response.json();
+        const response = await fetch("./biology-unit-1-mcqs.json");
+        const data = await response.json()
 
         const numberOfMCQs = parseInt(
             document.getElementById("mcq-number").value
