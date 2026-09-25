@@ -447,7 +447,7 @@ footer {
         </div>
 
 
-        <!-- SUBJECT COUNTS APPEAR HERE -->
+        <!-- SUBJECT COUNTS -->
 
         <div
             class="subject-controls"
@@ -815,6 +815,9 @@ function updateTotal() {
 
 /*
     START COMBINED TEST
+
+    Save settings and open
+    mixed-test.html
 */
 
 function startCombinedTest() {
@@ -889,9 +892,6 @@ function startCombinedTest() {
 
     /*
         SAVE STUDENT SELECTION
-
-        This will be used by the
-        future Combined Test Engine.
     */
 
     const testSettings = {
@@ -917,31 +917,11 @@ function startCombinedTest() {
 
 
     /*
-        CURRENT STATUS
-
-        Only Biology Unit 1 has
-        an actual question bank.
-
-        Other subject banks will be
-        connected later.
+        OPEN COMBINED TEST ENGINE
     */
 
-    if (
-        selection.Biology &&
-        Object.keys(selection).length === 1
-    ) {
-
-        alert(
-            "Your Biology selection is saved. The Combined Test Engine will use the Biology question bank when the remaining subject question banks are connected."
-        );
-
-    } else {
-
-        alert(
-            "Your custom subject selection has been saved. Question banks for the selected subjects need to be connected before the Combined Test can start."
-        );
-
-    }
+    window.location.href =
+        "mixed-test.html";
 
 }
 
