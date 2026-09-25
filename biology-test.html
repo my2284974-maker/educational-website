@@ -302,19 +302,24 @@
         <div id="review"></div>
 
 
-        <div class="buttons">
+       <div class="buttons">
 
-            <button class="btn retake-btn"
-                    onclick="retakeTest()">
-                Retake Test
-            </button>
+    <button class="btn retake-btn"
+            onclick="retakeTest()">
+        Retake Test
+    </button>
 
-            <a href="biology-practice.html"
-               class="btn back-btn">
-                Back to Biology Practice
-            </a>
+    <button class="btn predictor-btn"
+            onclick="openScorePredictor()">
+        📊 View Score Predictor
+    </button>
 
-        </div>
+    <a href="biology-practice.html"
+       class="btn back-btn">
+        Back to Biology Practice
+    </a>
+
+</div>
 
     </div>
 
@@ -636,7 +641,21 @@ function retakeTest() {
     window.location.href =
         "biology-practice.html";
 }
+function openScorePredictor() {
 
+    const correct =
+        document.getElementById("correct").textContent;
+
+    const score =
+        parseInt(correct);
+
+    const predictedScore =
+        Math.round((score / questions.length) * 180);
+
+    window.location.href =
+        "score-predictor.html?score=" +
+        predictedScore;
+}
 </script>
 
 </body>
