@@ -1,286 +1,954 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Mixed Practice | Ibrar Science Hub</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<title>Mixed Practice | Ibrar Science Hub</title>
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f7fb;
-            color: #1f2937;
-            line-height: 1.6;
-        }
+<style>
 
-        header {
-            background: #0f172a;
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        header h1 {
-            font-size: 32px;
-            margin-bottom: 8px;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #1f2937;
+    line-height: 1.6;
+}
 
-        header p {
-            color: #cbd5e1;
-        }
+header {
+    background: #0f172a;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
 
-        .container {
-            max-width: 1100px;
-            margin: 35px auto;
-            padding: 0 20px;
-        }
+header h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
 
-        .intro {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+header p {
+    color: #cbd5e1;
+}
 
-        .intro h2 {
-            font-size: 26px;
-            margin-bottom: 8px;
-        }
+.container {
+    max-width: 1100px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
 
-        .intro p {
-            color: #64748b;
-        }
+.intro {
+    text-align: center;
+    margin-bottom: 30px;
+}
 
-        .section {
-            background: white;
-            border-radius: 14px;
-            padding: 25px;
-            margin-bottom: 25px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 15px rgba(15, 23, 42, 0.08);
-        }
+.intro h2 {
+    font-size: 26px;
+    margin-bottom: 8px;
+}
 
-        .section h3 {
-            margin-bottom: 18px;
-            font-size: 21px;
-        }
+.intro p {
+    color: #64748b;
+}
 
-        .subject-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-        }
+.section {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.08);
+}
 
-        .subject-option {
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 15px;
-            background: #f8fafc;
-        }
+.section h3 {
+    margin-bottom: 18px;
+    font-size: 21px;
+}
 
-        .subject-option label {
-            font-weight: bold;
-            cursor: pointer;
-        }
 
-        .subject-option input {
-            margin-right: 8px;
-        }
+/* SUBJECT GRID */
 
-        .settings {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
 
-        .setting label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
+.subject-option {
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 16px;
+    background: #f8fafc;
+    transition: 0.2s;
+}
 
-        select {
-            width: 100%;
-            padding: 11px;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            background: white;
-            font-size: 15px;
-        }
+.subject-option:hover {
+    border-color: #2563eb;
+}
 
-        .start-area {
-            text-align: center;
-            margin-top: 25px;
-        }
+.subject-option label {
+    font-weight: bold;
+    cursor: pointer;
+}
 
-        .start-btn {
-            background: #2563eb;
-            color: white;
-            border: none;
-            padding: 13px 25px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+.subject-option input {
+    margin-right: 8px;
+}
 
-        .start-btn:hover {
-            opacity: 0.9;
-        }
 
-        .navigation {
-            text-align: center;
-            margin: 35px 0 10px;
-        }
+/* SUBJECT CONTROLS */
 
-        .back {
-            display: inline-block;
-            background: #475569;
-            color: white;
-            text-decoration: none;
-            padding: 10px 17px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: bold;
-        }
+.subject-controls {
+    margin-top: 20px;
+}
 
-        footer {
-            background: #0f172a;
-            color: #cbd5e1;
-            text-align: center;
-            padding: 22px;
-            margin-top: 40px;
-            font-size: 14px;
-        }
+.subject-row {
+    display: grid;
+    grid-template-columns: 1fr 150px;
+    gap: 15px;
+    align-items: center;
 
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 27px;
-            }
+    padding: 15px;
+    margin-bottom: 10px;
 
-            .container {
-                margin-top: 25px;
-            }
-        }
-    </style>
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+}
+
+.subject-name {
+    font-weight: bold;
+}
+
+.subject-count {
+    width: 100%;
+    padding: 10px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+
+    font-size: 15px;
+    background: white;
+}
+
+
+/* TOTAL */
+
+.total-box {
+    margin-top: 20px;
+    padding: 16px;
+
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+
+    text-align: center;
+}
+
+.total-box strong {
+    color: #1d4ed8;
+    font-size: 20px;
+}
+
+.total-box span {
+    font-weight: bold;
+}
+
+
+/* SETTINGS */
+
+.settings {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.setting label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+select {
+    width: 100%;
+    padding: 11px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+
+    background: white;
+    font-size: 15px;
+}
+
+
+/* START */
+
+.start-area {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.start-btn {
+    background: #2563eb;
+    color: white;
+
+    border: none;
+
+    padding: 14px 28px;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.start-btn:hover {
+    background: #1d4ed8;
+}
+
+.start-btn:disabled {
+    background: #94a3b8;
+    cursor: not-allowed;
+}
+
+
+/* INFO */
+
+.selection-info {
+    margin-top: 15px;
+
+    text-align: center;
+
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+
+/* NAVIGATION */
+
+.navigation {
+    text-align: center;
+    margin: 35px 0 10px;
+}
+
+.back {
+    display: inline-block;
+
+    background: #475569;
+    color: white;
+
+    text-decoration: none;
+
+    padding: 10px 17px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.back:hover {
+    background: #334155;
+}
+
+
+/* FOOTER */
+
+footer {
+    background: #0f172a;
+    color: #cbd5e1;
+
+    text-align: center;
+
+    padding: 22px;
+
+    margin-top: 40px;
+
+    font-size: 14px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 27px;
+    }
+
+    .container {
+        margin-top: 25px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    .subject-row {
+        grid-template-columns: 1fr;
+    }
+
+    .subject-count {
+        width: 100%;
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
+
 <header>
+
     <h1>Mixed / Combined Practice</h1>
-    <p>Ibrar Science Hub | Create Your Custom MCQs Test</p>
+
+    <p>
+        Ibrar Science Hub | Create Your Custom MCQs Test
+    </p>
+
 </header>
+
 
 <main class="container">
 
+
     <div class="intro">
-        <h2>Build Your Combined Test</h2>
-        <p>Select multiple subjects and create one combined practice test.</p>
+
+        <h2>
+            Build Your Combined Test
+        </h2>
+
+        <p>
+            Select subjects and choose exactly how many MCQs
+            you want from each subject.
+        </p>
+
     </div>
 
+
+    <!-- SUBJECT SELECTION -->
+
     <div class="section">
-        <h3>1. Select Subjects</h3>
+
+        <h3>
+            1. Select Subjects
+        </h3>
+
 
         <div class="subject-grid">
 
+
             <div class="subject-option">
+
                 <label>
-                    <input type="checkbox" name="subjects" value="Biology">
+
+                    <input
+                        type="checkbox"
+                        name="subjects"
+                        value="Biology"
+                        onchange="updateSubjects()"
+                    >
+
                     🧬 Biology
+
                 </label>
+
             </div>
 
+
             <div class="subject-option">
+
                 <label>
-                    <input type="checkbox" name="subjects" value="Chemistry">
+
+                    <input
+                        type="checkbox"
+                        name="subjects"
+                        value="Chemistry"
+                        onchange="updateSubjects()"
+                    >
+
                     🧪 Chemistry
+
                 </label>
+
             </div>
 
+
             <div class="subject-option">
+
                 <label>
-                    <input type="checkbox" name="subjects" value="Physics">
+
+                    <input
+                        type="checkbox"
+                        name="subjects"
+                        value="Physics"
+                        onchange="updateSubjects()"
+                    >
+
                     ⚡ Physics
+
                 </label>
+
             </div>
 
+
             <div class="subject-option">
+
                 <label>
-                    <input type="checkbox" name="subjects" value="English">
+
+                    <input
+                        type="checkbox"
+                        name="subjects"
+                        value="English"
+                        onchange="updateSubjects()"
+                    >
+
                     📖 English
+
                 </label>
+
             </div>
 
+
             <div class="subject-option">
+
                 <label>
-                    <input type="checkbox" name="subjects" value="Logical Reasoning">
+
+                    <input
+                        type="checkbox"
+                        name="subjects"
+                        value="Logical Reasoning"
+                        onchange="updateSubjects()"
+                    >
+
                     🧠 Logical Reasoning
+
                 </label>
+
             </div>
+
 
         </div>
+
+
+        <!-- SUBJECT COUNTS APPEAR HERE -->
+
+        <div
+            class="subject-controls"
+            id="subjectControls">
+
+            <p class="selection-info">
+
+                Select a subject above to choose
+                its MCQ count.
+
+            </p>
+
+        </div>
+
+
+        <!-- TOTAL -->
+
+        <div class="total-box">
+
+            Total Selected MCQs:
+
+            <strong>
+                <span id="totalMCQs">0</span>
+            </strong>
+
+        </div>
+
+
     </div>
 
+
+
+    <!-- TEST SETTINGS -->
+
     <div class="section">
-        <h3>2. Test Settings</h3>
+
+        <h3>
+            2. Test Settings
+        </h3>
+
 
         <div class="settings">
 
-            <div class="setting">
-                <label for="mcqNumber">Number of MCQs</label>
-
-                <select id="mcqs">
-    <option>10</option>
-    <option>20</option>
-    <option>30</option>
-    <option>40</option>
-    <option>50</option>
-    <option>60</option>
-    <option>80</option>
-    <option>81</option>
-    <option>HLP — Half Length Paper</option>
-    <option>FLP — Full Length Paper</option>
-</select>
-            </div>
 
             <div class="setting">
-                <label for="difficulty">Difficulty</label>
+
+                <label for="difficulty">
+
+                    Difficulty
+
+                </label>
+
 
                 <select id="difficulty">
-                    <option value="Mixed">Mixed</option>
-                    <option value="Easy">Easy</option>
-                    <option value="Moderate">Moderate</option>
-                    <option value="Difficult">Difficult</option>
+
+                    <option value="Mixed">
+                        Mixed
+                    </option>
+
+                    <option value="Easy">
+                        Easy
+                    </option>
+
+                    <option value="Moderate">
+                        Moderate
+                    </option>
+
+                    <option value="Difficult">
+                        Difficult
+                    </option>
+
                 </select>
+
             </div>
 
+
         </div>
+
 
         <div class="start-area">
-            <button type="button" class="start-btn">
+
+            <button
+                type="button"
+                class="start-btn"
+                id="startButton"
+                onclick="startCombinedTest()"
+                disabled
+            >
+
                 ▶ Start Combined Test
+
             </button>
+
         </div>
 
     </div>
 
+
+
+    <!-- NAVIGATION -->
+
     <div class="navigation">
-        <a href="subject-practice.html" class="back">
+
+        <a
+            href="subject-practice.html"
+            class="back"
+        >
+
             ← Back to Subject Practice
+
         </a>
+
     </div>
+
 
 </main>
 
+
 <footer>
-    <p>© 2026 Ibrar Science Hub. Free Educational Resources.</p>
+
+    <p>
+        © 2026 Ibrar Science Hub.
+        Free Educational Resources.
+    </p>
+
 </footer>
 
+
+
+<script>
+
+
+/*
+    AVAILABLE SUBJECTS
+*/
+
+const subjects = [
+
+    "Biology",
+    "Chemistry",
+    "Physics",
+    "English",
+    "Logical Reasoning"
+
+];
+
+
+
+/*
+    CREATE SUBJECT COUNT CONTROLS
+*/
+
+function updateSubjects() {
+
+    const controls =
+        document.getElementById(
+            "subjectControls"
+        );
+
+    controls.innerHTML = "";
+
+
+    const selectedSubjects =
+        document.querySelectorAll(
+            'input[name="subjects"]:checked'
+        );
+
+
+    if (selectedSubjects.length === 0) {
+
+        controls.innerHTML = `
+            <p class="selection-info">
+                Select a subject above to choose
+                its MCQ count.
+            </p>
+        `;
+
+        updateTotal();
+
+        return;
+
+    }
+
+
+    selectedSubjects.forEach(
+        function(checkbox) {
+
+            const subject =
+                checkbox.value;
+
+
+            const row =
+                document.createElement("div");
+
+
+            row.className =
+                "subject-row";
+
+
+            row.innerHTML = `
+
+                <div class="subject-name">
+
+                    ${getSubjectIcon(subject)}
+                    ${subject}
+
+                </div>
+
+                <select
+                    class="subject-count"
+                    data-subject="${subject}"
+                    onchange="updateTotal()"
+                >
+
+                    <option value="0">
+                        0 MCQs
+                    </option>
+
+                    <option value="1">
+                        1 MCQ
+                    </option>
+
+                    <option value="2">
+                        2 MCQs
+                    </option>
+
+                    <option value="3">
+                        3 MCQs
+                    </option>
+
+                    <option value="4">
+                        4 MCQs
+                    </option>
+
+                    <option value="5">
+                        5 MCQs
+                    </option>
+
+                    <option value="10">
+                        10 MCQs
+                    </option>
+
+                    <option value="20">
+                        20 MCQs
+                    </option>
+
+                    <option value="30">
+                        30 MCQs
+                    </option>
+
+                    <option value="40">
+                        40 MCQs
+                    </option>
+
+                    <option value="50">
+                        50 MCQs
+                    </option>
+
+                    <option value="60">
+                        60 MCQs
+                    </option>
+
+                    <option value="80">
+                        80 MCQs
+                    </option>
+
+                    <option value="81">
+                        81 MCQs
+                    </option>
+
+                </select>
+
+            `;
+
+
+            controls.appendChild(row);
+
+        }
+    );
+
+
+    updateTotal();
+
+}
+
+
+
+/*
+    SUBJECT ICON
+*/
+
+function getSubjectIcon(subject) {
+
+    if (subject === "Biology") {
+        return "🧬";
+    }
+
+    if (subject === "Chemistry") {
+        return "🧪";
+    }
+
+    if (subject === "Physics") {
+        return "⚡";
+    }
+
+    if (subject === "English") {
+        return "📖";
+    }
+
+    if (subject === "Logical Reasoning") {
+        return "🧠";
+    }
+
+    return "📚";
+
+}
+
+
+
+/*
+    CALCULATE TOTAL MCQs
+*/
+
+function updateTotal() {
+
+    const countInputs =
+        document.querySelectorAll(
+            ".subject-count"
+        );
+
+
+    let total = 0;
+
+
+    countInputs.forEach(
+        function(input) {
+
+            total +=
+                parseInt(
+                    input.value,
+                    10
+                ) || 0;
+
+        }
+    );
+
+
+    document.getElementById(
+        "totalMCQs"
+    ).textContent = total;
+
+
+    const startButton =
+        document.getElementById(
+            "startButton"
+        );
+
+
+    startButton.disabled =
+        total === 0;
+
+}
+
+
+
+/*
+    START COMBINED TEST
+*/
+
+function startCombinedTest() {
+
+    const selectedSubjects =
+        document.querySelectorAll(
+            'input[name="subjects"]:checked'
+        );
+
+
+    if (selectedSubjects.length === 0) {
+
+        alert(
+            "Please select at least one subject."
+        );
+
+        return;
+
+    }
+
+
+    const selection = {};
+
+
+    let total = 0;
+
+
+    document
+        .querySelectorAll(
+            ".subject-count"
+        )
+        .forEach(
+            function(input) {
+
+                const count =
+                    parseInt(
+                        input.value,
+                        10
+                    ) || 0;
+
+
+                if (count > 0) {
+
+                    selection[
+                        input.dataset.subject
+                    ] = count;
+
+                    total += count;
+
+                }
+
+            }
+        );
+
+
+    if (total === 0) {
+
+        alert(
+            "Please select at least 1 MCQ."
+        );
+
+        return;
+
+    }
+
+
+    const difficulty =
+        document.getElementById(
+            "difficulty"
+        ).value;
+
+
+    /*
+        SAVE STUDENT SELECTION
+
+        This will be used by the
+        future Combined Test Engine.
+    */
+
+    const testSettings = {
+
+        subjects: selection,
+
+        totalMCQs: total,
+
+        difficulty: difficulty,
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+    localStorage.setItem(
+        "mixedPracticeSettings",
+        JSON.stringify(
+            testSettings
+        )
+    );
+
+
+    /*
+        CURRENT STATUS
+
+        Only Biology Unit 1 has
+        an actual question bank.
+
+        Other subject banks will be
+        connected later.
+    */
+
+    if (
+        selection.Biology &&
+        Object.keys(selection).length === 1
+    ) {
+
+        alert(
+            "Your Biology selection is saved. The Combined Test Engine will use the Biology question bank when the remaining subject question banks are connected."
+        );
+
+    } else {
+
+        alert(
+            "Your custom subject selection has been saved. Question banks for the selected subjects need to be connected before the Combined Test can start."
+        );
+
+    }
+
+}
+
+
+</script>
+
+
 </body>
+
 </html>
