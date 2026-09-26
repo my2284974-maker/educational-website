@@ -138,6 +138,28 @@ header p {
     background: white;
 }
 
+.subject-count:disabled {
+    background: #e2e8f0;
+    color: #475569;
+    cursor: not-allowed;
+}
+
+
+/* MODE INFO */
+
+.mode-info {
+    margin-top: 15px;
+    padding: 12px 15px;
+
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+
+    color: #166534;
+    font-size: 14px;
+    text-align: center;
+}
+
 
 /* TOTAL */
 
@@ -463,6 +485,13 @@ footer {
         </div>
 
 
+        <div
+            id="modeInfo"
+            class="mode-info"
+            style="display:none;">
+        </div>
+
+
         <!-- TOTAL -->
 
         <div class="total-box">
@@ -491,6 +520,41 @@ footer {
 
         <div class="settings">
 
+
+            <!-- PRACTICE MODE -->
+
+            <div class="setting">
+
+                <label for="practiceMode">
+
+                    Practice Mode
+
+                </label>
+
+
+                <select
+                    id="practiceMode"
+                    onchange="changePracticeMode()"
+                >
+
+                    <option value="custom">
+                        Custom Practice
+                    </option>
+
+                    <option value="hlp">
+                        HLP — 90 MCQs
+                    </option>
+
+                    <option value="flp">
+                        FLP — 180 MCQs
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- DIFFICULTY -->
 
             <div class="setting">
 
@@ -595,6 +659,39 @@ const subjects = [
 ];
 
 
+/*
+    OFFICIAL MDCAT SUBJECT WEIGHTS
+*/
+
+const subjectWeights = {
+
+    "Biology": 81,
+
+    "Chemistry": 45,
+
+    "Physics": 36,
+
+    "English": 9,
+
+    "Logical Reasoning": 9
+
+};
+
+
+/*
+    MODE TOTALS
+*/
+
+const modeTotals = {
+
+    custom: null,
+
+    hlp: 90,
+
+    flp: 180
+
+};
+
 
 /*
     CREATE SUBJECT COUNT CONTROLS
@@ -624,6 +721,9 @@ function updateSubjects() {
                 its MCQ count.
             </p>
         `;
+
+        document.getElementById("modeInfo")
+            .style.display = "none";
 
         updateTotal();
 
@@ -702,6 +802,10 @@ function updateSubjects() {
                         40 MCQs
                     </option>
 
+                    <option value="45">
+                        45 MCQs
+                    </option>
+
                     <option value="50">
                         50 MCQs
                     </option>
@@ -710,12 +814,16 @@ function updateSubjects() {
                         60 MCQs
                     </option>
 
-                    <option value="80">
-                        80 MCQs
-                    </option>
-
                     <option value="81">
                         81 MCQs
+                    </option>
+
+                    <option value="90">
+                        90 MCQs
+                    </option>
+
+                    <option value="180">
+                        180 MCQs
                     </option>
 
                 </select>
@@ -729,10 +837,11 @@ function updateSubjects() {
     );
 
 
+    applyPracticeMode();
+
     updateTotal();
 
 }
-
 
 
 /*
@@ -765,6 +874,227 @@ function getSubjectIcon(subject) {
 
 }
 
+
+/*
+    CHANGE PRACTICE MODE
+*/
+
+function changePracticeMode() {
+
+    applyPracticeMode();
+
+    updateTotal();
+
+}
+
+
+/*
+    APPLY SELECTED MODE
+*/
+
+function applyPracticeMode() {
+
+    const mode =
+        document.getElementById(
+            "practiceMode"
+        ).value;
+
+
+    const countInputs =
+        document.querySelectorAll(
+            ".subject-count"
+        );
+
+
+    const modeInfo =
+        document.getElementById(
+            "modeInfo"
+        );
+
+
+    if (mode === "custom") {
+
+        countInputs.forEach(
+            function(input) {
+
+                input.disabled = false;
+
+            }
+        );
+
+
+        modeInfo.style.display = "none";
+
+        return;
+
+    }
+
+
+    const totalRequired =
+        modeTotals[mode];
+
+
+    const selectedSubjects =
+        Array.from(
+            document.querySelectorAll(
+                ".subject-count"
+            )
+        );
+
+
+    if (selectedSubjects.length === 0) {
+
+        modeInfo.style.display = "none";
+
+        return;
+
+    }
+
+
+    /*
+     * Calculate proportional allocation
+     * using official MDCAT weights.
+     */
+
+    const weightSum =
+        selectedSubjects.reduce(
+            function(sum, input) {
+
+                return sum +
+                    subjectWeights[
+                        input.dataset.subject
+                    ];
+
+            },
+            0
+        );
+
+
+    let allocations = {};
+
+    let fractions = [];
+
+
+    selectedSubjects.forEach(
+        function(input) {
+
+            const subject =
+                input.dataset.subject;
+
+            const exact =
+                (
+                    subjectWeights[subject] /
+                    weightSum
+                ) * totalRequired;
+
+            const base =
+                Math.floor(exact);
+
+
+            allocations[subject] =
+                base;
+
+
+            fractions.push({
+
+                subject: subject,
+
+                fraction:
+                    exact - base
+
+            });
+
+        }
+    );
+
+
+    /*
+     * Distribute remaining MCQs
+     * using largest remainder.
+     */
+
+    let allocated =
+        Object.values(allocations)
+            .reduce(
+                function(a, b) {
+                    return a + b;
+                },
+                0
+            );
+
+
+    let remaining =
+        totalRequired - allocated;
+
+
+    fractions.sort(
+        function(a, b) {
+
+            return b.fraction -
+                a.fraction;
+
+        }
+    );
+
+
+    for (
+        let i = 0;
+        i < remaining;
+        i++
+    ) {
+
+        allocations[
+            fractions[i %
+                fractions.length].subject
+        ]++;
+
+    }
+
+
+    /*
+     * Apply counts to dropdowns
+     */
+
+    selectedSubjects.forEach(
+        function(input) {
+
+            const subject =
+                input.dataset.subject;
+
+
+            input.value =
+                String(
+                    allocations[subject]
+                );
+
+
+            input.disabled = true;
+
+        }
+    );
+
+
+    const modeName =
+        mode === "hlp"
+            ? "HLP"
+            : "FLP";
+
+
+    modeInfo.style.display =
+        "block";
+
+
+    modeInfo.innerHTML =
+
+        "<strong>" +
+        modeName +
+        "</strong> selected — " +
+
+        totalRequired +
+
+        " MCQs will be distributed according to the MDCAT subject ratio.";
+
+}
 
 
 /*
@@ -812,12 +1142,8 @@ function updateTotal() {
 }
 
 
-
 /*
     START COMBINED TEST
-
-    Save settings and open
-    mixed-test.html
 */
 
 function startCombinedTest() {
@@ -840,7 +1166,6 @@ function startCombinedTest() {
 
 
     const selection = {};
-
 
     let total = 0;
 
@@ -884,6 +1209,12 @@ function startCombinedTest() {
     }
 
 
+    const mode =
+        document.getElementById(
+            "practiceMode"
+        ).value;
+
+
     const difficulty =
         document.getElementById(
             "difficulty"
@@ -895,6 +1226,8 @@ function startCombinedTest() {
     */
 
     const testSettings = {
+
+        mode: mode,
 
         subjects: selection,
 
