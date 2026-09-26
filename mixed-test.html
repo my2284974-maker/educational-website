@@ -68,6 +68,11 @@
             font-size: 14px;
         }
 
+        .mode-badge {
+            background: #f3e8ff;
+            color: #7e22ce;
+        }
+
         .question-number {
             color: #64748b;
             font-weight: bold;
@@ -249,6 +254,16 @@
             padding: 20px;
         }
 
+        .test-info {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #475569;
+        }
+
         footer {
             background: #0f172a;
             color: #cbd5e1;
@@ -287,7 +302,7 @@
 
 <header>
     <h1>Mixed / Combined Test</h1>
-    <p>Ibrar Science Hub | Custom MCQs Practice</p>
+    <p>Ibrar Science Hub | MDCAT Practice</p>
 </header>
 
 <main class="container">
@@ -303,6 +318,7 @@
         <div id="questionArea" style="display:none;">
 
             <div class="top-info">
+
                 <div id="subjectBadge" class="badge">
                     Subject
                 </div>
@@ -310,6 +326,15 @@
                 <div id="progressBadge" class="badge">
                     Question 1
                 </div>
+
+                <div id="modeBadge" class="badge mode-badge">
+                    Custom Practice
+                </div>
+
+            </div>
+
+            <div id="testInfo" class="test-info">
+                Loading test information...
             </div>
 
             <div id="questionNumber" class="question-number">
@@ -375,6 +400,10 @@
 
             <p id="percentage">
                 Percentage: 0%
+            </p>
+
+            <p id="resultMode" style="margin-top:8px; font-weight:bold;">
+                Custom Practice
             </p>
 
         </div>
@@ -446,9 +475,15 @@
 
 <script>
 
+/* =========================================
+   GLOBAL VARIABLES
+========================================= */
+
 let questions = [];
 let currentQuestion = 0;
 let userAnswers = [];
+
+let testSettings = null;
 
 
 /* =========================================
@@ -471,6 +506,7 @@ const QUESTION_BANKS = {
 
     "Logical Reasoning":
         null
+
 };
 
 
@@ -485,6 +521,7 @@ async function loadMixedTest() {
         const saved =
             localStorage.getItem("mixedPracticeSettings");
 
+
         if (!saved) {
 
             showError(
@@ -494,9 +531,14 @@ async function loadMixedTest() {
             return;
         }
 
-        const settings = JSON.parse(saved);
 
-        const selectedSubjects = settings.subjects || {};
+        testSettings =
+            JSON.parse(saved);
+
+
+        const selectedSubjects =
+            testSettings.subjects || {};
+
 
         const activeSubjects =
             Object.keys(selectedSubjects).filter(
@@ -515,9 +557,9 @@ async function loadMixedTest() {
         }
 
 
-        /*
-         * Check unavailable question banks
-         */
+        /* =====================================
+           CHECK QUESTION BANK AVAILABILITY
+        ===================================== */
 
         const unavailable =
             activeSubjects.filter(
@@ -538,9 +580,9 @@ async function loadMixedTest() {
         }
 
 
-        /*
-         * Load each selected subject
-         */
+        /* =====================================
+           LOAD EACH SUBJECT BANK
+        ===================================== */
 
         let combinedQuestions = [];
 
@@ -550,8 +592,14 @@ async function loadMixedTest() {
             const count =
                 Number(selectedSubjects[subject]);
 
+
             const url =
                 QUESTION_BANKS[subject];
+
+
+            if (count <= 0) {
+                continue;
+            }
 
 
             const response =
@@ -564,6 +612,7 @@ async function loadMixedTest() {
                     subject +
                     " question bank could not be loaded."
                 );
+
             }
 
 
@@ -583,45 +632,61 @@ async function loadMixedTest() {
                     subject +
                     " question bank is empty."
                 );
+
             }
 
 
-            /*
-             * Difficulty filter
-             */
+            /* =================================
+               DIFFICULTY FILTER
+            ================================= */
 
             const difficulty =
-                settings.difficulty || "Mixed";
+                testSettings.difficulty || "Mixed";
 
 
             if (
-                difficulty !== "Mixed" &&
-                difficulty !== "mixed"
+                difficulty.toLowerCase() !== "mixed"
             ) {
 
                 bank =
                     bank.filter(
                         q =>
-                            (q.difficulty || "")
-                                .toLowerCase()
-                            === difficulty.toLowerCase()
+                            String(
+                                q.difficulty || ""
+                            ).toLowerCase()
+                            ===
+                            difficulty.toLowerCase()
                     );
 
             }
 
 
-            /*
-             * Randomize
-             */
+            if (!bank.length) {
+
+                throw new Error(
+                    "No " +
+                    difficulty +
+                    " questions are available in the " +
+                    subject +
+                    " question bank."
+                );
+
+            }
+
+
+            /* =================================
+               RANDOMIZE BANK
+            ================================= */
 
             bank.sort(
-                () => Math.random() - 0.5
+                () =>
+                    Math.random() - 0.5
             );
 
 
-            /*
-             * Select required number
-             */
+            /* =================================
+               SELECT REQUIRED QUESTIONS
+            ================================= */
 
             const selected =
                 bank.slice(0, count);
@@ -633,14 +698,17 @@ async function loadMixedTest() {
                     subject +
                     " has only " +
                     selected.length +
-                    " available questions for this selection."
+                    " available questions for this selection, but " +
+                    count +
+                    " were requested."
                 );
+
             }
 
 
-            /*
-             * Add subject information
-             */
+            /* =================================
+               ADD SUBJECT INFORMATION
+            ================================= */
 
             selected.forEach(q => {
 
@@ -648,7 +716,8 @@ async function loadMixedTest() {
 
                     ...q,
 
-                    testSubject: subject
+                    testSubject:
+                        subject
 
                 });
 
@@ -657,12 +726,13 @@ async function loadMixedTest() {
         }
 
 
-        /*
-         * Shuffle combined questions
-         */
+        /* =====================================
+           SHUFFLE COMPLETE TEST
+        ===================================== */
 
         combinedQuestions.sort(
-            () => Math.random() - 0.5
+            () =>
+                Math.random() - 0.5
         );
 
 
@@ -671,12 +741,24 @@ async function loadMixedTest() {
 
 
         userAnswers =
-            new Array(questions.length).fill(null);
+            new Array(
+                questions.length
+            ).fill(null);
 
 
-        /*
-         * Save combined test
-         */
+        if (!questions.length) {
+
+            showError(
+                "No questions could be loaded."
+            );
+
+            return;
+        }
+
+
+        /* =====================================
+           SAVE QUESTIONS
+        ===================================== */
 
         localStorage.setItem(
             "mixedTestQuestions",
@@ -684,11 +766,21 @@ async function loadMixedTest() {
         );
 
 
+        /* =====================================
+           SHOW TEST INFORMATION
+        ===================================== */
+
+        updateTestInformation();
+
+
         document.getElementById("loading")
-            .style.display = "none";
+            .style.display =
+            "none";
+
 
         document.getElementById("questionArea")
-            .style.display = "block";
+            .style.display =
+            "block";
 
 
         showQuestion();
@@ -699,12 +791,97 @@ async function loadMixedTest() {
 
         console.error(error);
 
+
         showError(
             "Error: " +
             error.message
         );
 
     }
+
+}
+
+
+/* =========================================
+   TEST INFORMATION
+========================================= */
+
+function updateTestInformation() {
+
+    if (!testSettings) {
+        return;
+    }
+
+
+    const mode =
+        testSettings.mode ||
+        "custom";
+
+
+    let modeName =
+        "Custom Practice";
+
+
+    if (
+        mode.toLowerCase() ===
+        "hlp"
+    ) {
+
+        modeName =
+            "HLP — 90 MCQs";
+
+    }
+
+    else if (
+        mode.toLowerCase() ===
+        "flp"
+    ) {
+
+        modeName =
+            "FLP — 180 MCQs";
+
+    }
+
+
+    document.getElementById("modeBadge")
+        .textContent =
+        modeName;
+
+
+    document.getElementById("resultMode")
+        .textContent =
+        modeName;
+
+
+    const difficulty =
+        testSettings.difficulty ||
+        "Mixed";
+
+
+    const subjectList =
+        Object.entries(
+            testSettings.subjects || {}
+        )
+        .filter(
+            ([, count]) =>
+                Number(count) > 0
+        )
+        .map(
+            ([subject, count]) =>
+                subject +
+                ": " +
+                count
+        )
+        .join(" | ");
+
+
+    document.getElementById("testInfo")
+        .textContent =
+        modeName +
+        " | Difficulty: " +
+        difficulty +
+        " | " +
+        subjectList;
 
 }
 
@@ -741,7 +918,8 @@ function showQuestion() {
 
     document.getElementById("subjectBadge")
         .textContent =
-        q.testSubject || "Subject";
+        q.testSubject ||
+        "Subject";
 
 
     document.getElementById("questionText")
@@ -753,88 +931,127 @@ function showQuestion() {
         document.getElementById("options");
 
 
-    optionsDiv.innerHTML = "";
+    optionsDiv.innerHTML =
+        "";
 
 
     const optionKeys =
         ["A", "B", "C", "D"];
 
 
-    optionKeys.forEach(letter => {
+    optionKeys.forEach(
+        letter => {
 
-        if (
-            !q.options ||
-            q.options[letter] === undefined
-        ) {
-            return;
-        }
-
-
-        const label =
-            document.createElement("label");
+            if (
+                !q.options ||
+                q.options[letter] === undefined
+            ) {
+                return;
+            }
 
 
-        label.className =
-            "option";
+            const label =
+                document.createElement(
+                    "label"
+                );
 
 
-        if (
-            userAnswers[currentQuestion] === letter
-        ) {
-
-            label.classList.add("selected");
-
-        }
+            label.className =
+                "option";
 
 
-        label.innerHTML =
+            if (
+                userAnswers[
+                    currentQuestion
+                ] === letter
+            ) {
 
-            '<input type="radio" ' +
+                label.classList.add(
+                    "selected"
+                );
 
-            'name="answer" ' +
-
-            'value="' + letter + '" ' +
-
-            (
-                userAnswers[currentQuestion] === letter
-                    ? "checked"
-                    : ""
-            ) +
-
-            '> ' +
-
-            letter +
-
-            ". " +
-
-            q.options[letter];
+            }
 
 
-        label.onclick = function() {
+            const input =
+                document.createElement(
+                    "input"
+                );
 
-            userAnswers[currentQuestion] =
+
+            input.type =
+                "radio";
+
+
+            input.name =
+                "answer";
+
+
+            input.value =
                 letter;
 
 
-            showQuestion();
-
-        };
-
-
-        optionsDiv.appendChild(label);
-
-    });
+            input.checked =
+                userAnswers[
+                    currentQuestion
+                ] === letter;
 
 
-    /*
-     * Button visibility
-     */
+            label.appendChild(
+                input
+            );
+
+
+            const text =
+                document.createTextNode(
+                    " " +
+                    letter +
+                    ". " +
+                    q.options[letter]
+                );
+
+
+            label.appendChild(
+                text
+            );
+
+
+            label.onclick =
+                function() {
+
+                    userAnswers[
+                        currentQuestion
+                    ] =
+                        letter;
+
+
+                    showQuestion();
+
+                };
+
+
+            optionsDiv.appendChild(
+                label
+            );
+
+        }
+    );
+
+
+    /* =====================================
+       BUTTON VISIBILITY
+    ===================================== */
 
     const nextButton =
-        document.getElementById("nextButton");
+        document.getElementById(
+            "nextButton"
+        );
+
 
     const submitButton =
-        document.getElementById("submitButton");
+        document.getElementById(
+            "submitButton"
+        );
 
 
     if (
@@ -845,13 +1062,17 @@ function showQuestion() {
         nextButton.style.display =
             "none";
 
+
         submitButton.style.display =
             "block";
 
-    } else {
+    }
+
+    else {
 
         nextButton.style.display =
             "block";
+
 
         submitButton.style.display =
             "none";
@@ -887,7 +1108,9 @@ function nextQuestion() {
 
 function previousQuestion() {
 
-    if (currentQuestion > 0) {
+    if (
+        currentQuestion > 0
+    ) {
 
         currentQuestion--;
 
@@ -947,50 +1170,64 @@ function submitTest() {
 
     const percentage =
         total > 0
-            ? (correct / total) * 100
+            ? (
+                correct /
+                total
+            ) * 100
             : 0;
 
 
-    document.getElementById("testArea")
-        .style.display = "none";
+    document.getElementById(
+        "testArea"
+    ).style.display =
+        "none";
 
 
-    document.getElementById("resultArea")
-        .style.display = "block";
+    document.getElementById(
+        "resultArea"
+    ).style.display =
+        "block";
 
 
-    document.getElementById("score")
-        .textContent =
+    document.getElementById(
+        "score"
+    ).textContent =
         correct;
 
 
-    document.getElementById("totalQuestions")
-        .textContent =
+    document.getElementById(
+        "totalQuestions"
+    ).textContent =
         total;
 
 
-    document.getElementById("resultTotal")
-        .textContent =
+    document.getElementById(
+        "resultTotal"
+    ).textContent =
         total;
 
 
-    document.getElementById("correct")
-        .textContent =
+    document.getElementById(
+        "correct"
+    ).textContent =
         correct;
 
 
-    document.getElementById("wrong")
-        .textContent =
+    document.getElementById(
+        "wrong"
+    ).textContent =
         wrong;
 
 
-    document.getElementById("unanswered")
-        .textContent =
+    document.getElementById(
+        "unanswered"
+    ).textContent =
         unanswered;
 
 
-    document.getElementById("percentage")
-        .textContent =
+    document.getElementById(
+        "percentage"
+    ).textContent =
         "Percentage: " +
         percentage.toFixed(1) +
         "%";
@@ -1008,17 +1245,22 @@ function submitTest() {
 function createReview() {
 
     const review =
-        document.getElementById("review");
+        document.getElementById(
+            "review"
+        );
 
 
-    review.innerHTML = "";
+    review.innerHTML =
+        "";
 
 
     questions.forEach(
         (q, index) => {
 
             const item =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
 
             item.className =
@@ -1029,7 +1271,8 @@ function createReview() {
                 userAnswers[index];
 
 
-            let status = "";
+            let status =
+                "";
 
 
             if (!userAnswer) {
@@ -1067,14 +1310,18 @@ function createReview() {
                 userAnswer
                     ? userAnswer +
                       ". " +
-                      q.options[userAnswer]
+                      q.options[
+                          userAnswer
+                      ]
                     : "Not answered";
 
 
             const correctAnswer =
                 q.correctAnswer +
                 ". " +
-                q.options[q.correctAnswer];
+                q.options[
+                    q.correctAnswer
+                ];
 
 
             item.innerHTML =
@@ -1093,7 +1340,10 @@ function createReview() {
 
                 "<b>Subject:</b> " +
 
-                (q.testSubject || "Unknown") +
+                (
+                    q.testSubject ||
+                    "Unknown"
+                ) +
 
                 "<br>" +
 
@@ -1112,7 +1362,9 @@ function createReview() {
                 status;
 
 
-            review.appendChild(item);
+            review.appendChild(
+                item
+            );
 
         }
     );
@@ -1126,18 +1378,26 @@ function createReview() {
 
 function retakeTest() {
 
-    currentQuestion = 0;
+    currentQuestion =
+        0;
+
 
     userAnswers =
-        new Array(questions.length).fill(null);
+        new Array(
+            questions.length
+        ).fill(null);
 
 
-    document.getElementById("resultArea")
-        .style.display = "none";
+    document.getElementById(
+        "resultArea"
+    ).style.display =
+        "none";
 
 
-    document.getElementById("testArea")
-        .style.display = "block";
+    document.getElementById(
+        "testArea"
+    ).style.display =
+        "block";
 
 
     showQuestion();
@@ -1153,15 +1413,17 @@ function openScorePredictor() {
 
     const correct =
         Number(
-            document.getElementById("correct")
-                .textContent
+            document.getElementById(
+                "correct"
+            ).textContent
         );
 
 
     const total =
         Number(
-            document.getElementById("resultTotal")
-                .textContent
+            document.getElementById(
+                "resultTotal"
+            ).textContent
         );
 
 
@@ -1176,7 +1438,10 @@ function openScorePredictor() {
 
     const predictedScore =
         Math.round(
-            (correct / total) * 180
+            (
+                correct /
+                total
+            ) * 180
         );
 
 
@@ -1193,16 +1458,22 @@ function openScorePredictor() {
 
 function showError(message) {
 
-    document.getElementById("loading")
-        .style.display = "none";
+    document.getElementById(
+        "loading"
+    ).style.display =
+        "none";
 
 
-    document.getElementById("questionArea")
-        .style.display = "none";
+    document.getElementById(
+        "questionArea"
+    ).style.display =
+        "none";
 
 
     const errorArea =
-        document.getElementById("errorArea");
+        document.getElementById(
+            "errorArea"
+        );
 
 
     errorArea.style.display =
