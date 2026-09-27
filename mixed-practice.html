@@ -1,541 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Mixed Practice | Ibrar Science Hub</title>
 
 <style>
+*{box-sizing:border-box}
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:linear-gradient(135deg,#eef4ff,#f8fbff);
+    color:#172033;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f7fb;
-    color: #1f2937;
-    line-height: 1.6;
+.container{
+    max-width:1100px;
+    margin:0 auto;
+    padding:24px 16px 50px;
 }
 
-header {
-    background: #0f172a;
-    color: white;
-    text-align: center;
-    padding: 40px 20px;
+.header{
+    text-align:center;
+    margin-bottom:22px;
 }
 
-header h1 {
-    font-size: 32px;
-    margin-bottom: 8px;
+.header h1{
+    margin:0;
+    color:#173b82;
+    font-size:clamp(28px,5vw,42px);
 }
 
-header p {
-    color: #cbd5e1;
+.header p{
+    margin:8px auto 0;
+    color:#5b6475;
+    max-width:760px;
+    line-height:1.5;
 }
 
-.container {
-    max-width: 1100px;
-    margin: 35px auto;
-    padding: 0 20px;
+.card{
+    background:#fff;
+    border-radius:18px;
+    padding:20px;
+    margin:16px 0;
+    box-shadow:0 8px 28px rgba(35,55,90,.09);
 }
 
-.intro {
-    text-align: center;
-    margin-bottom: 30px;
+.section-title{
+    margin:0 0 6px;
+    color:#173b82;
+    font-size:22px;
 }
 
-.intro h2 {
-    font-size: 26px;
-    margin-bottom: 8px;
+.section-subtitle{
+    margin:0 0 15px;
+    color:#697386;
+    font-size:14px;
 }
 
-.intro p {
-    color: #64748b;
+.subject-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:14px;
 }
 
-.section {
-    background: white;
-    border-radius: 14px;
-    padding: 25px;
-    margin-bottom: 25px;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.08);
+.subject-card{
+    border:1px solid #dbe4f3;
+    border-radius:14px;
+    overflow:hidden;
+    background:#fbfdff;
+    transition:.2s;
 }
 
-.section h3 {
-    margin-bottom: 18px;
-    font-size: 21px;
+.subject-card.active{
+    border-color:#7aa2e8;
+    box-shadow:0 4px 14px rgba(39,92,170,.10);
 }
 
-
-/* SUBJECT GRID */
-
-.subject-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
+.subject-head{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 15px;
+    cursor:pointer;
 }
 
-.subject-option {
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    padding: 16px;
-    background: #f8fafc;
-    transition: 0.2s;
+.subject-head input{
+    width:19px;
+    height:19px;
+    accent-color:#2459a6;
 }
 
-.subject-option:hover {
-    border-color: #2563eb;
+.subject-name{
+    font-weight:700;
+    font-size:17px;
+    flex:1;
 }
 
-.subject-option label {
-    font-weight: bold;
-    cursor: pointer;
+.subject-weight{
+    font-size:12px;
+    color:#6d7789;
+    background:#edf3fc;
+    padding:5px 8px;
+    border-radius:999px;
 }
 
-.subject-option input {
-    margin-right: 8px;
+.chapter-panel{
+    display:none;
+    border-top:1px solid #e5ebf5;
+    padding:12px 14px 15px;
+    background:#f8fbff;
 }
 
-
-/* SUBJECT CONTROLS */
-
-.subject-controls {
-    margin-top: 20px;
+.subject-card.active .chapter-panel{
+    display:block;
 }
 
-.subject-row {
-    display: grid;
-    grid-template-columns: 1fr 150px;
-    gap: 15px;
-    align-items: center;
-
-    padding: 15px;
-    margin-bottom: 10px;
-
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
+.chapter-toolbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:8px;
+    margin-bottom:10px;
+    flex-wrap:wrap;
 }
 
-.subject-name {
-    font-weight: bold;
+.chapter-toolbar span{
+    font-size:12px;
+    color:#697386;
 }
 
-.subject-count {
-    width: 100%;
-    padding: 10px;
-
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-
-    font-size: 15px;
-    background: white;
+.small-btn{
+    border:1px solid #cbd8ec;
+    background:#fff;
+    color:#214b8f;
+    border-radius:8px;
+    padding:6px 9px;
+    font-size:12px;
+    cursor:pointer;
 }
 
-.subject-count:disabled {
-    background: #e2e8f0;
-    color: #475569;
-    cursor: not-allowed;
+.small-btn:hover{
+    background:#eef4ff;
 }
 
-
-/* MODE INFO */
-
-.mode-info {
-    margin-top: 15px;
-    padding: 12px 15px;
-
-    background: #f0fdf4;
-    border: 1px solid #bbf7d0;
-    border-radius: 8px;
-
-    color: #166534;
-    font-size: 14px;
-    text-align: center;
+.chapter-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:7px;
+    max-height:310px;
+    overflow:auto;
+    padding-right:3px;
 }
 
-
-/* TOTAL */
-
-.total-box {
-    margin-top: 20px;
-    padding: 16px;
-
-    background: #eff6ff;
-    border: 1px solid #bfdbfe;
-    border-radius: 10px;
-
-    text-align: center;
+.chapter-item{
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+    background:#fff;
+    border:1px solid #e0e7f2;
+    border-radius:9px;
+    padding:9px 10px;
+    font-size:13px;
+    line-height:1.35;
+    cursor:pointer;
 }
 
-.total-box strong {
-    color: #1d4ed8;
-    font-size: 20px;
+.chapter-item:hover{
+    border-color:#91afe0;
 }
 
-.total-box span {
-    font-weight: bold;
+.chapter-item input{
+    margin-top:2px;
+    accent-color:#2459a6;
+    flex:none;
 }
 
-
-/* SETTINGS */
-
-.settings {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+.count-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:12px;
 }
 
-.setting label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 8px;
+.count-row label{
+    font-size:13px;
+    font-weight:600;
+    color:#3e485b;
 }
 
-select {
-    width: 100%;
-    padding: 11px;
-
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-
-    background: white;
-    font-size: 15px;
+.count-input{
+    width:100px;
+    padding:8px 9px;
+    border:1px solid #cbd8ec;
+    border-radius:8px;
+    outline:none;
+    background:#fff;
 }
 
-
-/* START */
-
-.start-area {
-    text-align: center;
-    margin-top: 25px;
+.count-input:focus{
+    border-color:#5b8bd9;
 }
 
-.start-btn {
-    background: #2563eb;
-    color: white;
-
-    border: none;
-
-    padding: 14px 28px;
-
-    border-radius: 8px;
-
-    font-size: 16px;
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition: 0.2s;
+.settings-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
 }
 
-.start-btn:hover {
-    background: #1d4ed8;
+.setting label{
+    display:block;
+    font-weight:700;
+    font-size:14px;
+    margin-bottom:7px;
+    color:#364154;
 }
 
-.start-btn:disabled {
-    background: #94a3b8;
-    cursor: not-allowed;
+select{
+    width:100%;
+    padding:11px 12px;
+    border:1px solid #ccd7e8;
+    border-radius:10px;
+    background:#fff;
+    font-size:14px;
+    color:#172033;
+    outline:none;
 }
 
-
-/* INFO */
-
-.selection-info {
-    margin-top: 15px;
-
-    text-align: center;
-
-    color: #64748b;
-
-    font-size: 14px;
+select:focus{
+    border-color:#5b8bd9;
 }
 
-
-/* NAVIGATION */
-
-.navigation {
-    text-align: center;
-    margin: 35px 0 10px;
+.mode-info{
+    margin-top:13px;
+    padding:12px 14px;
+    border-radius:10px;
+    background:#f0f5fd;
+    color:#40506a;
+    font-size:13px;
+    line-height:1.5;
 }
 
-.back {
-    display: inline-block;
-
-    background: #475569;
-    color: white;
-
-    text-decoration: none;
-
-    padding: 10px 17px;
-
-    border-radius: 8px;
-
-    font-size: 14px;
-    font-weight: bold;
+.total-box{
+    margin-top:16px;
+    background:#173b82;
+    color:#fff;
+    border-radius:14px;
+    padding:16px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
 }
 
-.back:hover {
-    background: #334155;
+.total-box strong{
+    font-size:22px;
 }
 
-
-/* FOOTER */
-
-footer {
-    background: #0f172a;
-    color: #cbd5e1;
-
-    text-align: center;
-
-    padding: 22px;
-
-    margin-top: 40px;
-
-    font-size: 14px;
+.error{
+    display:none;
+    margin-top:12px;
+    padding:11px 13px;
+    background:#fff0f0;
+    color:#a11;
+    border:1px solid #f0bcbc;
+    border-radius:10px;
+    font-size:13px;
 }
 
+.start-wrap{
+    text-align:center;
+    margin-top:18px;
+}
 
-/* MOBILE */
+.start-btn{
+    border:0;
+    border-radius:12px;
+    padding:13px 26px;
+    background:#173b82;
+    color:#fff;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 6px 16px rgba(23,59,130,.22);
+}
 
-@media (max-width: 600px) {
+.start-btn:hover{
+    background:#102e67;
+}
 
-    header h1 {
-        font-size: 27px;
+.note{
+    font-size:12px;
+    color:#697386;
+    text-align:center;
+    margin-top:10px;
+}
+
+@media(max-width:600px){
+
+    .container{
+        padding:16px 10px 35px;
     }
 
-    .container {
-        margin-top: 25px;
+    .card{
+        padding:15px;
     }
 
-    .section {
-        padding: 20px;
+    .subject-grid{
+        grid-template-columns:1fr;
     }
 
-    .subject-row {
-        grid-template-columns: 1fr;
+    .chapter-grid{
+        grid-template-columns:1fr;
+        max-height:360px;
     }
-
-    .subject-count {
-        width: 100%;
-    }
-
 }
-
 </style>
-
 </head>
-
 
 <body>
 
+<div class="container">
 
-<header>
-
-    <h1>Mixed / Combined Practice</h1>
-
-    <p>
-        Ibrar Science Hub | Create Your Custom MCQs Test
-    </p>
-
-</header>
-
-
-<main class="container">
-
-
-    <div class="intro">
-
-        <h2>
-            Build Your Combined Test
-        </h2>
+    <div class="header">
+        <h1>Mixed Practice</h1>
 
         <p>
-            Select subjects and choose exactly how many MCQs
-            you want from each subject.
+            Select subjects, then choose the chapters/topics you want to practice.
+            Your selections are saved and used by the mixed-test page.
+        </p>
+    </div>
+
+
+    <div class="card">
+
+        <h2 class="section-title">
+            1. Subject & Chapter Selection
+        </h2>
+
+        <p class="section-subtitle">
+            Select a subject to open its chapter/topic list.
+            Select one or more chapters/topics.
         </p>
 
-    </div>
+        <div class="subject-grid" id="subjectGrid"></div>
 
-
-    <!-- SUBJECT SELECTION -->
-
-    <div class="section">
-
-        <h3>
-            1. Select Subjects
-        </h3>
-
-
-        <div class="subject-grid">
-
-
-            <div class="subject-option">
-
-                <label>
-
-                    <input
-                        type="checkbox"
-                        name="subjects"
-                        value="Biology"
-                        onchange="updateSubjects()"
-                    >
-
-                    🧬 Biology
-
-                </label>
-
-            </div>
-
-
-            <div class="subject-option">
-
-                <label>
-
-                    <input
-                        type="checkbox"
-                        name="subjects"
-                        value="Chemistry"
-                        onchange="updateSubjects()"
-                    >
-
-                    🧪 Chemistry
-
-                </label>
-
-            </div>
-
-
-            <div class="subject-option">
-
-                <label>
-
-                    <input
-                        type="checkbox"
-                        name="subjects"
-                        value="Physics"
-                        onchange="updateSubjects()"
-                    >
-
-                    ⚡ Physics
-
-                </label>
-
-            </div>
-
-
-            <div class="subject-option">
-
-                <label>
-
-                    <input
-                        type="checkbox"
-                        name="subjects"
-                        value="English"
-                        onchange="updateSubjects()"
-                    >
-
-                    📖 English
-
-                </label>
-
-            </div>
-
-
-            <div class="subject-option">
-
-                <label>
-
-                    <input
-                        type="checkbox"
-                        name="subjects"
-                        value="Logical Reasoning"
-                        onchange="updateSubjects()"
-                    >
-
-                    🧠 Logical Reasoning
-
-                </label>
-
-            </div>
-
-
-        </div>
-
-
-        <!-- SUBJECT COUNTS -->
-
-        <div
-            class="subject-controls"
-            id="subjectControls">
-
-            <p class="selection-info">
-
-                Select a subject above to choose
-                its MCQ count.
-
-            </p>
-
-        </div>
-
-
-        <div
-            id="modeInfo"
-            class="mode-info"
-            style="display:none;">
-        </div>
-
-
-        <!-- TOTAL -->
-
-        <div class="total-box">
-
-            Total Selected MCQs:
-
-            <strong>
-                <span id="totalMCQs">0</span>
-            </strong>
-
-        </div>
-
+        <div class="error" id="errorBox"></div>
 
     </div>
 
 
+    <div class="card">
 
-    <!-- TEST SETTINGS -->
-
-    <div class="section">
-
-        <h3>
+        <h2 class="section-title">
             2. Test Settings
-        </h3>
+        </h2>
+
+        <p class="section-subtitle">
+            Choose the difficulty and practice mode.
+        </p>
 
 
-        <div class="settings">
-
-
-            <!-- PRACTICE MODE -->
+        <div class="settings-grid">
 
             <div class="setting">
 
-                <label for="practiceMode">
-
-                    Practice Mode
-
+                <label for="difficulty">
+                    Difficulty
                 </label>
 
+                <select id="difficulty">
 
-                <select
-                    id="practiceMode"
-                    onchange="changePracticeMode()"
-                >
+                    <option value="mixed">
+                        Mixed
+                    </option>
+
+                    <option value="easy">
+                        Easy
+                    </option>
+
+                    <option value="moderate">
+                        Moderate
+                    </option>
+
+                    <option value="difficult">
+                        Difficult
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="setting">
+
+                <label for="practice-mode">
+                    Practice Mode
+                </label>
+
+                <select id="practice-mode">
 
                     <option value="custom">
                         Custom Practice
@@ -553,136 +418,364 @@ footer {
 
             </div>
 
-
-            <!-- DIFFICULTY -->
-
-            <div class="setting">
-
-                <label for="difficulty">
-
-                    Difficulty
-
-                </label>
+        </div>
 
 
-                <select id="difficulty">
+        <div class="mode-info" id="modeInfo"></div>
 
-                    <option value="Mixed">
-                        Mixed
-                    </option>
 
-                    <option value="Easy">
-                        Easy
-                    </option>
+        <div class="total-box">
 
-                    <option value="Moderate">
-                        Moderate
-                    </option>
+            <span>
+                Total MCQs
+            </span>
 
-                    <option value="Difficult">
-                        Difficult
-                    </option>
-
-                </select>
-
-            </div>
-
+            <strong id="totalMCQs">
+                0
+            </strong>
 
         </div>
 
 
-        <div class="start-area">
+        <div class="start-wrap">
 
             <button
-                type="button"
                 class="start-btn"
-                id="startButton"
                 onclick="startCombinedTest()"
-                disabled
             >
-
-                ▶ Start Combined Test
-
+                Start Mixed Practice
             </button>
 
         </div>
 
-    </div>
 
-
-
-    <!-- NAVIGATION -->
-
-    <div class="navigation">
-
-        <a
-            href="subject-practice.html"
-            class="back"
-        >
-
-            ← Back to Subject Practice
-
-        </a>
+        <div class="note">
+            For HLP/FLP, the total is distributed according to
+            the selected-subject MDCAT weights.
+        </div>
 
     </div>
 
-
-</main>
-
-
-<footer>
-
-    <p>
-        © 2026 Ibrar Science Hub.
-        Free Educational Resources.
-    </p>
-
-</footer>
-
+</div>
 
 
 <script>
 
+const SUBJECT_DATA = {
 
-/*
-    AVAILABLE SUBJECTS
-*/
+    Biology: {
 
-const subjects = [
+        weight: 81,
 
-    "Biology",
-    "Chemistry",
-    "Physics",
-    "English",
-    "Logical Reasoning"
+        chapters: [
 
-];
+            "1. Acellular Life",
+
+            "2. Bioenergetics",
+
+            "3. Biological Molecules",
+
+            "4. Cell Structure & Function",
+
+            "5. Coordination & Control / Nervous & Chemical Coordination",
+
+            "6. Enzymes",
+
+            "7. Evolution",
+
+            "8. Reproduction",
+
+            "9. Support & Movement",
+
+            "10. Inheritance",
+
+            "11. Circulation",
+
+            "12. Immunity",
+
+            "13. Respiration",
+
+            "14. Digestion",
+
+            "15. Homeostasis",
+
+            "16. Biotechnology"
+
+        ]
+
+    },
 
 
-/*
-    OFFICIAL MDCAT SUBJECT WEIGHTS
-*/
+    Chemistry: {
 
-const subjectWeights = {
+        weight: 45,
 
-    "Biology": 81,
+        chapters: [
 
-    "Chemistry": 45,
+            "1. Introduction of Fundamental Concepts of Chemistry",
 
-    "Physics": 36,
+            "2. Atomic Structure",
 
-    "English": 9,
+            "3. Gases",
 
-    "Logical Reasoning": 9
+            "4. Liquids",
+
+            "5. Solids",
+
+            "6. Chemical Bonding",
+
+            "7. Thermochemistry",
+
+            "8. Chemical Equilibrium",
+
+            "9. Reaction Kinetics",
+
+            "10. Electrochemistry",
+
+            "11. s-Block and p-Block Elements",
+
+            "12. Transition Elements",
+
+            "13. Fundamental Principles of Organic Chemistry",
+
+            "14. Hydrocarbons",
+
+            "15. Alkyl Halides",
+
+            "16. Alcohols and Phenols",
+
+            "17. Aldehydes and Ketones",
+
+            "18. Carboxylic Acids",
+
+            "19. Macromolecules",
+
+            "20. Industrial Chemistry"
+
+        ]
+
+    },
+
+
+    Physics: {
+
+        weight: 36,
+
+        chapters: [
+
+            "1. Vectors and Equilibrium",
+
+            "2. Force and Motion",
+
+            "3. Work and Energy",
+
+            "4. Rotational and Circular Motion",
+
+            "5. Fluid Dynamics",
+
+            "6. Waves",
+
+            "7. Thermodynamics",
+
+            "8. Electrostatics",
+
+            "9. Current Electricity",
+
+            "10. Electromagnetism",
+
+            "11. Electromagnetic Induction",
+
+            "12. Alternating Current",
+
+            "13. Electronics",
+
+            "14. Dawn of Modern Physics",
+
+            "15. Atomic Spectra",
+
+            "16. Nuclear Physics"
+
+        ]
+
+    },
+
+
+    English: {
+
+        weight: 9,
+
+        chapters: [
+
+            "Vocabulary",
+
+            "Tenses & Sentence Structure",
+
+            "Grammar & Usage",
+
+            "Reading Comprehension"
+
+        ],
+
+        topics: {
+
+            "Vocabulary": [
+
+                "Contextual Vocabulary",
+
+                "Synonyms",
+
+                "Antonyms",
+
+                "Homophones",
+
+                "Word Relationships"
+
+            ],
+
+
+            "Tenses & Sentence Structure": [
+
+                "Present Tenses",
+
+                "Past Tenses",
+
+                "Four Types of Sentences",
+
+                "Conditionals",
+
+                "Types of Clauses",
+
+                "Sentence Fragments"
+
+            ],
+
+
+            "Grammar & Usage": [
+
+                "Grammatical Errors",
+
+                "Correct Usage",
+
+                "Sentence Completion",
+
+                "Word Usage"
+
+            ],
+
+
+            "Reading Comprehension": [
+
+                "Reading Passages",
+
+                "Main Idea",
+
+                "Inference"
+
+            ]
+
+        }
+
+    },
+
+
+    "Logical Reasoning": {
+
+        weight: 9,
+
+        chapters: [
+
+            "Critical Thinking",
+
+            "Letter & Symbols Series",
+
+            "Logical Deductions",
+
+            "Logical Problems",
+
+            "Course of Action",
+
+            "Cause & Effect"
+
+        ],
+
+
+        topics: {
+
+            "Critical Thinking": [
+
+                "True & False Statements",
+
+                "Logical Arguments",
+
+                "Evaluating Beliefs"
+
+            ],
+
+
+            "Letter & Symbols Series": [
+
+                "Number Series",
+
+                "Letter Series",
+
+                "Symbol Series",
+
+                "Mixed Series"
+
+            ],
+
+
+            "Logical Deductions": [
+
+                "Statement-Based Deductions",
+
+                "Relationship-Based Questions",
+
+                "Conclusion Questions"
+
+            ],
+
+
+            "Logical Problems": [
+
+                "Logical Puzzles",
+
+                "Arrangement Problems",
+
+                "Information-Based Problems"
+
+            ],
+
+
+            "Course of Action": [
+
+                "Statement Analysis",
+
+                "Decision Making",
+
+                "Logical Actions"
+
+            ],
+
+
+            "Cause & Effect": [
+
+                "Cause Identification",
+
+                "Effect Identification",
+
+                "Cause-and-Effect Relationships"
+
+            ]
+
+        }
+
+    }
 
 };
 
 
-/*
-    MODE TOTALS
-*/
-
-const modeTotals = {
+const MODE_TOTALS = {
 
     custom: null,
 
@@ -693,37 +786,541 @@ const modeTotals = {
 };
 
 
-/*
-    CREATE SUBJECT COUNT CONTROLS
-*/
+const subjectGrid =
+    document.getElementById("subjectGrid");
 
-function updateSubjects() {
+const modeSelect =
+    document.getElementById("practice-mode");
 
-    const controls =
-        document.getElementById(
-            "subjectControls"
+const totalMCQsEl =
+    document.getElementById("totalMCQs");
+
+const modeInfo =
+    document.getElementById("modeInfo");
+
+const errorBox =
+    document.getElementById("errorBox");
+
+
+function renderSubjects(){
+
+    subjectGrid.innerHTML = "";
+
+
+    Object.entries(SUBJECT_DATA).forEach(
+        ([subject,data]) => {
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "subject-card";
+
+        card.dataset.subject =
+            subject;
+
+
+        const head =
+            document.createElement("label");
+
+        head.className =
+            "subject-head";
+
+
+        const checkbox =
+            document.createElement("input");
+
+        checkbox.type =
+            "checkbox";
+
+        checkbox.className =
+            "subject-checkbox";
+
+        checkbox.dataset.subject =
+            subject;
+
+
+        const name =
+            document.createElement("span");
+
+        name.className =
+            "subject-name";
+
+        name.textContent =
+            subject;
+
+
+        const weight =
+            document.createElement("span");
+
+        weight.className =
+            "subject-weight";
+
+        weight.textContent =
+            data.weight + " MCQs";
+
+
+        head.appendChild(checkbox);
+
+        head.appendChild(name);
+
+        head.appendChild(weight);
+
+
+        const panel =
+            document.createElement("div");
+
+        panel.className =
+            "chapter-panel";
+
+
+        const toolbar =
+            document.createElement("div");
+
+        toolbar.className =
+            "chapter-toolbar";
+
+
+        const selectedText =
+            document.createElement("span");
+
+        selectedText.className =
+            "selected-count";
+
+        selectedText.textContent =
+            "0 selected";
+
+
+        const selectAll =
+            document.createElement("button");
+
+        selectAll.type =
+            "button";
+
+        selectAll.className =
+            "small-btn";
+
+        selectAll.textContent =
+            "Select all";
+
+        selectAll.onclick =
+            () => setAllChapters(subject,true);
+
+
+        const clearAll =
+            document.createElement("button");
+
+        clearAll.type =
+            "button";
+
+        clearAll.className =
+            "small-btn";
+
+        clearAll.textContent =
+            "Clear";
+
+        clearAll.onclick =
+            () => setAllChapters(subject,false);
+
+
+        toolbar.appendChild(selectedText);
+
+        toolbar.appendChild(selectAll);
+
+        toolbar.appendChild(clearAll);
+
+
+        const chapterGrid =
+            document.createElement("div");
+
+        chapterGrid.className =
+            "chapter-grid";
+
+
+        data.chapters.forEach(
+            (chapter,index) => {
+
+            const chapterLabel =
+                document.createElement("label");
+
+            chapterLabel.className =
+                "chapter-item";
+
+
+            const chapterCheckbox =
+                document.createElement("input");
+
+            chapterCheckbox.type =
+                "checkbox";
+
+            chapterCheckbox.className =
+                "chapter-checkbox";
+
+            chapterCheckbox.dataset.subject =
+                subject;
+
+            chapterCheckbox.dataset.chapter =
+                chapter;
+
+            chapterCheckbox.dataset.index =
+                index;
+
+
+            const text =
+                document.createElement("span");
+
+            text.textContent =
+                chapter;
+
+
+            chapterLabel.appendChild(
+                chapterCheckbox
+            );
+
+            chapterLabel.appendChild(
+                text
+            );
+
+            chapterGrid.appendChild(
+                chapterLabel
+            );
+
+
+            chapterCheckbox.addEventListener(
+                "change",
+                () => {
+
+                    updateSelectedCount(
+                        subject
+                    );
+
+                    updateTotal();
+
+                }
+            );
+
+        });
+
+
+        panel.appendChild(toolbar);
+
+        panel.appendChild(chapterGrid);
+
+
+        if(data.topics){
+
+            const topicHint =
+                document.createElement("div");
+
+            topicHint.style.cssText =
+                "font-size:12px;color:#667085;margin:9px 0 6px;";
+
+            topicHint.textContent =
+                "Topics shown on your practice page:";
+
+            panel.appendChild(topicHint);
+
+
+            Object.entries(data.topics)
+                .forEach(([chapter,topics]) => {
+
+                const topicBlock =
+                    document.createElement("details");
+
+                topicBlock.style.cssText =
+                    "margin:6px 0;border:1px solid #e1e7f0;border-radius:8px;background:#fff;";
+
+
+                const summary =
+                    document.createElement("summary");
+
+                summary.style.cssText =
+                    "cursor:pointer;padding:8px 10px;font-size:12px;font-weight:700;color:#294a7d;";
+
+                summary.textContent =
+                    chapter;
+
+
+                topicBlock.appendChild(
+                    summary
+                );
+
+
+                const topicWrap =
+                    document.createElement("div");
+
+                topicWrap.style.cssText =
+                    "padding:4px 10px 8px;display:flex;flex-wrap:wrap;gap:5px;";
+
+
+                topics.forEach(topic => {
+
+                    const pill =
+                        document.createElement("span");
+
+                    pill.style.cssText =
+                        "font-size:11px;background:#f2f5fa;color:#536174;border-radius:6px;padding:5px 7px;";
+
+                    pill.textContent =
+                        topic;
+
+                    topicWrap.appendChild(
+                        pill
+                    );
+
+                });
+
+
+                topicBlock.appendChild(
+                    topicWrap
+                );
+
+                panel.appendChild(
+                    topicBlock
+                );
+
+            });
+
+        }
+
+
+        const countRow =
+            document.createElement("div");
+
+        countRow.className =
+            "count-row";
+
+
+        const countLabel =
+            document.createElement("label");
+
+        countLabel.textContent =
+            "MCQs for this subject:";
+
+
+        const countInput =
+            document.createElement("input");
+
+        countInput.type =
+            "number";
+
+        countInput.min =
+            "1";
+
+        countInput.max =
+            "180";
+
+        countInput.value =
+            "10";
+
+        countInput.className =
+            "count-input";
+
+        countInput.dataset.subject =
+            subject;
+
+
+        countInput.addEventListener(
+            "input",
+            updateTotal
         );
 
-    controls.innerHTML = "";
 
+        countRow.appendChild(
+            countLabel
+        );
 
-    const selectedSubjects =
-        document.querySelectorAll(
-            'input[name="subjects"]:checked'
+        countRow.appendChild(
+            countInput
+        );
+
+        panel.appendChild(
+            countRow
         );
 
 
-    if (selectedSubjects.length === 0) {
+        card.appendChild(head);
 
-        controls.innerHTML = `
-            <p class="selection-info">
-                Select a subject above to choose
-                its MCQ count.
-            </p>
-        `;
+        card.appendChild(panel);
 
-        document.getElementById("modeInfo")
-            .style.display = "none";
+        subjectGrid.appendChild(card);
+
+
+        checkbox.addEventListener(
+            "change",
+            () => {
+
+                card.classList.toggle(
+                    "active",
+                    checkbox.checked
+                );
+
+
+                if(
+                    checkbox.checked &&
+                    getSelectedChapters(subject).length === 0
+                ){
+
+                    const firstChapter =
+                        panel.querySelector(
+                            ".chapter-checkbox"
+                        );
+
+                    if(firstChapter){
+                        firstChapter.checked =
+                            true;
+                    }
+
+                }
+
+
+                updateSelectedCount(
+                    subject
+                );
+
+                updateTotal();
+
+            }
+        );
+
+    });
+
+}
+
+
+function getSelectedSubjects(){
+
+    return [
+        ...document.querySelectorAll(
+            ".subject-checkbox:checked"
+        )
+    ].map(
+        cb => cb.dataset.subject
+    );
+
+}
+
+
+function getSelectedChapters(subject){
+
+    return [
+        ...document.querySelectorAll(
+            '.chapter-checkbox[data-subject="' +
+            CSS.escape(subject) +
+            '"]:checked'
+        )
+    ].map(
+        cb => cb.dataset.chapter
+    );
+
+}
+
+
+function updateSelectedCount(subject){
+
+    const card =
+        [
+            ...document.querySelectorAll(
+                ".subject-card"
+            )
+        ].find(
+            c => c.dataset.subject === subject
+        );
+
+
+    if(!card) return;
+
+
+    const count =
+        getSelectedChapters(subject).length;
+
+
+    const el =
+        card.querySelector(
+            ".selected-count"
+        );
+
+
+    if(el){
+
+        el.textContent =
+            count + " selected";
+
+    }
+
+}
+
+
+function setAllChapters(
+    subject,
+    checked
+){
+
+    document.querySelectorAll(
+        '.chapter-checkbox[data-subject="' +
+        CSS.escape(subject) +
+        '"]'
+    ).forEach(
+        cb => cb.checked = checked
+    );
+
+
+    updateSelectedCount(
+        subject
+    );
+
+    updateTotal();
+
+}
+
+
+function getCountInput(subject){
+
+    return document.querySelector(
+        '.count-input[data-subject="' +
+        CSS.escape(subject) +
+        '"]'
+    );
+
+}
+
+
+function applyPracticeMode(){
+
+    const mode =
+        modeSelect.value;
+
+
+    const subjects =
+        getSelectedSubjects();
+
+
+    if(mode === "custom"){
+
+        subjects.forEach(subject => {
+
+            const input =
+                getCountInput(subject);
+
+
+            if(
+                input &&
+                (
+                    !input.value ||
+                    Number(input.value) < 1
+                )
+            ){
+
+                input.value =
+                    "10";
+
+            }
+
+        });
+
+
+        modeInfo.textContent =
+            "Custom Practice: enter the number of MCQs you want for each selected subject.";
 
         updateTotal();
 
@@ -732,431 +1329,216 @@ function updateSubjects() {
     }
 
 
-    selectedSubjects.forEach(
-        function(checkbox) {
-
-            const subject =
-                checkbox.value;
-
-
-            const row =
-                document.createElement("div");
-
-
-            row.className =
-                "subject-row";
-
-
-            row.innerHTML = `
-
-                <div class="subject-name">
-
-                    ${getSubjectIcon(subject)}
-                    ${subject}
-
-                </div>
-
-                <select
-                    class="subject-count"
-                    data-subject="${subject}"
-                    onchange="updateTotal()"
-                >
-
-                    <option value="0">
-                        0 MCQs
-                    </option>
-
-                    <option value="1">
-                        1 MCQ
-                    </option>
-
-                    <option value="2">
-                        2 MCQs
-                    </option>
-
-                    <option value="3">
-                        3 MCQs
-                    </option>
-
-                    <option value="4">
-                        4 MCQs
-                    </option>
-
-                    <option value="5">
-                        5 MCQs
-                    </option>
-
-                    <option value="10">
-                        10 MCQs
-                    </option>
-
-                    <option value="20">
-                        20 MCQs
-                    </option>
-
-                    <option value="30">
-                        30 MCQs
-                    </option>
-
-                    <option value="40">
-                        40 MCQs
-                    </option>
-
-                    <option value="45">
-                        45 MCQs
-                    </option>
-
-                    <option value="50">
-                        50 MCQs
-                    </option>
-
-                    <option value="60">
-                        60 MCQs
-                    </option>
-
-                    <option value="81">
-                        81 MCQs
-                    </option>
-
-                    <option value="90">
-                        90 MCQs
-                    </option>
-
-                    <option value="180">
-                        180 MCQs
-                    </option>
-
-                </select>
-
-            `;
-
-
-            controls.appendChild(row);
-
-        }
-    );
-
-
-    applyPracticeMode();
-
-    updateTotal();
-
-}
-
-
-/*
-    SUBJECT ICON
-*/
-
-function getSubjectIcon(subject) {
-
-    if (subject === "Biology") {
-        return "🧬";
-    }
-
-    if (subject === "Chemistry") {
-        return "🧪";
-    }
-
-    if (subject === "Physics") {
-        return "⚡";
-    }
-
-    if (subject === "English") {
-        return "📖";
-    }
-
-    if (subject === "Logical Reasoning") {
-        return "🧠";
-    }
-
-    return "📚";
-
-}
-
-
-/*
-    CHANGE PRACTICE MODE
-*/
-
-function changePracticeMode() {
-
-    applyPracticeMode();
-
-    updateTotal();
-
-}
-
-
-/*
-    APPLY SELECTED MODE
-*/
-
-function applyPracticeMode() {
-
-    const mode =
-        document.getElementById(
-            "practiceMode"
-        ).value;
-
-
-    const countInputs =
-        document.querySelectorAll(
-            ".subject-count"
-        );
-
-
-    const modeInfo =
-        document.getElementById(
-            "modeInfo"
-        );
-
-
-    if (mode === "custom") {
-
-        countInputs.forEach(
-            function(input) {
-
-                input.disabled = false;
-
-            }
-        );
-
-
-        modeInfo.style.display = "none";
-
-        return;
-
-    }
-
-
-    const totalRequired =
-        modeTotals[mode];
-
-
-    const selectedSubjects =
-        Array.from(
-            document.querySelectorAll(
-                ".subject-count"
-            )
-        );
-
-
-    if (selectedSubjects.length === 0) {
-
-        modeInfo.style.display = "none";
-
-        return;
-
-    }
-
-
-    /*
-     * Calculate proportional allocation
-     * using official MDCAT weights.
-     */
-
-    const weightSum =
-        selectedSubjects.reduce(
-            function(sum, input) {
-
-                return sum +
-                    subjectWeights[
-                        input.dataset.subject
-                    ];
-
-            },
+    const target =
+        MODE_TOTALS[mode];
+
+
+    const totalWeight =
+        subjects.reduce(
+            (sum,subject) =>
+                sum +
+                SUBJECT_DATA[subject].weight,
             0
         );
 
 
-    let allocations = {};
+    if(
+        !subjects.length ||
+        !totalWeight
+    ){
 
-    let fractions = [];
+        modeInfo.textContent =
+            mode === "hlp"
 
+            ? "HLP contains 90 MCQs and will be distributed across the selected subjects using MDCAT subject weights."
 
-    selectedSubjects.forEach(
-        function(input) {
+            : "FLP contains 180 MCQs and will be distributed across the selected subjects using MDCAT subject weights.";
 
-            const subject =
-                input.dataset.subject;
+        updateTotal();
 
-            const exact =
-                (
-                    subjectWeights[subject] /
-                    weightSum
-                ) * totalRequired;
-
-            const base =
-                Math.floor(exact);
-
-
-            allocations[subject] =
-                base;
-
-
-            fractions.push({
-
-                subject: subject,
-
-                fraction:
-                    exact - base
-
-            });
-
-        }
-    );
-
-
-    /*
-     * Distribute remaining MCQs
-     * using largest remainder.
-     */
-
-    let allocated =
-        Object.values(allocations)
-            .reduce(
-                function(a, b) {
-                    return a + b;
-                },
-                0
-            );
-
-
-    let remaining =
-        totalRequired - allocated;
-
-
-    fractions.sort(
-        function(a, b) {
-
-            return b.fraction -
-                a.fraction;
-
-        }
-    );
-
-
-    for (
-        let i = 0;
-        i < remaining;
-        i++
-    ) {
-
-        allocations[
-            fractions[i %
-                fractions.length].subject
-        ]++;
+        return;
 
     }
 
 
-    /*
-     * Apply counts to dropdowns
-     */
+    const raw =
+        subjects.map(subject => ({
 
-    selectedSubjects.forEach(
-        function(input) {
+            subject,
 
-            const subject =
-                input.dataset.subject;
+            raw:
+                target *
+                SUBJECT_DATA[subject].weight /
+                totalWeight
 
+        }));
+
+
+    const allocations =
+        raw.map(item => ({
+
+            subject:
+                item.subject,
+
+            count:
+                Math.floor(item.raw),
+
+            remainder:
+                item.raw -
+                Math.floor(item.raw)
+
+        }));
+
+
+    let remaining =
+        target -
+        allocations.reduce(
+            (sum,item) =>
+                sum + item.count,
+            0
+        );
+
+
+    allocations
+        .sort(
+            (a,b) =>
+                b.remainder -
+                a.remainder
+        )
+        .forEach(item => {
+
+            if(remaining > 0){
+
+                item.count++;
+
+                remaining--;
+
+            }
+
+        });
+
+
+    allocations.forEach(item => {
+
+        const input =
+            getCountInput(
+                item.subject
+            );
+
+
+        if(input){
 
             input.value =
-                String(
-                    allocations[subject]
-                );
-
-
-            input.disabled = true;
+                String(item.count);
 
         }
-    );
+
+    });
 
 
-    const modeName =
-        mode === "hlp"
-            ? "HLP"
-            : "FLP";
+    modeInfo.textContent =
+        (
+            mode === "hlp"
+
+            ? "HLP: 90 MCQs."
+
+            : "FLP: 180 MCQs."
+        )
+
+        +
+
+        " The selected subjects receive proportional counts based on Biology 81, Chemistry 45, Physics 36, English 9, Logical Reasoning 9.";
 
 
-    modeInfo.style.display =
-        "block";
-
-
-    modeInfo.innerHTML =
-
-        "<strong>" +
-        modeName +
-        "</strong> selected — " +
-
-        totalRequired +
-
-        " MCQs will be distributed according to the MDCAT subject ratio.";
+    updateTotal();
 
 }
 
 
-/*
-    CALCULATE TOTAL MCQs
-*/
+function updateTotal(){
 
-function updateTotal() {
-
-    const countInputs =
-        document.querySelectorAll(
-            ".subject-count"
-        );
+    const subjects =
+        getSelectedSubjects();
 
 
     let total = 0;
 
 
-    countInputs.forEach(
-        function(input) {
+    subjects.forEach(subject => {
 
-            total +=
+        const input =
+            getCountInput(subject);
+
+
+        const value =
+            Math.max(
+                0,
                 parseInt(
-                    input.value,
+                    input?.value || "0",
                     10
-                ) || 0;
-
-        }
-    );
+                )
+            );
 
 
-    document.getElementById(
-        "totalMCQs"
-    ).textContent = total;
+        total += value;
+
+    });
 
 
-    const startButton =
-        document.getElementById(
-            "startButton"
-        );
-
-
-    startButton.disabled =
-        total === 0;
+    totalMCQsEl.textContent =
+        total;
 
 }
 
 
-/*
-    START COMBINED TEST
-*/
-
-function startCombinedTest() {
-
-    const selectedSubjects =
-        document.querySelectorAll(
-            'input[name="subjects"]:checked'
-        );
+modeSelect.addEventListener(
+    "change",
+    applyPracticeMode
+);
 
 
-    if (selectedSubjects.length === 0) {
+function showError(message){
 
-        alert(
+    errorBox.textContent =
+        message;
+
+    errorBox.style.display =
+        "block";
+
+
+    window.scrollTo({
+
+        top:
+            errorBox.offsetTop - 30,
+
+        behavior:
+            "smooth"
+
+    });
+
+}
+
+
+function hideError(){
+
+    errorBox.style.display =
+        "none";
+
+}
+
+
+function startCombinedTest(){
+
+    hideError();
+
+
+    const subjects =
+        getSelectedSubjects();
+
+
+    if(!subjects.length){
+
+        showError(
             "Please select at least one subject."
         );
 
@@ -1167,41 +1549,110 @@ function startCombinedTest() {
 
     const selection = {};
 
-    let total = 0;
+
+    for(const subject of subjects){
+
+        const chapters =
+            getSelectedChapters(
+                subject
+            );
 
 
-    document
-        .querySelectorAll(
-            ".subject-count"
-        )
-        .forEach(
-            function(input) {
+        if(!chapters.length){
 
-                const count =
-                    parseInt(
-                        input.value,
-                        10
-                    ) || 0;
+            showError(
+                "Please select at least one chapter/topic for " +
+                subject +
+                "."
+            );
 
+            return;
 
-                if (count > 0) {
-
-                    selection[
-                        input.dataset.subject
-                    ] = count;
-
-                    total += count;
-
-                }
-
-            }
-        );
+        }
 
 
-    if (total === 0) {
+        const input =
+            getCountInput(subject);
 
-        alert(
-            "Please select at least 1 MCQ."
+
+        const count =
+            parseInt(
+                input?.value || "0",
+                10
+            );
+
+
+        if(
+            !Number.isFinite(count) ||
+            count < 1
+        ){
+
+            showError(
+                "Please enter at least 1 MCQ for " +
+                subject +
+                "."
+            );
+
+            return;
+
+        }
+
+
+        selection[subject] = {
+
+            count:
+                count,
+
+            chapters:
+                chapters
+
+        };
+
+    }
+
+
+    const total =
+        Object.values(selection)
+            .reduce(
+                (sum,item) =>
+                    sum + item.count,
+                0
+            );
+
+
+    const mode =
+        modeSelect.value;
+
+
+    const expectedTotal =
+        MODE_TOTALS[mode];
+
+
+    if(
+        expectedTotal !== null &&
+        total !== expectedTotal
+    ){
+
+        showError(
+
+            (
+                mode === "hlp"
+                ? "HLP"
+                : "FLP"
+            )
+
+            +
+
+            " must contain exactly " +
+
+            expectedTotal +
+
+            " MCQs. Current total: " +
+
+            total +
+
+            "."
+
         );
 
         return;
@@ -1209,31 +1660,24 @@ function startCombinedTest() {
     }
 
 
-    const mode =
-        document.getElementById(
-            "practiceMode"
-        ).value;
-
-
-    const difficulty =
-        document.getElementById(
-            "difficulty"
-        ).value;
-
-
-    /*
-        SAVE STUDENT SELECTION
-    */
-
     const testSettings = {
 
-        mode: mode,
+        mode:
+            mode,
 
-        subjects: selection,
+        subjects:
+            selection,
 
-        totalMCQs: total,
+        totalMCQs:
+            total,
 
-        difficulty: difficulty,
+        difficulty:
+            document.getElementById(
+                "difficulty"
+            ).value,
+
+        chapterSelectionVersion:
+            1,
 
         createdAt:
             new Date().toISOString()
@@ -1249,19 +1693,19 @@ function startCombinedTest() {
     );
 
 
-    /*
-        OPEN COMBINED TEST ENGINE
-    */
-
     window.location.href =
         "mixed-test.html";
 
 }
 
 
+renderSubjects();
+
+updateTotal();
+
+applyPracticeMode();
+
 </script>
 
-
 </body>
-
 </html>
