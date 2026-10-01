@@ -268,6 +268,73 @@ header p {
 }
 
 
+/* HISTORY */
+
+.history-card h2 {
+    margin-bottom: 10px;
+}
+
+.history-summary {
+    text-align: center;
+    color: #475569;
+    margin-bottom: 18px;
+    font-size: 14px;
+}
+
+.history-item {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 12px;
+}
+
+.history-item h3 {
+    color: #12355b;
+    margin-bottom: 8px;
+    font-size: 17px;
+}
+
+.history-item p {
+    font-size: 14px;
+    color: #475569;
+    margin: 4px 0;
+}
+
+.history-score {
+    font-size: 20px !important;
+    font-weight: bold;
+    color: #12355b !important;
+}
+
+.no-history {
+    text-align: center;
+    color: #64748b;
+    padding: 15px;
+}
+
+.clear-history-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+
+    background: #64748b;
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.clear-history-btn:hover {
+    background: #475569;
+}
+
+
 /* BACK BUTTON */
 
 .back-btn {
@@ -330,7 +397,7 @@ header p {
 <div class="container">
 
 
-    <!-- INPUT CARD -->
+    <!-- MANUAL INPUT CARD -->
 
     <div class="card">
 
@@ -338,8 +405,10 @@ header p {
 
         <p class="info-text">
 
-            Enter your score to see your
-            estimated performance on a 180-point scale.
+            Your predictor is automatically calculated
+            from your completed tests.
+
+            You can also enter a score manually.
 
         </p>
 
@@ -447,7 +516,7 @@ header p {
 
             <h3 id="performance">
 
-                Enter your score
+                Complete a test
 
             </h3>
 
@@ -481,6 +550,44 @@ header p {
 
 
 
+    <!-- HISTORY -->
+
+    <div class="card history-card">
+
+        <h2>Test History</h2>
+
+        <p
+            class="history-summary"
+            id="historySummary">
+
+            No completed tests yet.
+
+        </p>
+
+
+        <div id="historyList">
+
+            <div class="no-history">
+
+                Your completed tests will appear here.
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="clear-history-btn"
+            onclick="clearHistory()">
+
+            Clear Test History
+
+        </button>
+
+    </div>
+
+
+
     <a
         href="mcqs-practice.html"
         class="back-btn">
@@ -497,13 +604,146 @@ header p {
 <script>
 
 
+/* =========================================================
+   SCORE PREDICTOR HISTORY
+========================================================= */
+
+const HISTORY_KEY = "scorePredictorHistory";
+
+
 /*
-    READ SCORE FROM URL
-
-    Example:
-
-    score-predictor.html?score=144
+    GET HISTORY
 */
+
+function getHistory() {
+
+    try {
+
+        const saved =
+            localStorage.getItem(HISTORY_KEY);
+
+
+        if (!saved) {
+
+            return [];
+
+        }
+
+
+        const history =
+            JSON.parse(saved);
+
+
+        if (!Array.isArray(history)) {
+
+            return [];
+
+        }
+
+
+        return history;
+
+
+    } catch (error) {
+
+        console.error(
+            "Could not read score predictor history:",
+            error
+        );
+
+        return [];
+
+    }
+
+}
+
+
+
+/*
+    CALCULATE CUMULATIVE PREDICTOR
+
+    Important:
+
+    We do NOT simply average each test's
+    180-scale score.
+
+    Instead:
+
+    total correct
+    ----------------
+    total attempted
+
+    Then:
+
+    accuracy × 180
+*/
+
+function calculateCumulativeScore(history) {
+
+    let totalCorrect = 0;
+
+    let totalAttempted = 0;
+
+
+    history.forEach(function(test) {
+
+        const correct =
+            Number(test.correct) || 0;
+
+        const attempted =
+            Number(test.attempted) || 0;
+
+
+        totalCorrect += correct;
+
+        totalAttempted += attempted;
+
+    });
+
+
+    if (totalAttempted === 0) {
+
+        return {
+            score: 0,
+            percentage: 0,
+            correct: 0,
+            attempted: 0
+        };
+
+    }
+
+
+    const accuracy =
+        totalCorrect / totalAttempted;
+
+
+    const score =
+        accuracy * 180;
+
+
+    const percentage =
+        accuracy * 100;
+
+
+    return {
+
+        score: score,
+
+        percentage: percentage,
+
+        correct: totalCorrect,
+
+        attempted: totalAttempted
+
+    };
+
+}
+
+
+
+/* =========================================================
+   URL SCORE
+========================================================= */
 
 function getURLScore() {
 
@@ -529,57 +769,26 @@ function getURLScore() {
 
 
     return null;
+
 }
 
 
 
-/*
-    MAIN SCORE FUNCTION
-*/
+/* =========================================================
+   DISPLAY SCORE
+========================================================= */
 
-function predictScore(customScore = null) {
-
-
-    const input =
-        document.getElementById("scoreInput");
+function displayScore(score, source = "manual") {
 
 
-    let score;
+    score = Number(score);
 
-
-    /*
-        If score comes from Test Result,
-        use that score.
-
-        Otherwise use manual input.
-    */
-
-    if (customScore !== null) {
-
-        score = Number(customScore);
-
-        input.value = score;
-
-    } else {
-
-        score = Number(input.value);
-
-    }
-
-
-    /*
-        Validate score
-    */
 
     if (
         isNaN(score) ||
         score < 0 ||
         score > 180
     ) {
-
-        alert(
-            "Please enter a score between 0 and 180."
-        );
 
         return;
 
@@ -597,9 +806,9 @@ function predictScore(customScore = null) {
     /*
         Needle angle
 
-        0 score   = -90°
-        90 score  = 0°
-        180 score = +90°
+        0   = -90°
+        90  = 0°
+        180 = +90°
     */
 
     const angle =
@@ -619,16 +828,16 @@ function predictScore(customScore = null) {
 
 
     /*
-        Show score
+        Score
     */
 
     document.getElementById("gaugeScore")
         .textContent =
-        score;
+        Math.round(score);
 
 
     /*
-        Show percentage
+        Percentage
     */
 
     document.getElementById("percentage")
@@ -639,13 +848,13 @@ function predictScore(customScore = null) {
 
 
     /*
-        Show score
+        Score
     */
 
     document.getElementById("scoreText")
         .textContent =
         "Score: " +
-        score +
+        score.toFixed(1) +
         " / 180";
 
 
@@ -684,22 +893,19 @@ function predictScore(customScore = null) {
 
 
     /*
-        Check whether score came
-        automatically from Test Result
+        Source message
     */
-
-    const urlScore =
-        getURLScore();
-
 
     const sourceInfo =
         document.getElementById("sourceInfo");
 
 
-    if (
-        customScore !== null &&
-        urlScore !== null
-    ) {
+    if (source === "history") {
+
+        sourceInfo.textContent =
+            "Automatically calculated from your completed test history.";
+
+    } else if (source === "url") {
 
         sourceInfo.textContent =
             "Score automatically transferred from your test result.";
@@ -715,21 +921,509 @@ function predictScore(customScore = null) {
 
 
 
-/*
-    PAGE LOAD
+/* =========================================================
+   MANUAL PREDICT
+========================================================= */
 
-    If Test Result sends:
+function predictScore(customScore = null) {
 
-    ?score=144
 
-    the gauge automatically
-    shows 144.
-*/
+    const input =
+        document.getElementById("scoreInput");
+
+
+    let score;
+
+
+    if (customScore !== null) {
+
+        score = Number(customScore);
+
+        input.value =
+            Number(score).toFixed(1);
+
+    } else {
+
+        score =
+            Number(input.value);
+
+    }
+
+
+    /*
+        Validate
+    */
+
+    if (
+        isNaN(score) ||
+        score < 0 ||
+        score > 180
+    ) {
+
+        alert(
+            "Please enter a score between 0 and 180."
+        );
+
+        return;
+
+    }
+
+
+    displayScore(
+        score,
+        "manual"
+    );
+
+}
+
+
+
+/* =========================================================
+   FORMAT DATE
+========================================================= */
+
+function formatDate(dateValue) {
+
+    if (!dateValue) {
+
+        return "Date not available";
+
+    }
+
+
+    const date =
+        new Date(dateValue);
+
+
+    if (isNaN(date.getTime())) {
+
+        return "Date not available";
+
+    }
+
+
+    return date.toLocaleString();
+
+}
+
+
+
+/* =========================================================
+   GET MODE NAME
+========================================================= */
+
+function getModeName(test) {
+
+    if (test.modeName) {
+
+        return test.modeName;
+
+    }
+
+
+    if (test.mode === "hlp") {
+
+        return "HLP — 90 MCQs";
+
+    }
+
+
+    if (test.mode === "flp") {
+
+        return "FLP — 180 MCQs";
+
+    }
+
+
+    if (test.mode === "custom") {
+
+        return "Custom Practice";
+
+    }
+
+
+    return test.mode || "Practice Test";
+
+}
+
+
+
+/* =========================================================
+   DISPLAY HISTORY
+========================================================= */
+
+function displayHistory() {
+
+
+    const history =
+        getHistory();
+
+
+    const historyList =
+        document.getElementById(
+            "historyList"
+        );
+
+
+    const historySummary =
+        document.getElementById(
+            "historySummary"
+        );
+
+
+    /*
+        No history
+    */
+
+    if (history.length === 0) {
+
+        historySummary.textContent =
+            "No completed tests yet.";
+
+
+        historyList.innerHTML = `
+            <div class="no-history">
+                Your completed tests will appear here.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    /*
+        Cumulative information
+    */
+
+    const cumulative =
+        calculateCumulativeScore(history);
+
+
+    historySummary.textContent =
+        history.length +
+        " completed test" +
+        (history.length === 1 ? "" : "s") +
+        " • " +
+        cumulative.correct +
+        " correct out of " +
+        cumulative.attempted +
+        " attempted questions";
+
+
+    /*
+        Show newest test first
+    */
+
+    const reversedHistory =
+        [...history].reverse();
+
+
+    historyList.innerHTML =
+        reversedHistory.map(function(test) {
+
+
+            const total =
+                Number(test.totalMCQs) || 0;
+
+
+            const correct =
+                Number(test.correct) || 0;
+
+
+            const wrong =
+                Number(test.wrong) || 0;
+
+
+            const unanswered =
+                Number(test.unanswered) || 0;
+
+
+            const attempted =
+                Number(test.attempted) ||
+                (correct + wrong);
+
+
+            const accuracy =
+                attempted > 0
+                    ? (correct / attempted) * 100
+                    : 0;
+
+
+            const predicted =
+                Number(test.predicted180);
+
+
+            const predictedScore =
+                !isNaN(predicted)
+                    ? predicted
+                    : (
+                        attempted > 0
+                            ? (correct / attempted) * 180
+                            : 0
+                    );
+
+
+            let subjectsText =
+                "Not specified";
+
+
+            if (
+                Array.isArray(test.subjects)
+            ) {
+
+                subjectsText =
+                    test.subjects.join(", ");
+
+            } else if (
+                typeof test.subjects === "string"
+            ) {
+
+                subjectsText =
+                    test.subjects;
+
+            }
+
+
+            return `
+
+                <div class="history-item">
+
+                    <h3>
+                        ${escapeHTML(
+                            getModeName(test)
+                        )}
+                    </h3>
+
+
+                    <p>
+                        <strong>Subjects:</strong>
+                        ${escapeHTML(
+                            subjectsText
+                        )}
+                    </p>
+
+
+                    <p>
+                        <strong>MCQs:</strong>
+                        ${total}
+                    </p>
+
+
+                    <p>
+                        <strong>Correct:</strong>
+                        ${correct}
+                        &nbsp; | &nbsp;
+
+                        <strong>Wrong:</strong>
+                        ${wrong}
+                        &nbsp; | &nbsp;
+
+                        <strong>Unanswered:</strong>
+                        ${unanswered}
+                    </p>
+
+
+                    <p>
+                        <strong>Attempted:</strong>
+                        ${attempted}
+                    </p>
+
+
+                    <p>
+                        <strong>Accuracy:</strong>
+                        ${accuracy.toFixed(1)}%
+                    </p>
+
+
+                    <p class="history-score">
+                        180-Scale:
+                        ${predictedScore.toFixed(1)} / 180
+                    </p>
+
+
+                    <p>
+                        <strong>Date:</strong>
+                        ${escapeHTML(
+                            formatDate(test.date)
+                        )}
+                    </p>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+}
+
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(value) {
+
+    if (value === null || value === undefined) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+
+/* =========================================================
+   CLEAR HISTORY
+========================================================= */
+
+function clearHistory() {
+
+
+    const history =
+        getHistory();
+
+
+    if (history.length === 0) {
+
+        alert(
+            "There is no test history to clear."
+        );
+
+        return;
+
+    }
+
+
+    const confirmClear =
+        confirm(
+            "Are you sure you want to clear all Score Predictor history?"
+        );
+
+
+    if (!confirmClear) {
+
+        return;
+
+    }
+
+
+    localStorage.removeItem(
+        HISTORY_KEY
+    );
+
+
+    /*
+        Reset gauge
+    */
+
+    document.getElementById("gaugeScore")
+        .textContent = "0";
+
+
+    document.getElementById("percentage")
+        .textContent =
+        "Percentage: 0%";
+
+
+    document.getElementById("scoreText")
+        .textContent =
+        "Score: 0 / 180";
+
+
+    document.getElementById("performance")
+        .textContent =
+        "Complete a test";
+
+
+    document.getElementById("sourceInfo")
+        .textContent =
+        "Score Predictor history cleared.";
+
+
+    document.getElementById("needle")
+        .style.transform =
+        "translateX(-50%) rotate(-90deg)";
+
+
+    displayHistory();
+
+}
+
+
+
+/* =========================================================
+   PAGE LOAD
+========================================================= */
 
 window.addEventListener(
     "DOMContentLoaded",
     function() {
 
+
+        /*
+            First display history
+        */
+
+        displayHistory();
+
+
+        /*
+            Check completed test history
+        */
+
+        const history =
+            getHistory();
+
+
+        if (history.length > 0) {
+
+
+            const cumulative =
+                calculateCumulativeScore(
+                    history
+                );
+
+
+            /*
+                Show cumulative predictor
+            */
+
+            displayScore(
+                cumulative.score,
+                "history"
+            );
+
+
+            /*
+                Put cumulative score in input
+            */
+
+            document.getElementById(
+                "scoreInput"
+            ).value =
+                cumulative.score.toFixed(1);
+
+
+            return;
+
+        }
+
+
+        /*
+            If there is no history,
+            check URL score.
+        */
 
         const urlScore =
             getURLScore();
@@ -741,11 +1435,21 @@ window.addEventListener(
             urlScore <= 180
         ) {
 
-            predictScore(urlScore);
+            document.getElementById(
+                "scoreInput"
+            ).value =
+                urlScore;
+
+
+            displayScore(
+                urlScore,
+                "url"
+            );
 
         }
 
     }
+
 );
 
 </script>
