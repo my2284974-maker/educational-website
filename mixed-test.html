@@ -175,6 +175,17 @@
             color: #2563eb;
         }
 
+        .percentage-text {
+            margin-top: 8px;
+        }
+
+        .predictor-result {
+            margin-top: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #7c3aed;
+        }
+
         .stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -398,12 +409,20 @@
                 <span id="totalQuestions">0</span>
             </div>
 
-            <p id="percentage">
+            <p id="percentage" class="percentage-text">
                 Percentage: 0%
             </p>
 
             <p id="resultMode" style="margin-top:8px; font-weight:bold;">
                 Custom Practice
+            </p>
+
+            <p id="currentPredictedScore" class="predictor-result">
+                This Test: 0 / 180
+            </p>
+
+            <p id="cumulativePredictedScore" class="predictor-result">
+                Score Predictor: 0 / 180
             </p>
 
         </div>
@@ -485,6 +504,8 @@ let userAnswers = [];
 
 let testSettings = null;
 
+let testAlreadySaved = false;
+
 
 /* =========================================
    QUESTION BANKS
@@ -511,6 +532,102 @@ const QUESTION_BANKS = {
 
 
 /* =========================================
+   HELPER: GET MODE NAME
+========================================= */
+
+function getModeName(mode) {
+
+    const value =
+        String(mode || "custom").toLowerCase();
+
+    if (value === "hlp") {
+        return "HLP — 90 MCQs";
+    }
+
+    if (value === "flp") {
+        return "FLP — 180 MCQs";
+    }
+
+    return "Custom Practice";
+}
+
+
+/* =========================================
+   HELPER: GET SELECTED CHAPTERS
+========================================= */
+
+function getSelectedChapters() {
+
+    if (!testSettings || !testSettings.subjects) {
+        return {};
+    }
+
+    const result = {};
+
+    Object.entries(testSettings.subjects).forEach(
+        ([subject, value]) => {
+
+            /*
+             * New mixed-practice format:
+             *
+             * subject:
+             * {
+             *   count: 10,
+             *   chapters: [...]
+             * }
+             *
+             * Old format:
+             *
+             * subject: 10
+             */
+
+            if (
+                value &&
+                typeof value === "object"
+            ) {
+
+                result[subject] =
+                    Array.isArray(value.chapters)
+                        ? value.chapters
+                        : [];
+
+            }
+
+            else {
+
+                result[subject] = [];
+
+            }
+
+        }
+    );
+
+    return result;
+}
+
+
+/* =========================================
+   HELPER: GET SUBJECT COUNT
+========================================= */
+
+function getSubjectCount(subjectData) {
+
+    if (
+        subjectData &&
+        typeof subjectData === "object"
+    ) {
+
+        return Number(
+            subjectData.count || 0
+        );
+
+    }
+
+    return Number(subjectData || 0);
+}
+
+
+/* =========================================
    LOAD SAVED TEST
 ========================================= */
 
@@ -519,7 +636,9 @@ async function loadMixedTest() {
     try {
 
         const saved =
-            localStorage.getItem("mixedPracticeSettings");
+            localStorage.getItem(
+                "mixedPracticeSettings"
+            );
 
 
         if (!saved) {
@@ -543,7 +662,9 @@ async function loadMixedTest() {
         const activeSubjects =
             Object.keys(selectedSubjects).filter(
                 subject =>
-                    Number(selectedSubjects[subject]) > 0
+                    getSubjectCount(
+                        selectedSubjects[subject]
+                    ) > 0
             );
 
 
@@ -589,8 +710,14 @@ async function loadMixedTest() {
 
         for (const subject of activeSubjects) {
 
+            const subjectData =
+                selectedSubjects[subject];
+
+
             const count =
-                Number(selectedSubjects[subject]);
+                getSubjectCount(
+                    subjectData
+                );
 
 
             const url =
@@ -641,11 +768,14 @@ async function loadMixedTest() {
             ================================= */
 
             const difficulty =
-                testSettings.difficulty || "Mixed";
+                testSettings.difficulty ||
+                "Mixed";
 
 
             if (
-                difficulty.toLowerCase() !== "mixed"
+                String(
+                    difficulty
+                ).toLowerCase() !== "mixed"
             ) {
 
                 bank =
@@ -655,7 +785,9 @@ async function loadMixedTest() {
                                 q.difficulty || ""
                             ).toLowerCase()
                             ===
-                            difficulty.toLowerCase()
+                            String(
+                                difficulty
+                            ).toLowerCase()
                     );
 
             }
@@ -675,6 +807,103 @@ async function loadMixedTest() {
 
 
             /* =================================
+               CHAPTER FILTER
+            ================================= */
+
+            let selectedChapters = [];
+
+
+            if (
+                subjectData &&
+                typeof subjectData === "object" &&
+                Array.isArray(
+                    subjectData.chapters
+                )
+            ) {
+
+                selectedChapters =
+                    subjectData.chapters
+                        .map(
+                            chapter =>
+                                String(chapter)
+                                    .trim()
+                                    .toLowerCase()
+                        )
+                        .filter(Boolean);
+
+            }
+
+
+            /*
+             * Chapter filtering is applied only
+             * when chapters are actually selected.
+             *
+             * This prevents old saved settings
+             * from breaking the test.
+             */
+
+            if (
+                selectedChapters.length > 0
+            ) {
+
+                const filteredBank =
+                    bank.filter(
+                        q => {
+
+                            const questionChapter =
+                                String(
+                                    q.chapter ||
+                                    q.unit ||
+                                    ""
+                                )
+                                .trim()
+                                .toLowerCase();
+
+
+                            return selectedChapters
+                                .some(
+                                    selectedChapter =>
+                                        questionChapter
+                                            .includes(
+                                                selectedChapter
+                                            ) ||
+                                        selectedChapter
+                                            .includes(
+                                                questionChapter
+                                            )
+                                );
+
+                        }
+                    );
+
+
+                /*
+                 * If chapter names in the JSON
+                 * don't match the chapter selector,
+                 * show a clear message instead of
+                 * silently loading wrong chapters.
+                 */
+
+                if (
+                    filteredBank.length === 0
+                ) {
+
+                    throw new Error(
+                        "No questions were found for the selected " +
+                        subject +
+                        " chapter(s). The chapter names in the question bank may need to match the chapter names used in Mixed Practice."
+                    );
+
+                }
+
+
+                bank =
+                    filteredBank;
+
+            }
+
+
+            /* =================================
                RANDOMIZE BANK
             ================================= */
 
@@ -689,10 +918,16 @@ async function loadMixedTest() {
             ================================= */
 
             const selected =
-                bank.slice(0, count);
+                bank.slice(
+                    0,
+                    count
+                );
 
 
-            if (selected.length < count) {
+            if (
+                selected.length <
+                count
+            ) {
 
                 throw new Error(
                     subject +
@@ -710,18 +945,20 @@ async function loadMixedTest() {
                ADD SUBJECT INFORMATION
             ================================= */
 
-            selected.forEach(q => {
+            selected.forEach(
+                q => {
 
-                combinedQuestions.push({
+                    combinedQuestions.push({
 
-                    ...q,
+                        ...q,
 
-                    testSubject:
-                        subject
+                        testSubject:
+                            subject
 
-                });
+                    });
 
-            });
+                }
+            );
 
         }
 
@@ -773,13 +1010,15 @@ async function loadMixedTest() {
         updateTestInformation();
 
 
-        document.getElementById("loading")
-            .style.display =
+        document.getElementById(
+            "loading"
+        ).style.display =
             "none";
 
 
-        document.getElementById("questionArea")
-            .style.display =
+        document.getElementById(
+            "questionArea"
+        ).style.display =
             "block";
 
 
@@ -813,43 +1052,21 @@ function updateTestInformation() {
     }
 
 
-    const mode =
-        testSettings.mode ||
-        "custom";
+    const modeName =
+        getModeName(
+            testSettings.mode
+        );
 
 
-    let modeName =
-        "Custom Practice";
-
-
-    if (
-        mode.toLowerCase() ===
-        "hlp"
-    ) {
-
-        modeName =
-            "HLP — 90 MCQs";
-
-    }
-
-    else if (
-        mode.toLowerCase() ===
-        "flp"
-    ) {
-
-        modeName =
-            "FLP — 180 MCQs";
-
-    }
-
-
-    document.getElementById("modeBadge")
-        .textContent =
+    document.getElementById(
+        "modeBadge"
+    ).textContent =
         modeName;
 
 
-    document.getElementById("resultMode")
-        .textContent =
+    document.getElementById(
+        "resultMode"
+    ).textContent =
         modeName;
 
 
@@ -863,20 +1080,21 @@ function updateTestInformation() {
             testSettings.subjects || {}
         )
         .filter(
-            ([, count]) =>
-                Number(count) > 0
+            ([, value]) =>
+                getSubjectCount(value) > 0
         )
         .map(
-            ([subject, count]) =>
+            ([subject, value]) =>
                 subject +
                 ": " +
-                count
+                getSubjectCount(value)
         )
         .join(" | ");
 
 
-    document.getElementById("testInfo")
-        .textContent =
+    document.getElementById(
+        "testInfo"
+    ).textContent =
         modeName +
         " | Difficulty: " +
         difficulty +
@@ -901,34 +1119,40 @@ function showQuestion() {
         questions[currentQuestion];
 
 
-    document.getElementById("questionNumber")
-        .textContent =
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
         "Question " +
         (currentQuestion + 1) +
         " of " +
         questions.length;
 
 
-    document.getElementById("progressBadge")
-        .textContent =
+    document.getElementById(
+        "progressBadge"
+    ).textContent =
         (currentQuestion + 1) +
         " / " +
         questions.length;
 
 
-    document.getElementById("subjectBadge")
-        .textContent =
+    document.getElementById(
+        "subjectBadge"
+    ).textContent =
         q.testSubject ||
         "Subject";
 
 
-    document.getElementById("questionText")
-        .textContent =
+    document.getElementById(
+        "questionText"
+    ).textContent =
         q.question;
 
 
     const optionsDiv =
-        document.getElementById("options");
+        document.getElementById(
+            "options"
+        );
 
 
     optionsDiv.innerHTML =
@@ -1122,10 +1346,310 @@ function previousQuestion() {
 
 
 /* =========================================
+   SAVE RESULT TO SCORE PREDICTOR
+========================================= */
+
+function saveToScorePredictor(
+    correct,
+    wrong,
+    unanswered,
+    total
+) {
+
+    /*
+     * Prevent duplicate saving if submitTest()
+     * is accidentally clicked more than once.
+     */
+
+    if (testAlreadySaved) {
+        return null;
+    }
+
+
+    if (!total) {
+        return null;
+    }
+
+
+    const attempted =
+        correct + wrong;
+
+
+    const accuracy =
+        attempted > 0
+            ? (
+                correct /
+                attempted
+            ) * 100
+            : 0;
+
+
+    /*
+     * The individual test equivalent.
+     *
+     * Example:
+     * 8 correct out of 10 attempted
+     * = 80%
+     * = 144 / 180
+     */
+
+    const testPredicted180 =
+        Math.round(
+            (
+                accuracy /
+                100
+            ) * 180
+        );
+
+
+    const mode =
+        testSettings &&
+        testSettings.mode
+            ? testSettings.mode
+            : "custom";
+
+
+    const modeName =
+        getModeName(mode);
+
+
+    const subjects =
+        testSettings &&
+        testSettings.subjects
+            ? testSettings.subjects
+            : {};
+
+
+    const chapters =
+        getSelectedChapters();
+
+
+    const record = {
+
+        id:
+            "test-" +
+            Date.now() +
+            "-" +
+            Math.random()
+                .toString(36)
+                .slice(2, 8),
+
+        testType:
+            "Mixed / Combined Test",
+
+        mode:
+            mode,
+
+        modeName:
+            modeName,
+
+        subjects:
+            subjects,
+
+        chapters:
+            chapters,
+
+        totalMCQs:
+            total,
+
+        correct:
+            correct,
+
+        wrong:
+            wrong,
+
+        unanswered:
+            unanswered,
+
+        attempted:
+            attempted,
+
+        accuracy:
+            Number(
+                accuracy.toFixed(2)
+            ),
+
+        predicted180:
+            testPredicted180,
+
+        date:
+            new Date().toISOString()
+
+    };
+
+
+    let history = [];
+
+
+    try {
+
+        const savedHistory =
+            localStorage.getItem(
+                "scorePredictorHistory"
+            );
+
+
+        if (savedHistory) {
+
+            const parsed =
+                JSON.parse(
+                    savedHistory
+                );
+
+
+            if (
+                Array.isArray(parsed)
+            ) {
+
+                history =
+                    parsed;
+
+            }
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Could not read Score Predictor history:",
+            error
+        );
+
+        history = [];
+
+    }
+
+
+    history.push(record);
+
+
+    localStorage.setItem(
+        "scorePredictorHistory",
+        JSON.stringify(history)
+    );
+
+
+    testAlreadySaved = true;
+
+
+    /*
+     * Calculate cumulative predictor.
+     *
+     * IMPORTANT:
+     * We do NOT average the individual
+     * 180-scale scores equally.
+     *
+     * Example:
+     *
+     * Test 1 = 8/10
+     * Test 2 = 80/100
+     *
+     * Overall =
+     * 88 / 110
+     *
+     * Then:
+     * Overall × 180
+     */
+
+    let totalCorrect =
+        0;
+
+    let totalAttempted =
+        0;
+
+
+    history.forEach(
+        item => {
+
+            totalCorrect +=
+                Number(
+                    item.correct || 0
+                );
+
+            totalAttempted +=
+                Number(
+                    item.attempted !== undefined
+                        ? item.attempted
+                        : (
+                            Number(
+                                item.correct || 0
+                            ) +
+                            Number(
+                                item.wrong || 0
+                            )
+                        )
+                );
+
+        }
+    );
+
+
+    const cumulativeAccuracy =
+        totalAttempted > 0
+            ? (
+                totalCorrect /
+                totalAttempted
+            ) * 100
+            : 0;
+
+
+    const cumulativePredicted180 =
+        Math.round(
+            (
+                cumulativeAccuracy /
+                100
+            ) * 180
+        );
+
+
+    return {
+
+        testPredicted180:
+            testPredicted180,
+
+        cumulativePredicted180:
+            cumulativePredicted180,
+
+        cumulativeAccuracy:
+            cumulativeAccuracy,
+
+        totalTests:
+            history.length,
+
+        totalCorrect:
+            totalCorrect,
+
+        totalAttempted:
+            totalAttempted
+
+    };
+
+}
+
+
+/* =========================================
    SUBMIT TEST
 ========================================= */
 
 function submitTest() {
+
+    /*
+     * Prevent submitting an already completed
+     * test again.
+     */
+
+    if (
+        document.getElementById(
+            "resultArea"
+        ).style.display === "block"
+    ) {
+
+        return;
+
+    }
+
 
     let correct = 0;
     let wrong = 0;
@@ -1175,6 +1699,19 @@ function submitTest() {
                 total
             ) * 100
             : 0;
+
+
+    /*
+     * Save test automatically.
+     */
+
+    const predictorData =
+        saveToScorePredictor(
+            correct,
+            wrong,
+            unanswered,
+            total
+        );
 
 
     document.getElementById(
@@ -1231,6 +1768,29 @@ function submitTest() {
         "Percentage: " +
         percentage.toFixed(1) +
         "%";
+
+
+    if (predictorData) {
+
+        document.getElementById(
+            "currentPredictedScore"
+        ).textContent =
+            "This Test: " +
+            predictorData.testPredicted180 +
+            " / 180";
+
+
+        document.getElementById(
+            "cumulativePredictedScore"
+        ).textContent =
+            "Score Predictor: " +
+            predictorData.cumulativePredicted180 +
+            " / 180" +
+            " | " +
+            predictorData.cumulativeAccuracy.toFixed(1) +
+            "% cumulative accuracy";
+
+    }
 
 
     createReview();
@@ -1310,18 +1870,32 @@ function createReview() {
                 userAnswer
                     ? userAnswer +
                       ". " +
-                      q.options[
-                          userAnswer
-                      ]
+                      (
+                          q.options &&
+                          q.options[userAnswer]
+                              ? q.options[userAnswer]
+                              : ""
+                      )
                     : "Not answered";
 
 
             const correctAnswer =
                 q.correctAnswer +
                 ". " +
-                q.options[
-                    q.correctAnswer
-                ];
+                (
+                    q.options &&
+                    q.options[q.correctAnswer]
+                        ? q.options[
+                            q.correctAnswer
+                        ]
+                        : ""
+                );
+
+
+            const chapter =
+                q.chapter ||
+                q.unit ||
+                "Not specified";
 
 
             item.innerHTML =
@@ -1344,6 +1918,12 @@ function createReview() {
                     q.testSubject ||
                     "Unknown"
                 ) +
+
+                "<br>" +
+
+                "<b>Chapter/Unit:</b> " +
+
+                chapter +
 
                 "<br>" +
 
@@ -1378,6 +1958,14 @@ function createReview() {
 
 function retakeTest() {
 
+    /*
+     * Retake is treated as a new attempt.
+     *
+     * Therefore the next submission will
+     * create a new Score Predictor history
+     * record.
+     */
+
     currentQuestion =
         0;
 
@@ -1386,6 +1974,10 @@ function retakeTest() {
         new Array(
             questions.length
         ).fill(null);
+
+
+    testAlreadySaved =
+        false;
 
 
     document.getElementById(
@@ -1411,6 +2003,15 @@ function retakeTest() {
 
 function openScorePredictor() {
 
+    /*
+     * The Score Predictor page now reads
+     * scorePredictorHistory.
+     *
+     * We still send the current test score
+     * through the URL for compatibility with
+     * the existing page.
+     */
+
     const correct =
         Number(
             document.getElementById(
@@ -1432,17 +2033,24 @@ function openScorePredictor() {
     }
 
 
-    /*
-     * Estimated 180-scale equivalent
-     */
+    const attempted =
+        correct +
+        Number(
+            document.getElementById(
+                "wrong"
+            ).textContent
+        );
+
 
     const predictedScore =
-        Math.round(
-            (
-                correct /
-                total
-            ) * 180
-        );
+        attempted > 0
+            ? Math.round(
+                (
+                    correct /
+                    attempted
+                ) * 180
+            )
+            : 0;
 
 
     window.location.href =
