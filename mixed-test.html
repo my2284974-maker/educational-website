@@ -1,322 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Mixed Test | Ibrar Science Hub</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<title>Mixed Test | Ibrar Science Hub</title>
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f7fb;
-            color: #1f2937;
-            line-height: 1.6;
-        }
+<style>
 
-        header {
-            background: #0f172a;
-            color: white;
-            text-align: center;
-            padding: 35px 20px;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        header h1 {
-            font-size: 30px;
-            margin-bottom: 6px;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #1f2937;
+    line-height: 1.6;
+}
 
-        header p {
-            color: #cbd5e1;
-        }
+header {
+    background: #0f172a;
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+}
 
-        .container {
-            max-width: 850px;
-            margin: 30px auto;
-            padding: 0 18px;
-        }
+header h1 {
+    font-size: 30px;
+    margin-bottom: 6px;
+}
 
-        .card {
-            background: white;
-            border-radius: 14px;
-            padding: 25px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 15px rgba(15, 23, 42, 0.08);
-            margin-bottom: 20px;
-        }
+header p {
+    color: #cbd5e1;
+}
 
-        .top-info {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
+.container {
+    max-width: 850px;
+    margin: 30px auto;
+    padding: 0 18px;
+}
 
-        .badge {
-            background: #eff6ff;
-            color: #1d4ed8;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 14px;
-        }
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.08);
+    margin-bottom: 20px;
+}
 
-        .mode-badge {
-            background: #f3e8ff;
-            color: #7e22ce;
-        }
+.top-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
 
-        .question-number {
-            color: #64748b;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+.badge {
+    background: #eff6ff;
+    color: #1d4ed8;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+}
 
-        .question {
-            font-size: 21px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
+.mode-badge {
+    background: #f3e8ff;
+    color: #7e22ce;
+}
 
-        .options {
-            display: grid;
-            gap: 12px;
-        }
+.question-number {
+    color: #64748b;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 
-        .option {
-            border: 1px solid #cbd5e1;
-            border-radius: 10px;
-            padding: 14px;
-            cursor: pointer;
-            background: #f8fafc;
-            transition: 0.2s;
-        }
+.question {
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
 
-        .option:hover {
-            background: #eff6ff;
-            border-color: #2563eb;
-        }
+.options {
+    display: grid;
+    gap: 12px;
+}
 
-        .option.selected {
-            background: #dbeafe;
-            border-color: #2563eb;
-            font-weight: bold;
-        }
+.option {
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 14px;
+    cursor: pointer;
+    background: #f8fafc;
+    transition: 0.2s;
+}
 
-        .option input {
-            margin-right: 8px;
-        }
+.option:hover {
+    background: #eff6ff;
+    border-color: #2563eb;
+}
 
-        .buttons {
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            margin-top: 25px;
-        }
+.option.selected {
+    background: #dbeafe;
+    border-color: #2563eb;
+    font-weight: bold;
+}
 
-        button,
-        .btn {
-            border: none;
-            text-decoration: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+.option input {
+    margin-right: 8px;
+}
 
-        .prev-btn {
-            background: #64748b;
-            color: white;
-        }
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 25px;
+}
 
-        .next-btn {
-            background: #2563eb;
-            color: white;
-        }
+button,
+.btn {
+    border: none;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-        .submit-btn {
-            background: #16a34a;
-            color: white;
-        }
+.prev-btn {
+    background: #64748b;
+    color: white;
+}
 
-        button:hover,
-        .btn:hover {
-            opacity: 0.9;
-        }
+.next-btn {
+    background: #2563eb;
+    color: white;
+}
 
-        .result {
-            display: none;
-        }
+.submit-btn {
+    background: #16a34a;
+    color: white;
+}
 
-        .result h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+button:hover,
+.btn:hover {
+    opacity: 0.9;
+}
 
-        .score-box {
-            text-align: center;
-            background: #eff6ff;
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-        }
+.result {
+    display: none;
+}
 
-        .score {
-            font-size: 42px;
-            font-weight: bold;
-            color: #2563eb;
-        }
+.result h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-        .percentage-text {
-            margin-top: 8px;
-        }
+.score-box {
+    text-align: center;
+    background: #eff6ff;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
 
-        .predictor-result {
-            margin-top: 12px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #7c3aed;
-        }
+.score {
+    font-size: 42px;
+    font-weight: bold;
+    color: #2563eb;
+}
 
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-bottom: 25px;
-        }
+.percentage-text {
+    margin-top: 8px;
+}
 
-        .stat {
-            background: #f8fafc;
-            padding: 15px;
-            text-align: center;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
-        }
+.predictor-result {
+    margin-top: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #7c3aed;
+}
 
-        .stat strong {
-            display: block;
-            font-size: 22px;
-        }
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 25px;
+}
 
-        .review-item {
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 12px;
-        }
+.stat {
+    background: #f8fafc;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+}
 
-        .correct {
-            color: #15803d;
-            font-weight: bold;
-        }
+.stat strong {
+    display: block;
+    font-size: 22px;
+}
 
-        .wrong {
-            color: #dc2626;
-            font-weight: bold;
-        }
+.review-item {
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 12px;
+}
 
-        .unanswered {
-            color: #d97706;
-            font-weight: bold;
-        }
+.correct {
+    color: #15803d;
+    font-weight: bold;
+}
 
-        .result-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 25px;
-        }
+.wrong {
+    color: #dc2626;
+    font-weight: bold;
+}
 
-        .predictor-btn {
-            background: #7c3aed;
-            color: white;
-        }
+.unanswered {
+    color: #d97706;
+    font-weight: bold;
+}
 
-        .back-btn {
-            background: #475569;
-            color: white;
-        }
+.result-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px;
+}
 
-        .retake-btn {
-            background: #2563eb;
-            color: white;
-        }
+.predictor-btn {
+    background: #7c3aed;
+    color: white;
+}
 
-        .loading {
-            text-align: center;
-            padding: 30px;
-            font-weight: bold;
-            color: #475569;
-        }
+.back-btn {
+    background: #475569;
+    color: white;
+}
 
-        .error {
-            text-align: center;
-            color: #dc2626;
-            font-weight: bold;
-            padding: 20px;
-        }
+.retake-btn {
+    background: #2563eb;
+    color: white;
+}
 
-        .test-info {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 12px 15px;
-            margin-bottom: 20px;
-            font-size: 14px;
-            color: #475569;
-        }
+.loading {
+    text-align: center;
+    padding: 30px;
+    font-weight: bold;
+    color: #475569;
+}
 
-        footer {
-            background: #0f172a;
-            color: #cbd5e1;
-            text-align: center;
-            padding: 22px;
-            margin-top: 40px;
-            font-size: 14px;
-        }
+.error {
+    text-align: center;
+    color: #dc2626;
+    font-weight: bold;
+    padding: 20px;
+}
 
-        @media (max-width: 650px) {
+.test-info {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #475569;
+}
 
-            header h1 {
-                font-size: 25px;
-            }
+footer {
+    background: #0f172a;
+    color: #cbd5e1;
+    text-align: center;
+    padding: 22px;
+    margin-top: 40px;
+    font-size: 14px;
+}
 
-            .question {
-                font-size: 18px;
-            }
+@media (max-width: 650px) {
 
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
+    header h1 {
+        font-size: 25px;
+    }
 
-            .buttons {
-                flex-direction: column;
-            }
+    .question {
+        font-size: 18px;
+    }
 
-            button {
-                width: 100%;
-            }
-        }
-    </style>
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+
+}
+
+</style>
+
 </head>
 
 <body>
 
 <header>
+
     <h1>Mixed / Combined Test</h1>
-    <p>Ibrar Science Hub | MDCAT Practice</p>
+
+    <p>
+        Ibrar Science Hub | MDCAT Practice
+    </p>
+
 </header>
 
+
 <main class="container">
+
 
     <!-- TEST AREA -->
 
@@ -325,6 +337,7 @@
         <div id="loading" class="loading">
             Loading your combined test...
         </div>
+
 
         <div id="questionArea" style="display:none;">
 
@@ -344,20 +357,25 @@
 
             </div>
 
+
             <div id="testInfo" class="test-info">
                 Loading test information...
             </div>
+
 
             <div id="questionNumber" class="question-number">
                 Question 1
             </div>
 
+
             <div id="questionText" class="question">
                 Question will appear here.
             </div>
 
+
             <div id="options" class="options">
             </div>
+
 
             <div class="buttons">
 
@@ -365,16 +383,22 @@
                     type="button"
                     class="prev-btn"
                     onclick="previousQuestion()">
+
                     ← Previous
+
                 </button>
+
 
                 <button
                     type="button"
                     id="nextButton"
                     class="next-btn"
                     onclick="nextQuestion()">
+
                     Next →
+
                 </button>
+
 
                 <button
                     type="button"
@@ -382,81 +406,138 @@
                     class="submit-btn"
                     onclick="submitTest()"
                     style="display:none;">
+
                     Submit Test
+
                 </button>
 
             </div>
 
         </div>
 
-        <div id="errorArea" class="error" style="display:none;">
+
+        <div
+            id="errorArea"
+            class="error"
+            style="display:none;">
         </div>
 
     </div>
 
 
+
     <!-- RESULT AREA -->
 
-    <div id="resultArea" class="card result">
+    <div
+        id="resultArea"
+        class="card result">
 
         <h2>🎉 Test Result</h2>
+
 
         <div class="score-box">
 
             <div class="score">
+
                 <span id="score">0</span>
                 /
                 <span id="totalQuestions">0</span>
+
             </div>
 
-            <p id="percentage" class="percentage-text">
+
+            <p
+                id="percentage"
+                class="percentage-text">
+
                 Percentage: 0%
+
             </p>
 
-            <p id="resultMode" style="margin-top:8px; font-weight:bold;">
+
+            <p
+                id="resultMode"
+                style="margin-top:8px; font-weight:bold;">
+
                 Custom Practice
+
             </p>
 
-            <p id="currentPredictedScore" class="predictor-result">
+
+            <p
+                id="currentPredictedScore"
+                class="predictor-result">
+
                 This Test: 0 / 180
+
             </p>
 
-            <p id="cumulativePredictedScore" class="predictor-result">
+
+            <p
+                id="cumulativePredictedScore"
+                class="predictor-result">
+
                 Score Predictor: 0 / 180
+
             </p>
 
         </div>
+
+
 
         <div class="stats">
 
             <div class="stat">
+
                 <strong id="correct">0</strong>
+
                 Correct
+
             </div>
 
+
             <div class="stat">
+
                 <strong id="wrong">0</strong>
+
                 Wrong
+
             </div>
 
+
             <div class="stat">
+
                 <strong id="unanswered">0</strong>
+
                 Unanswered
+
             </div>
 
+
             <div class="stat">
+
                 <strong id="resultTotal">0</strong>
+
                 Total
+
             </div>
 
         </div>
 
-        <h3>📋 Question Review</h3>
+
+
+        <h3>
+            📋 Question Review
+        </h3>
+
 
         <br>
 
+
         <div id="review">
         </div>
+
+
 
         <div class="result-buttons">
 
@@ -464,20 +545,28 @@
                 type="button"
                 class="retake-btn"
                 onclick="retakeTest()">
+
                 🔄 Retake Test
+
             </button>
+
 
             <button
                 type="button"
                 class="predictor-btn"
                 onclick="openScorePredictor()">
+
                 📊 View Score Predictor
+
             </button>
+
 
             <a
                 href="mixed-practice.html"
                 class="btn back-btn">
+
                 ← Back to Mixed Practice
+
             </a>
 
         </div>
@@ -487,19 +576,28 @@
 </main>
 
 
+
 <footer>
-    <p>© 2026 Ibrar Science Hub. Free Educational Resources.</p>
+
+    <p>
+        © 2026 Ibrar Science Hub. Free Educational Resources.
+    </p>
+
 </footer>
+
 
 
 <script>
 
-/* =========================================
+
+/* =========================================================
    GLOBAL VARIABLES
-========================================= */
+========================================================= */
 
 let questions = [];
+
 let currentQuestion = 0;
+
 let userAnswers = [];
 
 let testSettings = null;
@@ -507,79 +605,100 @@ let testSettings = null;
 let testAlreadySaved = false;
 
 
-/* =========================================
+
+/* =========================================================
    QUESTION BANKS
-========================================= */
+========================================================= */
+
+/*
+    یہاں Biology کے ہر chapter کو
+    اس کے اپنے JSON bank کے ساتھ connect کیا گیا ہے۔
+
+    مستقبل میں باقی Biology chapters بھی
+    اسی جگہ add کیے جا سکتے ہیں۔
+*/
 
 const QUESTION_BANKS = {
 
-    Biology:
-        "https://raw.githubusercontent.com/my2284974-maker/educational-website/main/biology-unit-1-mcqs.json",
+    Biology: {
 
-    Chemistry:
-        null,
+        "Acellular Life":
+            "https://raw.githubusercontent.com/my2284974-maker/educational-website/main/biology-unit-1-mcqs.json",
 
-    Physics:
-        null,
+        "Bioenergetics":
+            "https://raw.githubusercontent.com/my2284974-maker/educational-website/main/bioenergetics-1500-mcqs.json"
 
-    English:
-        null,
+    },
 
-    "Logical Reasoning":
-        null
+
+    Chemistry: {},
+
+    Physics: {},
+
+    English: {},
+
+    "Logical Reasoning": {}
 
 };
 
 
-/* =========================================
-   HELPER: GET MODE NAME
-========================================= */
+
+/* =========================================================
+   GET MODE NAME
+========================================================= */
 
 function getModeName(mode) {
 
     const value =
-        String(mode || "custom").toLowerCase();
+        String(
+            mode || "custom"
+        ).toLowerCase();
+
 
     if (value === "hlp") {
+
         return "HLP — 90 MCQs";
+
     }
+
 
     if (value === "flp") {
+
         return "FLP — 180 MCQs";
+
     }
 
+
     return "Custom Practice";
+
 }
 
 
-/* =========================================
-   HELPER: GET SELECTED CHAPTERS
-========================================= */
+
+/* =========================================================
+   GET SELECTED CHAPTERS
+========================================================= */
 
 function getSelectedChapters() {
 
-    if (!testSettings || !testSettings.subjects) {
+    if (
+        !testSettings ||
+        !testSettings.subjects
+    ) {
+
         return {};
+
     }
+
 
     const result = {};
 
-    Object.entries(testSettings.subjects).forEach(
+
+    Object.entries(
+        testSettings.subjects
+    ).forEach(
         ([subject, value]) => {
 
-            /*
-             * New mixed-practice format:
-             *
-             * subject:
-             * {
-             *   count: 10,
-             *   chapters: [...]
-             * }
-             *
-             * Old format:
-             *
-             * subject: 10
-             */
 
             if (
                 value &&
@@ -587,7 +706,9 @@ function getSelectedChapters() {
             ) {
 
                 result[subject] =
-                    Array.isArray(value.chapters)
+                    Array.isArray(
+                        value.chapters
+                    )
                         ? value.chapters
                         : [];
 
@@ -602,13 +723,16 @@ function getSelectedChapters() {
         }
     );
 
+
     return result;
+
 }
 
 
-/* =========================================
-   HELPER: GET SUBJECT COUNT
-========================================= */
+
+/* =========================================================
+   GET SUBJECT COUNT
+========================================================= */
 
 function getSubjectCount(subjectData) {
 
@@ -623,13 +747,379 @@ function getSubjectCount(subjectData) {
 
     }
 
-    return Number(subjectData || 0);
+
+    return Number(
+        subjectData || 0
+    );
+
 }
 
 
-/* =========================================
-   LOAD SAVED TEST
-========================================= */
+
+/* =========================================================
+   NORMALIZE TEXT
+========================================================= */
+
+function normalizeText(text) {
+
+    return String(
+        text || ""
+    )
+    .trim()
+    .toLowerCase()
+    .replace(
+        /&/g,
+        "and"
+    )
+    .replace(
+        /[^a-z0-9]+/g,
+        " "
+    )
+    .replace(
+        /\s+/g,
+        " "
+    )
+    .trim();
+
+}
+
+
+
+/* =========================================================
+   CHAPTER MATCH
+========================================================= */
+
+/*
+    JSON میں chapter یا unit مختلف انداز میں
+    لکھا ہو سکتا ہے۔
+
+    مثال:
+
+    Unit 1: Acellular Life
+
+    یا
+
+    Bioenergetics
+
+    یہ function دونوں کو safely match کرے گا۔
+*/
+
+function chapterMatches(
+    question,
+    selectedChapter
+) {
+
+    const selected =
+        normalizeText(
+            selectedChapter
+        );
+
+
+    const questionChapter =
+        normalizeText(
+            question.chapter ||
+            question.unit ||
+            ""
+        );
+
+
+    if (
+        !selected ||
+        !questionChapter
+    ) {
+
+        return false;
+
+    }
+
+
+    /*
+        Exact match
+    */
+
+    if (
+        selected ===
+        questionChapter
+    ) {
+
+        return true;
+
+    }
+
+
+    /*
+        Selected chapter موجود ہو
+        question unit کے اندر
+    */
+
+    if (
+        questionChapter.includes(
+            selected
+        )
+    ) {
+
+        return true;
+
+    }
+
+
+    /*
+        Question unit موجود ہو
+        selected chapter کے اندر
+    */
+
+    if (
+        selected.includes(
+            questionChapter
+        )
+    ) {
+
+        return true;
+
+    }
+
+
+    return false;
+
+}
+
+
+
+/* =========================================================
+   FIND BANK URL FOR CHAPTER
+========================================================= */
+
+function getBankURL(
+    subject,
+    selectedChapter
+) {
+
+    const subjectBanks =
+        QUESTION_BANKS[
+            subject
+        ];
+
+
+    if (
+        !subjectBanks ||
+        typeof subjectBanks !== "object"
+    ) {
+
+        return null;
+
+    }
+
+
+    /*
+        Exact chapter name
+    */
+
+    if (
+        subjectBanks[
+            selectedChapter
+        ]
+    ) {
+
+        return subjectBanks[
+            selectedChapter
+        ];
+
+    }
+
+
+    /*
+        Normalized chapter match
+    */
+
+    const selected =
+        normalizeText(
+            selectedChapter
+        );
+
+
+    const found =
+        Object.keys(
+            subjectBanks
+        ).find(
+            chapter =>
+                normalizeText(
+                    chapter
+                ) === selected
+        );
+
+
+    if (found) {
+
+        return subjectBanks[found];
+
+    }
+
+
+    return null;
+
+}
+
+
+
+/* =========================================================
+   GET BANK CHAPTER NAME
+========================================================= */
+
+function getBankChapterName(
+    subject,
+    selectedChapter
+) {
+
+    const subjectBanks =
+        QUESTION_BANKS[
+            subject
+        ];
+
+
+    if (
+        !subjectBanks ||
+        typeof subjectBanks !== "object"
+    ) {
+
+        return null;
+
+    }
+
+
+    if (
+        subjectBanks[
+            selectedChapter
+        ]
+    ) {
+
+        return selectedChapter;
+
+    }
+
+
+    const selected =
+        normalizeText(
+            selectedChapter
+        );
+
+
+    const found =
+        Object.keys(
+            subjectBanks
+        ).find(
+            chapter =>
+                normalizeText(
+                    chapter
+                ) === selected
+        );
+
+
+    return found || null;
+
+}
+
+
+
+/* =========================================================
+   LOAD JSON BANK
+========================================================= */
+
+async function loadBank(url) {
+
+    const response =
+        await fetch(url);
+
+
+    if (!response.ok) {
+
+        throw new Error(
+            "Question bank could not be loaded."
+        );
+
+    }
+
+
+    const data =
+        await response.json();
+
+
+    if (
+        !data ||
+        !Array.isArray(
+            data.questions
+        )
+    ) {
+
+        throw new Error(
+            "Invalid question bank format."
+        );
+
+    }
+
+
+    if (
+        data.questions.length === 0
+    ) {
+
+        throw new Error(
+            "Question bank is empty."
+        );
+
+    }
+
+
+    return [
+        ...data.questions
+    ];
+
+}
+
+
+
+/* =========================================================
+   FILTER DIFFICULTY
+========================================================= */
+
+function filterDifficulty(
+    bank,
+    difficulty
+) {
+
+    if (
+        String(
+            difficulty
+        ).toLowerCase() ===
+        "mixed"
+    ) {
+
+        return bank;
+
+    }
+
+
+    return bank.filter(
+        question =>
+            String(
+                question.difficulty ||
+                ""
+            )
+            .trim()
+            .toLowerCase()
+            ===
+            String(
+                difficulty
+            )
+            .trim()
+            .toLowerCase()
+    );
+
+}
+
+
+
+/* =========================================================
+   LOAD MIXED TEST
+========================================================= */
 
 async function loadMixedTest() {
 
@@ -648,70 +1138,64 @@ async function loadMixedTest() {
             );
 
             return;
+
         }
 
 
         testSettings =
-            JSON.parse(saved);
+            JSON.parse(
+                saved
+            );
 
 
         const selectedSubjects =
-            testSettings.subjects || {};
+            testSettings.subjects ||
+            {};
 
 
         const activeSubjects =
-            Object.keys(selectedSubjects).filter(
+            Object.keys(
+                selectedSubjects
+            )
+            .filter(
                 subject =>
                     getSubjectCount(
-                        selectedSubjects[subject]
+                        selectedSubjects[
+                            subject
+                        ]
                     ) > 0
             );
 
 
-        if (!activeSubjects.length) {
+        if (
+            activeSubjects.length === 0
+        ) {
 
             showError(
                 "No subjects were selected."
             );
 
             return;
+
         }
 
-
-        /* =====================================
-           CHECK QUESTION BANK AVAILABILITY
-        ===================================== */
-
-        const unavailable =
-            activeSubjects.filter(
-                subject =>
-                    !QUESTION_BANKS[subject]
-            );
-
-
-        if (unavailable.length > 0) {
-
-            showError(
-                "Question Bank Coming Soon for: " +
-                unavailable.join(", ") +
-                ". Please select only available subjects for now."
-            );
-
-            return;
-        }
-
-
-        /* =====================================
-           LOAD EACH SUBJECT BANK
-        ===================================== */
 
         let combinedQuestions = [];
 
 
-        for (const subject of activeSubjects) {
+        /* =================================================
+           SUBJECT LOOP
+        ================================================= */
+
+        for (
+            const subject of activeSubjects
+        ) {
+
 
             const subjectData =
-                selectedSubjects[subject];
+                selectedSubjects[
+                    subject
+                ];
 
 
             const count =
@@ -720,102 +1204,26 @@ async function loadMixedTest() {
                 );
 
 
-            const url =
-                QUESTION_BANKS[subject];
-
-
-            if (count <= 0) {
-                continue;
-            }
-
-
-            const response =
-                await fetch(url);
-
-
-            if (!response.ok) {
-
-                throw new Error(
-                    subject +
-                    " question bank could not be loaded."
-                );
-
-            }
-
-
-            const data =
-                await response.json();
-
-
-            let bank =
-                Array.isArray(data.questions)
-                    ? [...data.questions]
-                    : [];
-
-
-            if (!bank.length) {
-
-                throw new Error(
-                    subject +
-                    " question bank is empty."
-                );
-
-            }
-
-
-            /* =================================
-               DIFFICULTY FILTER
-            ================================= */
-
-            const difficulty =
-                testSettings.difficulty ||
-                "Mixed";
-
-
             if (
-                String(
-                    difficulty
-                ).toLowerCase() !== "mixed"
+                count <= 0
             ) {
 
-                bank =
-                    bank.filter(
-                        q =>
-                            String(
-                                q.difficulty || ""
-                            ).toLowerCase()
-                            ===
-                            String(
-                                difficulty
-                            ).toLowerCase()
-                    );
+                continue;
 
             }
 
 
-            if (!bank.length) {
-
-                throw new Error(
-                    "No " +
-                    difficulty +
-                    " questions are available in the " +
-                    subject +
-                    " question bank."
-                );
-
-            }
-
-
-            /* =================================
-               CHAPTER FILTER
-            ================================= */
+            /*
+                Selected chapters
+            */
 
             let selectedChapters = [];
 
 
             if (
                 subjectData &&
-                typeof subjectData === "object" &&
+                typeof subjectData ===
+                    "object" &&
                 Array.isArray(
                     subjectData.chapters
                 )
@@ -823,117 +1231,249 @@ async function loadMixedTest() {
 
                 selectedChapters =
                     subjectData.chapters
-                        .map(
-                            chapter =>
-                                String(chapter)
-                                    .trim()
-                                    .toLowerCase()
-                        )
-                        .filter(Boolean);
+                    .filter(Boolean);
 
             }
 
 
             /*
-             * Chapter filtering is applied only
-             * when chapters are actually selected.
-             *
-             * This prevents old saved settings
-             * from breaking the test.
-             */
+                اگر chapters selected نہیں ہیں
+                تو available subject banks کو
+                استعمال کرنے کی کوشش ہوگی۔
+            */
 
             if (
-                selectedChapters.length > 0
+                selectedChapters.length === 0
             ) {
 
-                const filteredBank =
-                    bank.filter(
-                        q => {
-
-                            const questionChapter =
-                                String(
-                                    q.chapter ||
-                                    q.unit ||
-                                    ""
-                                )
-                                .trim()
-                                .toLowerCase();
-
-
-                            return selectedChapters
-                                .some(
-                                    selectedChapter =>
-                                        questionChapter
-                                            .includes(
-                                                selectedChapter
-                                            ) ||
-                                        selectedChapter
-                                            .includes(
-                                                questionChapter
-                                            )
-                                );
-
-                        }
-                    );
-
-
                 /*
-                 * If chapter names in the JSON
-                 * don't match the chapter selector,
-                 * show a clear message instead of
-                 * silently loading wrong chapters.
-                 */
+                    ابھی Biology کے لیے ہم
+                    available connected banks
+                    استعمال کریں گے۔
+
+                    لیکن اگر user نے chapter
+                    selection کیا ہے تو نیچے
+                    chapter-specific logic چلے گی۔
+                */
+
+                const subjectBanks =
+                    QUESTION_BANKS[
+                        subject
+                    ];
+
 
                 if (
-                    filteredBank.length === 0
+                    !subjectBanks ||
+                    Object.keys(
+                        subjectBanks
+                    ).length === 0
                 ) {
 
                     throw new Error(
-                        "No questions were found for the selected " +
+                        "Question Bank Coming Soon for: " +
                         subject +
-                        " chapter(s). The chapter names in the question bank may need to match the chapter names used in Mixed Practice."
+                        ". Please select a subject with an uploaded question bank."
                     );
 
                 }
 
 
-                bank =
-                    filteredBank;
+                selectedChapters =
+                    Object.keys(
+                        subjectBanks
+                    );
 
             }
 
 
-            /* =================================
-               RANDOMIZE BANK
-            ================================= */
 
-            bank.sort(
+            /* =============================================
+               LOAD EACH SELECTED CHAPTER BANK
+            ============================================= */
+
+            let subjectQuestions = [];
+
+
+            for (
+                const selectedChapter
+                of selectedChapters
+            ) {
+
+
+                const url =
+                    getBankURL(
+                        subject,
+                        selectedChapter
+                    );
+
+
+                if (!url) {
+
+                    throw new Error(
+                        "Question Bank is not connected for " +
+                        subject +
+                        " → " +
+                        selectedChapter +
+                        "."
+                    );
+
+                }
+
+
+                let bank =
+                    await loadBank(
+                        url
+                    );
+
+
+                /*
+                    Difficulty filter
+                */
+
+                bank =
+                    filterDifficulty(
+                        bank,
+                        testSettings.difficulty ||
+                        "Mixed"
+                    );
+
+
+                if (
+                    bank.length === 0
+                ) {
+
+                    throw new Error(
+                        "No " +
+                        (
+                            testSettings.difficulty ||
+                            "Mixed"
+                        ) +
+                        " questions are available in " +
+                        subject +
+                        " → " +
+                        selectedChapter +
+                        "."
+                    );
+
+                }
+
+
+                /*
+                    Chapter filter
+
+                    Important:
+                    اگر JSON میں chapter/unit
+                    موجود ہے تو اسے verify کیا جائے گا۔
+                */
+
+                const chapterFiltered =
+                    bank.filter(
+                        question =>
+                            chapterMatches(
+                                question,
+                                selectedChapter
+                            )
+                    );
+
+
+                /*
+                    اگر chapter/unit field موجود
+                    نہیں ہے تو bank کو reject نہیں
+                    کریں گے۔
+
+                    لیکن اگر field موجود ہے اور
+                    selected chapter match نہیں کرتا
+                    تو error دیں گے۔
+
+                    اس سے future banks بھی
+                    compatible رہیں گے۔
+                */
+
+                const hasChapterField =
+                    bank.some(
+                        question =>
+                            question.chapter ||
+                            question.unit
+                    );
+
+
+                if (
+                    hasChapterField &&
+                    chapterFiltered.length === 0
+                ) {
+
+                    throw new Error(
+                        "No questions were found for " +
+                        subject +
+                        " → " +
+                        selectedChapter +
+                        ". Please check that the JSON chapter/unit name matches the Mixed Practice chapter name."
+                    );
+
+                }
+
+
+                if (
+                    hasChapterField
+                ) {
+
+                    bank =
+                        chapterFiltered;
+
+                }
+
+
+                /*
+                    Add subject + chapter
+                    information
+                */
+
+                bank.forEach(
+                    question => {
+
+                        subjectQuestions.push({
+
+                            ...question,
+
+                            testSubject:
+                                subject,
+
+                            testChapter:
+                                selectedChapter
+
+                        });
+
+                    }
+                );
+
+            }
+
+
+
+            /* =============================================
+               RANDOMIZE SUBJECT QUESTIONS
+            ============================================= */
+
+            subjectQuestions.sort(
                 () =>
                     Math.random() - 0.5
             );
 
 
-            /* =================================
-               SELECT REQUIRED QUESTIONS
-            ================================= */
-
-            const selected =
-                bank.slice(
-                    0,
-                    count
-                );
-
+            /*
+                Required number of questions
+            */
 
             if (
-                selected.length <
+                subjectQuestions.length <
                 count
             ) {
 
                 throw new Error(
                     subject +
                     " has only " +
-                    selected.length +
-                    " available questions for this selection, but " +
+                    subjectQuestions.length +
+                    " available questions for the selected chapter(s), but " +
                     count +
                     " were requested."
                 );
@@ -941,31 +1481,28 @@ async function loadMixedTest() {
             }
 
 
-            /* =================================
-               ADD SUBJECT INFORMATION
-            ================================= */
+            /*
+                Select requested number
+            */
 
-            selected.forEach(
-                q => {
+            const selected =
+                subjectQuestions.slice(
+                    0,
+                    count
+                );
 
-                    combinedQuestions.push({
 
-                        ...q,
-
-                        testSubject:
-                            subject
-
-                    });
-
-                }
+            combinedQuestions.push(
+                ...selected
             );
 
         }
 
 
-        /* =====================================
-           SHUFFLE COMPLETE TEST
-        ===================================== */
+
+        /* =================================================
+           SHUFFLE COMPLETE COMBINED TEST
+        ================================================= */
 
         combinedQuestions.sort(
             () =>
@@ -983,29 +1520,34 @@ async function loadMixedTest() {
             ).fill(null);
 
 
-        if (!questions.length) {
+        if (
+            questions.length === 0
+        ) {
 
             showError(
                 "No questions could be loaded."
             );
 
             return;
+
         }
 
 
-        /* =====================================
-           SAVE QUESTIONS
-        ===================================== */
+        /*
+            Save current questions
+        */
 
         localStorage.setItem(
             "mixedTestQuestions",
-            JSON.stringify(questions)
+            JSON.stringify(
+                questions
+            )
         );
 
 
-        /* =====================================
-           SHOW TEST INFORMATION
-        ===================================== */
+        /*
+            Update information
+        */
 
         updateTestInformation();
 
@@ -1028,7 +1570,9 @@ async function loadMixedTest() {
 
     catch (error) {
 
-        console.error(error);
+        console.error(
+            error
+        );
 
 
         showError(
@@ -1041,14 +1585,17 @@ async function loadMixedTest() {
 }
 
 
-/* =========================================
+
+/* =========================================================
    TEST INFORMATION
-========================================= */
+========================================================= */
 
 function updateTestInformation() {
 
     if (!testSettings) {
+
         return;
+
     }
 
 
@@ -1081,13 +1628,17 @@ function updateTestInformation() {
         )
         .filter(
             ([, value]) =>
-                getSubjectCount(value) > 0
+                getSubjectCount(
+                    value
+                ) > 0
         )
         .map(
             ([subject, value]) =>
                 subject +
                 ": " +
-                getSubjectCount(value)
+                getSubjectCount(
+                    value
+                )
         )
         .join(" | ");
 
@@ -1104,26 +1655,35 @@ function updateTestInformation() {
 }
 
 
-/* =========================================
+
+/* =========================================================
    SHOW QUESTION
-========================================= */
+========================================================= */
 
 function showQuestion() {
 
-    if (!questions.length) {
+    if (
+        !questions.length
+    ) {
+
         return;
+
     }
 
 
     const q =
-        questions[currentQuestion];
+        questions[
+            currentQuestion
+        ];
 
 
     document.getElementById(
         "questionNumber"
     ).textContent =
         "Question " +
-        (currentQuestion + 1) +
+        (
+            currentQuestion + 1
+        ) +
         " of " +
         questions.length;
 
@@ -1131,7 +1691,9 @@ function showQuestion() {
     document.getElementById(
         "progressBadge"
     ).textContent =
-        (currentQuestion + 1) +
+        (
+            currentQuestion + 1
+        ) +
         " / " +
         questions.length;
 
@@ -1160,7 +1722,12 @@ function showQuestion() {
 
 
     const optionKeys =
-        ["A", "B", "C", "D"];
+        [
+            "A",
+            "B",
+            "C",
+            "D"
+        ];
 
 
     optionKeys.forEach(
@@ -1168,9 +1735,13 @@ function showQuestion() {
 
             if (
                 !q.options ||
-                q.options[letter] === undefined
+                q.options[
+                    letter
+                ] === undefined
             ) {
+
                 return;
+
             }
 
 
@@ -1231,7 +1802,9 @@ function showQuestion() {
                     " " +
                     letter +
                     ". " +
-                    q.options[letter]
+                    q.options[
+                        letter
+                    ]
                 );
 
 
@@ -1262,9 +1835,9 @@ function showQuestion() {
     );
 
 
-    /* =====================================
+    /* =====================================================
        BUTTON VISIBILITY
-    ===================================== */
+    ===================================================== */
 
     const nextButton =
         document.getElementById(
@@ -1306,9 +1879,10 @@ function showQuestion() {
 }
 
 
-/* =========================================
+
+/* =========================================================
    NEXT QUESTION
-========================================= */
+========================================================= */
 
 function nextQuestion() {
 
@@ -1326,9 +1900,10 @@ function nextQuestion() {
 }
 
 
-/* =========================================
+
+/* =========================================================
    PREVIOUS QUESTION
-========================================= */
+========================================================= */
 
 function previousQuestion() {
 
@@ -1345,9 +1920,10 @@ function previousQuestion() {
 }
 
 
-/* =========================================
+
+/* =========================================================
    SAVE RESULT TO SCORE PREDICTOR
-========================================= */
+========================================================= */
 
 function saveToScorePredictor(
     correct,
@@ -1356,23 +1932,27 @@ function saveToScorePredictor(
     total
 ) {
 
-    /*
-     * Prevent duplicate saving if submitTest()
-     * is accidentally clicked more than once.
-     */
+    if (
+        testAlreadySaved
+    ) {
 
-    if (testAlreadySaved) {
         return null;
+
     }
 
 
-    if (!total) {
+    if (
+        !total
+    ) {
+
         return null;
+
     }
 
 
     const attempted =
-        correct + wrong;
+        correct +
+        wrong;
 
 
     const accuracy =
@@ -1383,15 +1963,6 @@ function saveToScorePredictor(
             ) * 100
             : 0;
 
-
-    /*
-     * The individual test equivalent.
-     *
-     * Example:
-     * 8 correct out of 10 attempted
-     * = 80%
-     * = 144 / 180
-     */
 
     const testPredicted180 =
         Math.round(
@@ -1410,7 +1981,9 @@ function saveToScorePredictor(
 
 
     const modeName =
-        getModeName(mode);
+        getModeName(
+            mode
+        );
 
 
     const subjects =
@@ -1489,7 +2062,9 @@ function saveToScorePredictor(
             );
 
 
-        if (savedHistory) {
+        if (
+            savedHistory
+        ) {
 
             const parsed =
                 JSON.parse(
@@ -1498,7 +2073,9 @@ function saveToScorePredictor(
 
 
             if (
-                Array.isArray(parsed)
+                Array.isArray(
+                    parsed
+                )
             ) {
 
                 history =
@@ -1522,36 +2099,32 @@ function saveToScorePredictor(
     }
 
 
-    history.push(record);
+    history.push(
+        record
+    );
 
 
     localStorage.setItem(
         "scorePredictorHistory",
-        JSON.stringify(history)
+        JSON.stringify(
+            history
+        )
     );
 
 
-    testAlreadySaved = true;
+    testAlreadySaved =
+        true;
 
 
     /*
-     * Calculate cumulative predictor.
-     *
-     * IMPORTANT:
-     * We do NOT average the individual
-     * 180-scale scores equally.
-     *
-     * Example:
-     *
-     * Test 1 = 8/10
-     * Test 2 = 80/100
-     *
-     * Overall =
-     * 88 / 110
-     *
-     * Then:
-     * Overall × 180
-     */
+        CUMULATIVE PREDICTOR
+
+        Total Correct
+        ----------------
+        Total Attempted
+
+        Then × 180
+    */
 
     let totalCorrect =
         0;
@@ -1568,16 +2141,22 @@ function saveToScorePredictor(
                     item.correct || 0
                 );
 
+
             totalAttempted +=
                 Number(
-                    item.attempted !== undefined
+                    item.attempted !==
+                    undefined
+
                         ? item.attempted
+
                         : (
                             Number(
-                                item.correct || 0
+                                item.correct ||
+                                0
                             ) +
                             Number(
-                                item.wrong || 0
+                                item.wrong ||
+                                0
                             )
                         )
                 );
@@ -1629,21 +2208,18 @@ function saveToScorePredictor(
 }
 
 
-/* =========================================
+
+/* =========================================================
    SUBMIT TEST
-========================================= */
+========================================================= */
 
 function submitTest() {
-
-    /*
-     * Prevent submitting an already completed
-     * test again.
-     */
 
     if (
         document.getElementById(
             "resultArea"
-        ).style.display === "block"
+        ).style.display ===
+        "block"
     ) {
 
         return;
@@ -1652,7 +2228,9 @@ function submitTest() {
 
 
     let correct = 0;
+
     let wrong = 0;
+
     let unanswered = 0;
 
 
@@ -1660,10 +2238,14 @@ function submitTest() {
         (q, index) => {
 
             const answer =
-                userAnswers[index];
+                userAnswers[
+                    index
+                ];
 
 
-            if (!answer) {
+            if (
+                !answer
+            ) {
 
                 unanswered++;
 
@@ -1702,8 +2284,9 @@ function submitTest() {
 
 
     /*
-     * Save test automatically.
-     */
+        Automatically save
+        Score Predictor history
+    */
 
     const predictorData =
         saveToScorePredictor(
@@ -1770,13 +2353,16 @@ function submitTest() {
         "%";
 
 
-    if (predictorData) {
+    if (
+        predictorData
+    ) {
 
         document.getElementById(
             "currentPredictedScore"
         ).textContent =
             "This Test: " +
-            predictorData.testPredicted180 +
+            predictorData
+                .testPredicted180 +
             " / 180";
 
 
@@ -1784,10 +2370,13 @@ function submitTest() {
             "cumulativePredictedScore"
         ).textContent =
             "Score Predictor: " +
-            predictorData.cumulativePredicted180 +
+            predictorData
+                .cumulativePredicted180 +
             " / 180" +
             " | " +
-            predictorData.cumulativeAccuracy.toFixed(1) +
+            predictorData
+                .cumulativeAccuracy
+                .toFixed(1) +
             "% cumulative accuracy";
 
     }
@@ -1798,9 +2387,10 @@ function submitTest() {
 }
 
 
-/* =========================================
+
+/* =========================================================
    QUESTION REVIEW
-========================================= */
+========================================================= */
 
 function createReview() {
 
@@ -1828,14 +2418,18 @@ function createReview() {
 
 
             const userAnswer =
-                userAnswers[index];
+                userAnswers[
+                    index
+                ];
 
 
             let status =
                 "";
 
 
-            if (!userAnswer) {
+            if (
+                !userAnswer
+            ) {
 
                 status =
                     '<span class="unanswered">' +
@@ -1872,8 +2466,12 @@ function createReview() {
                       ". " +
                       (
                           q.options &&
-                          q.options[userAnswer]
-                              ? q.options[userAnswer]
+                          q.options[
+                              userAnswer
+                          ]
+                              ? q.options[
+                                    userAnswer
+                                ]
                               : ""
                       )
                     : "Not answered";
@@ -1884,15 +2482,18 @@ function createReview() {
                 ". " +
                 (
                     q.options &&
-                    q.options[q.correctAnswer]
+                    q.options[
+                        q.correctAnswer
+                    ]
                         ? q.options[
                             q.correctAnswer
-                        ]
+                          ]
                         : ""
                 );
 
 
             const chapter =
+                q.testChapter ||
                 q.chapter ||
                 q.unit ||
                 "Not specified";
@@ -1902,7 +2503,9 @@ function createReview() {
 
                 "<strong>" +
 
-                (index + 1) +
+                (
+                    index + 1
+                ) +
 
                 ". " +
 
@@ -1952,19 +2555,12 @@ function createReview() {
 }
 
 
-/* =========================================
+
+/* =========================================================
    RETAKE TEST
-========================================= */
+========================================================= */
 
 function retakeTest() {
-
-    /*
-     * Retake is treated as a new attempt.
-     *
-     * Therefore the next submission will
-     * create a new Score Predictor history
-     * record.
-     */
 
     currentQuestion =
         0;
@@ -1975,6 +2571,11 @@ function retakeTest() {
             questions.length
         ).fill(null);
 
+
+    /*
+        Retake is a new attempt,
+        so it will create a new history record.
+    */
 
     testAlreadySaved =
         false;
@@ -1997,20 +2598,12 @@ function retakeTest() {
 }
 
 
-/* =========================================
-   SCORE PREDICTOR
-========================================= */
+
+/* =========================================================
+   OPEN SCORE PREDICTOR
+========================================================= */
 
 function openScorePredictor() {
-
-    /*
-     * The Score Predictor page now reads
-     * scorePredictorHistory.
-     *
-     * We still send the current test score
-     * through the URL for compatibility with
-     * the existing page.
-     */
 
     const correct =
         Number(
@@ -2028,18 +2621,26 @@ function openScorePredictor() {
         );
 
 
-    if (!total) {
+    if (
+        !total
+    ) {
+
         return;
+
     }
 
 
-    const attempted =
-        correct +
+    const wrong =
         Number(
             document.getElementById(
                 "wrong"
             ).textContent
         );
+
+
+    const attempted =
+        correct +
+        wrong;
 
 
     const predictedScore =
@@ -2060,9 +2661,10 @@ function openScorePredictor() {
 }
 
 
-/* =========================================
-   ERROR MESSAGE
-========================================= */
+
+/* =========================================================
+   ERROR
+========================================================= */
 
 function showError(message) {
 
@@ -2105,9 +2707,10 @@ function showError(message) {
 }
 
 
-/* =========================================
+
+/* =========================================================
    START
-========================================= */
+========================================================= */
 
 window.addEventListener(
     "DOMContentLoaded",
